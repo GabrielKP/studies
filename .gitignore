@@ -1,0 +1,23 @@
+# local debugging
+__pycache__
+.psiturk_history
+participants.db
+server.log
+.vscode
+
+# npm modules (linter)
+node_modules
+package-lock.json
+package.json
+
+# data
+**/trialdata.csv
+**/questiondata.csv
+**/eventdata.csv
+data*/
+data2/
+data_round2/
+id_mapping.json
+
+# env
+.env
