@@ -1,32 +1,3 @@
-<title>Psychology Experiment - Informed Consent Form</title>
-
-<script type="text/javascript">
-  function onexit() {
-    self.close(); // no harm, no foul here
-  }
-  function show_consent_text() {
-    document.getElementById("consent-text").hidden = false;
-    document.getElementById("consent-button").hidden = true;
-  }
-</script>
-<style>
-  @media print {
-    body * {
-      visibility: hidden;
-    }
-    .legal,
-    .legal * {
-      visibility: visible;
-    }
-    .legal {
-      position: absolute;
-      left: 0;
-      top: 0;
-      overflow: visible;
-    }
-  }
-</style>
-{% endblock %} {% block body %}
 <div id="container-consent">
   <div id="consent">
     <div id="consent-text">
@@ -404,39 +375,4 @@
       </button>
     </center>
   </div>
-  <div id="consent-button"></div>
-  <script type="text/javascript">
-    if ("{{ mode }}" == "debug") {
-      // document.getElementById("consent").innerHTML =
-      //   "debug mode active, consent-form hidden.";
-      // self.close();
-      document.getElementById("consent-text").hidden = true;
-      document.getElementById("consent-button").innerHTML =
-        "<button onClick='show_consent_text()'> Show consent (consent only hidden in debug)</button>";
-    } else {
-      document.getElementById("consent-button").hidden = true;
-    }
-
-    // thank you stackoverflow: https://stackoverflow.com/a/2255438
-    function print_elem(elem) {
-      var mywindow = window.open("", "PRINT", "height=1200,width=600");
-
-      mywindow.document.write(
-        "<html><head><title>Words & Reading Study consent</title>"
-      );
-      mywindow.document.write("</head><body >");
-      mywindow.document.write("<h1>" + document.title + "</h1>");
-      mywindow.document.write(document.getElementById(elem).innerHTML);
-      mywindow.document.write("</body></html>");
-
-      mywindow.document.close(); // necessary for IE >= 10
-      mywindow.focus(); // necessary for IE >= 10*/
-
-      mywindow.print();
-      mywindow.close();
-
-      return true;
-    }
-  </script>
 </div>
-{% endblock %}
