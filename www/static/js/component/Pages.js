@@ -3,12 +3,14 @@ define(function () {
   class _Pages {
     page_index;
     pages;
+    pagenames;
     func_finish;
     study;
 
     constructor() {
       this.next = this.next.bind(this);
       this.previous = this.previous.bind(this);
+      this.current_page_name = this.current_page_name.bind(this);
     }
 
     _bind_buttons(func_next, func_previous) {
@@ -33,6 +35,7 @@ define(function () {
       this.page_index = 0;
       this.pages = Array(pagenames.length);
       this.func_finish = func_finish;
+      this.pagenames = pagenames;
 
       return Promise.all(
         $.map(pagenames, (pagename, indx) => {
@@ -84,6 +87,13 @@ define(function () {
         console.log("No previous page");
         return false;
       }
+    }
+
+    current_page_name() {
+      if (this.page_index == 0) {
+        return "nopage";
+      }
+      return this.pagenames[this.page_index - 1];
     }
   }
 
