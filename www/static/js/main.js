@@ -5,11 +5,19 @@ require([
   "stage/GeneralInstructions",
   "stage/Welcome",
 ], function (Study, Consent, FreeAssociationPre, GeneralInstructions, Welcome) {
-  config = {
+  let config = {
     default_button_timeout: 500,
-    time_limit_pre: 1000,
+    time_limit_pre: 180000,
   };
-  initialization = Study.init(
+  let debug_config = {
+    default_button_timeout: 0,
+    time_limit_pre: 5000,
+  };
+  if (new URLSearchParams(window.location.search).get("mode") == "debug") {
+    config = debug_config;
+  }
+
+  let initialization = Study.init(
     [
       Welcome,
       FreeAssociationPre,
