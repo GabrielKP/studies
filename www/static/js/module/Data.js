@@ -61,6 +61,9 @@ define(function () {
       trialdatapoint["trial_index"] = this.trialdata.length;
       trialdatapoint["data"] = data;
       this.trialdata.push(trialdatapoint);
+      if (this.study.config["debug"]) {
+        console.debug(trialdatapoint);
+      }
     }
 
     record_eventdata(event_type, data) {

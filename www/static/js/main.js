@@ -18,6 +18,7 @@ require([
     time_limit_pre: 180000,
   };
   let debug_config = {
+    debug: true,
     default_button_timeout: 0,
     time_limit_pre: 2000,
   };
