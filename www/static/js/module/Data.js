@@ -6,6 +6,7 @@ define(function () {
     prolific_pid;
     study_id;
     session_id;
+    off_focus_timer;
 
     constructor() {
       this.record_trialdata = this.record_trialdata.bind(this);
@@ -22,6 +23,8 @@ define(function () {
       this.study_id = urlParams.get("STUDY_ID");
       this.session_id = urlParams.get("SESSION_ID");
 
+      this.off_focus_time_start = null;
+
       this.trialdata = [];
       this.eventdata = [];
 
@@ -33,10 +36,17 @@ define(function () {
         });
       });
       $(window).on("focus", () => {
-        this.record_eventdata("window_focus_on", {});
+        let submit_data = {};
+        if (this.off_focus_time_start != null) {
+          submit_data["off_focus_time"] =
+            new Date().getTime() - this.off_focus_time_start;
+        }
+        this.record_eventdata("window_focus_on", submit_data);
       });
       $(window).on("blur", () => {
         this.record_eventdata("window_focus_out", {});
+        // start a timer
+        this.off_focus_time_start = new Date().getTime();
       });
 
       this.record_eventdata("initialized", {});
