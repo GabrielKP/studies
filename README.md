@@ -1,8 +1,18 @@
-# free association
+<div align="center">
+
+# Free Association
+
+</div>
 
 The javascript implementation of a the chained free association task (also: word chain game).
 
 Participants are asked to type any word that comes to mind, and then based on that word type the next word that comes to mind.
+
+<div align="center">
+
+<img src="readme/free-association.png" alt="Chained Free Association" height="200" width="360"/>
+
+</div>
 
 ## Setup
 
