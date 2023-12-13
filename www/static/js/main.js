@@ -11,10 +11,15 @@ require([
   };
   let debug_config = {
     default_button_timeout: 0,
-    time_limit_pre: 5000,
+    time_limit_pre: 2000,
   };
-  if (new URLSearchParams(window.location.search).get("mode") == "debug") {
+  let url_params = new URLSearchParams(window.location.search);
+  if (url_params.get("mode") == "debug") {
     config = debug_config;
+  }
+  config["local"] = false;
+  if (url_params.has("local")) {
+    config["local"] = true;
   }
 
   let initialization = Study.init(

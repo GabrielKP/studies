@@ -8,10 +8,23 @@
 
   <body>
     <h1>Study Starting Page</h1>
-    <br />
+
+    <hr />
+
     <p>Study: <a href="#" id="debug">debug (debug-id)</a>.</p>
     <br />
     <p>Study: <a href="#" id="test">test (live link with debug id)</a>.</p>
+
+    <hr />
+
+    <p>Study: <a href="#" id="local.debug">local debug (debug-id)</a>.</p>
+    <br />
+    <p>
+      Study:
+      <a href="#" id="local.test">local test (live link with debug id)</a>.
+    </p>
+
+    <hr />
 
     <script type="text/javascript">
       function makeid() {
@@ -49,7 +62,13 @@
         "&mode=live";
 
       document.getElementById("debug").setAttribute("href", href_debug);
-      document.getElementById("test").setAttribute("href", href_test);
+      document.getElementById("debug").setAttribute("href", href_debug);
+      document
+        .getElementById("local.test")
+        .setAttribute("href", href_test + "&local");
+      document
+        .getElementById("local.debug")
+        .setAttribute("href", href_debug + "&local");
     </script>
   </body>
 </html>
