@@ -1,90 +1,18 @@
-# linger-volition
+# free association
 
-How much do participants have to think about a recent experience story, even when told not to?
+The javascript implementation of a the chained free association task (also: word chain game).
 
-In this online experiment, participants are following the paradigm from Bellana et al. 2022 closely:
+Participants are asked to type any word that comes to mind, and then based on that word type the next word that comes to mind.
 
-1. Free association (pre) - 3mins
-2. Story reading
-3. Free association (post) - 3mins
-4. Questionnaires
+## Setup
 
-During free association participants are told not to think about a certain topic. In the pre-story free association this is TOPIC A (tbd) in the post-story free association it is the story.
-Additionally, participants are instructed to press a button, whenever they think about the story/topic A.
+You can open `www/starter.html` in the browser. Click the approriate link to start the experiment.
 
-## Setup for development
-
-```sh
-# clone project
-git clone git@github.com:GabrielKP/linger-volition.git
-
-# change dir to root
-cd linger-volition
-
-# create conda environment
-conda create -n psiturk python=3.9
-
-# activate environment
-conda activate psiturk
-
-# install psyturk
-pip install psiturk
-
-# install python-Levenshtein (just to get rid of the warning...)
-pip install python-Levenshtein
-
-# turn on
-psiturk server on
-
-# turn off
-psiturk server off
-```
-
-If there are version issues, this repo was created with:
-
-```
-python 3.9.15
-psiturk 3.3.1
-levenshtein 0.20.8
-```
-
-## Running an experiment
-
-```bash
-# 1. Adapt times in instruct-1-1.html and instruct-2-0.html
-# 2. Adapt amount of participants in scripts/gen_word_permutations.py
-# 3. Adapt amount of conditions in config.txt
-# 3.5 Adpat start and end indices in static/js/task.js
-# 4. Set up hosting machine
-# 5. sync to host
-scripts/sync.sh <host>
-# 6. Run your experiment in prolific
-# 7. make empty data folder
-cp data data_experiment
-# 7.5 add prolific experiment id to data_experiment/config/studyIDs.txt
-# 8. get data
-scripts/get_data.sh <host> data_experiment
-# 9. exclude participants
-python analysis/exclude_participants.py -s data_experiment
-# 10. add proposed IDs to the excluded ones
-#     excluded_participantIDs_proposal.txt -> excluded_participantIDs.txt
-# 11. update database on host
-ssh <host>
-sudo -u postgres psql
-\c psiturk
-# copy statement found in data_experiment/config/sql_exclusion.txt
-\q
-exit
-# 12. now run additional participants until all roles have been filled at least
-#     once. You can chek it by inspecting the server log
-ssh <host>
-less word_simtype/server.log
-#     look how many positions have 1 participants vs 0 participants
-# 13. run process the data to get overview, output and plots
-scripts/process.sh data_experiment
-```
+## Deploy
 
 ## Experiment data data-structure
+
+**Following documentation is not adapted yet. Ignore.**
 
 A data dir is denoted by starting with `data`. E.g. `data_experiment`.
 The typical organization is:
