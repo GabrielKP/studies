@@ -14,7 +14,7 @@ define(function () {
     }
 
     _bind_buttons(func_next, func_previous) {
-      // TODO: if func_next or func_previous is undefined, then don't bind
+      // TODO: if func_next or func_previous is undefined, then do not bind
       $("#next").on("click", function () {
         func_next();
       });
@@ -51,10 +51,17 @@ define(function () {
     }
 
     next() {
+      this.study.data.record_trialdata({
+        status: "page_end",
+        action: "page_next",
+      });
       if (this.page_index < this.pages.length) {
         // display next
         $("body").html(this.pages[this.page_index]);
         this.page_index += 1;
+
+        // log the new state
+        this.study.data.record_trialdata({ status: "page_begin" });
 
         // bind button functions
         this._bind_buttons(this.next, this.previous);
@@ -73,6 +80,10 @@ define(function () {
 
     previous() {
       if (this.page_index > 1) {
+        this.study.data.record_trialdata({
+          status: "page_end",
+          action: "page_previous",
+        });
         // display previous
         this.page_index -= 2;
         $("body").html(this.pages[this.page_index]);
@@ -91,7 +102,7 @@ define(function () {
 
     current_page_name() {
       if (this.page_index == 0) {
-        return "nopage";
+        return "no_page";
       }
       return this.pagenames[this.page_index - 1];
     }

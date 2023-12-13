@@ -32,10 +32,18 @@ define(["module/Data"], function (Data) {
     }
 
     next() {
+      console.log("hey");
+      this.data.record_trialdata({
+        status: "stage_end",
+      });
       if (this.stage_index < this.stages.length) {
         this.current_stage = this.stages[this.stage_index];
         this.current_stage.show();
         this.stage_index += 1;
+
+        this.data.record_trialdata({
+          status: "stage_begin",
+        });
         return true;
       } else {
         console.log("Last stage");
@@ -45,18 +53,18 @@ define(["module/Data"], function (Data) {
     }
 
     current_stage_name() {
-      if (this.stage_index == 0) {
+      if (this.current_stage == null) {
         return "initializing";
       }
-      return this.stages[this.stage_index - 1].name;
+      return this.current_stage.name;
     }
 
     current_page_name() {
       if (this.current_stage != null) {
-        if (this.current_stage.pages != null) {
-          return this.current_stage.pages.current_page_name();
-        } else {
+        if (this.current_stage.pages == null) {
           return "no page";
+        } else {
+          return this.current_stage.pages.current_page_name();
         }
       } else {
         return "stage uninitialized";

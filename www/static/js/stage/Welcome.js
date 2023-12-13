@@ -1,18 +1,18 @@
 define(["component/Pages"], function (Pages) {
-  let study;
-  let pages;
   return {
+    study: null,
+    pages: null,
     name: "welcome",
     init: function (_study) {
-      study = _study;
-      pages = new Pages();
-      return pages.init(study, ["welcome.html"], function () {
-        study.next();
+      this.study = _study;
+      this.pages = new Pages();
+      return this.pages.init(this.study, ["welcome.html"], function () {
+        this.study.next();
       });
     },
     show: function () {
       // show the form
-      pages.next();
+      this.pages.next();
     },
   };
 });

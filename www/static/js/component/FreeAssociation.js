@@ -53,8 +53,7 @@ define(["component/Pages"], function (Pages) {
     save_word() {
       var submit_object = {};
       this.word_text = $("#qinput").val();
-      submit_object["phase"] = "wcg";
-      submit_object["status"] = "ongoing";
+      submit_object["status"] = "data";
       submit_object["word_text"] = this.word_text;
       submit_object["word_count"] = this.word_count;
       submit_object["word_time"] = this.word_end_time - this.word_start_time;
@@ -62,7 +61,7 @@ define(["component/Pages"], function (Pages) {
       submit_object["word_key_codes"] = this.word_key_codes;
       submit_object["word_key_onsets"] = this.word_key_onsets;
       submit_object["pre_or_post"] = this.pre_or_post;
-      console.debug("Mock Saving data: " + JSON.stringify(submit_object));
+      this.study.data.record_trialdata(submit_object);
     }
 
     ready_word_variables() {

@@ -11,6 +11,7 @@ define(function () {
       this.record_trialdata = this.record_trialdata.bind(this);
       this.record_eventdata = this.record_eventdata.bind(this);
       this.make_datapoint = this.make_datapoint.bind(this);
+      this.save = this.save.bind(this);
     }
 
     init(study) {
@@ -32,10 +33,10 @@ define(function () {
         });
       });
       $(window).on("focus", () => {
-        this.record_eventdata("window_onfocus", {});
+        this.record_eventdata("window_focus_on", {});
       });
       $(window).on("outfocus", () => {
-        this.record_eventdata("window_outfocus", {});
+        this.record_eventdata("window_focus_out", {});
       });
 
       this.record_eventdata("initialized", {});
@@ -70,8 +71,34 @@ define(function () {
       this.eventdata.push(eventdatapoint);
     }
 
-    save_data() {
-      // save it
+    save() {
+      let data = {
+        study_id: this.study_id,
+        trialdata: this.trialdata,
+        eventdata: this.eventdata,
+      };
+      if (this.study.config["local"]) {
+        // download the data
+        let a = document.createElement("a");
+        let file = new Blob([JSON.stringify(data, null, 2)], {
+          type: "text/json",
+        });
+        a.href = URL.createObjectURL(file);
+        a.download = "exp_data.json";
+        a.click();
+      } else {
+        // send data to server
+        return $.ajax({
+          url: "save",
+          type: "POST",
+          data: JSON.stringify(this.trialdata),
+          contentType: "application/json",
+          success: () => {
+            console.log("Saving successful");
+            // success function
+          },
+        });
+      }
     }
   }
 

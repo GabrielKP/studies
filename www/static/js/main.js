@@ -1,10 +1,18 @@
 require([
   "module/Study",
   "stage/Consent",
+  "stage/Complete",
   "stage/FreeAssociationPre",
   "stage/GeneralInstructions",
   "stage/Welcome",
-], function (Study, Consent, FreeAssociationPre, GeneralInstructions, Welcome) {
+], function (
+  Study,
+  Consent,
+  Complete,
+  FreeAssociationPre,
+  GeneralInstructions,
+  Welcome
+) {
   let config = {
     default_button_timeout: 500,
     time_limit_pre: 180000,
@@ -26,9 +34,10 @@ require([
     [
       Welcome,
       FreeAssociationPre,
-      Consent,
-      GeneralInstructions,
-      FreeAssociationPre,
+      // Consent,
+      // GeneralInstructions,
+      // FreeAssociationPre,
+      Complete,
     ],
     config
   );
