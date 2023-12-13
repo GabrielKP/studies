@@ -32,7 +32,6 @@ define(["module/Data"], function (Data) {
     }
 
     next() {
-      console.log("hey");
       this.data.record_trialdata({
         status: "stage_end",
       });

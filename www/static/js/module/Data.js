@@ -18,9 +18,9 @@ define(function () {
       this.study = study;
 
       let urlParams = new URLSearchParams(window.location.search);
-      this.prolificPID = urlParams.get("PROLIFIC_PID");
-      this.studyID = urlParams.get("STUDY_ID");
-      this.sessionID = urlParams.get("SESSION_ID");
+      this.prolific_pid = urlParams.get("PROLIFIC_PID");
+      this.study_id = urlParams.get("STUDY_ID");
+      this.session_id = urlParams.get("SESSION_ID");
 
       this.trialdata = [];
       this.eventdata = [];
@@ -62,7 +62,7 @@ define(function () {
       trialdatapoint["data"] = data;
       this.trialdata.push(trialdatapoint);
       if (this.study.config["debug"]) {
-        console.debug(trialdatapoint);
+        console.debug("trialdata: " + JSON.stringify(trialdatapoint));
       }
     }
 
@@ -72,6 +72,9 @@ define(function () {
       eventdatapoint["event_type"] = event_type;
       eventdatapoint["data"] = data;
       this.eventdata.push(eventdatapoint);
+      if (this.study.config["debug"]) {
+        console.debug("eventdata: " + JSON.stringify(eventdatapoint));
+      }
     }
 
     save() {

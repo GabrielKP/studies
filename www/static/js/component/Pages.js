@@ -51,10 +51,12 @@ define(function () {
     }
 
     next() {
-      this.study.data.record_trialdata({
-        status: "page_end",
-        action: "page_next",
-      });
+      if (this.page_index == 0) {
+        this.study.data.record_trialdata({
+          status: "page_end",
+          action: "page_next",
+        });
+      }
       if (this.page_index < this.pages.length) {
         // display next
         $("body").html(this.pages[this.page_index]);
