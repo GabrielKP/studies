@@ -35,7 +35,7 @@ define(function () {
       $(window).on("focus", () => {
         this.record_eventdata("window_focus_on", {});
       });
-      $(window).on("outfocus", () => {
+      $(window).on("blur", () => {
         this.record_eventdata("window_focus_out", {});
       });
 
