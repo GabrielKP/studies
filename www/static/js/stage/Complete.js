@@ -18,7 +18,7 @@ define(["component/Pages"], function (Pages) {
       $("#complete").on("click", () => {
         window.location.href =
           "https://app.prolific.co/submissions/complete?cc=" +
-          study.config["prolific_completion"];
+          study.config["code_completion"];
       });
     },
   };
