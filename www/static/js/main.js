@@ -3,6 +3,7 @@ require([
   "stage/Consent",
   "stage/Complete",
   "stage/FreeAssociationPre",
+  "stage/Fullscreen",
   "stage/GeneralInstructions",
   "stage/Welcome",
 ], function (
@@ -10,6 +11,7 @@ require([
   Consent,
   Complete,
   FreeAssociationPre,
+  Fullscreen,
   GeneralInstructions,
   Welcome
 ) {
@@ -18,6 +20,8 @@ require([
     time_limit_pre: 180000,
     code_completion: "XXXXXX",
     code_noconsent: "YYYYYY",
+    studytime: 4,
+    enforce_fullscreen: true,
   };
   let debug_config = {
     debug: true,
@@ -25,6 +29,8 @@ require([
     time_limit_pre: 2000,
     code_completion: "XXXXXX",
     code_noconsent: "YYYYYY",
+    studytime: 4,
+    enforce_fullscreen: true,
   };
   let url_params = new URLSearchParams(window.location.search);
   if (url_params.get("mode") == "debug") {
@@ -38,6 +44,7 @@ require([
   let initialization = Study.init(
     [
       Welcome,
+      Fullscreen,
       FreeAssociationPre,
       // Consent,
       // GeneralInstructions,

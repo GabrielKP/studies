@@ -69,6 +69,16 @@ define(["module/Data"], function (Data) {
         return "stage uninitialized";
       }
     }
+
+    fullscreen_enforcer() {
+      if (document.fullscreenElement) {
+        $("#container-fullscreen-warning").hide();
+        $("#content").show();
+      } else {
+        $("#container-fullscreen-warning").show();
+        $("#content").hide();
+      }
+    }
   }
 
   return new _Study();

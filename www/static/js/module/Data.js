@@ -6,7 +6,8 @@ define(function () {
     prolific_pid;
     study_id;
     session_id;
-    off_focus_timer;
+    off_focus_time_start;
+    off_fullscreen_time_start;
 
     constructor() {
       this.record_trialdata = this.record_trialdata.bind(this);
@@ -24,6 +25,7 @@ define(function () {
       this.session_id = urlParams.get("SESSION_ID");
 
       this.off_focus_time_start = null;
+      this.off_fullscreen_time_start = null;
 
       this.trialdata = [];
       this.eventdata = [];
@@ -36,7 +38,7 @@ define(function () {
         });
       });
       $(window).on("focus", () => {
-        let submit_data = {};
+        let submit_data = { off_focus_time: null };
         if (this.off_focus_time_start != null) {
           submit_data["off_focus_time"] =
             new Date().getTime() - this.off_focus_time_start;
@@ -47,6 +49,19 @@ define(function () {
         this.record_eventdata("window_focus_out", {});
         // start a timer
         this.off_focus_time_start = new Date().getTime();
+      });
+      document.documentElement.addEventListener("fullscreenchange", () => {
+        if (document.fullscreenElement) {
+          let submit_data = { off_fullscreen_time: null };
+          if (this.off_fullscreen_time_start != null) {
+            submit_data["off_fullscreen_time"] =
+              new Date().getTime() - this.off_fullscreen_time_start;
+          }
+          this.record_eventdata("fullscreen_on", submit_data);
+        } else {
+          this.record_eventdata("fullscreen_off", {});
+          this.off_fullscreen_time_start = new Date().getTime();
+        }
       });
 
       this.record_eventdata("initialized", {});

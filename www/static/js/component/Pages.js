@@ -59,7 +59,7 @@ define(function () {
       }
       if (this.page_index < this.pages.length) {
         // display next
-        $("body").html(this.pages[this.page_index]);
+        $("#content").html(this.pages[this.page_index]);
         this.page_index += 1;
 
         // log the new state
@@ -88,7 +88,7 @@ define(function () {
         });
         // display previous
         this.page_index -= 2;
-        $("body").html(this.pages[this.page_index]);
+        $("#content").html(this.pages[this.page_index]);
         this.page_index += 1;
 
         // bind button functions
