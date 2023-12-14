@@ -13,8 +13,13 @@ define(["component/Pages"], function (Pages) {
     show: function () {
       // save the data
       study.data.save();
-      // show the form
+      // show the html
       pages.next();
+      $("#complete").on("click", () => {
+        window.location.href =
+          "https://app.prolific.co/submissions/complete?cc=" +
+          study.config["prolific_completion"];
+      });
     },
   };
 });

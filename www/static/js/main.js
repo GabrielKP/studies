@@ -16,11 +16,13 @@ require([
   let config = {
     default_button_timeout: 500,
     time_limit_pre: 180000,
+    prolific_completion: "XXXXXXX",
   };
   let debug_config = {
     debug: true,
     default_button_timeout: 0,
     time_limit_pre: 2000,
+    prolific_completion: "XXXXXXX",
   };
   let url_params = new URLSearchParams(window.location.search);
   if (url_params.get("mode") == "debug") {
