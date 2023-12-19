@@ -102,21 +102,22 @@ define(function () {
       }
     }
 
-    save() {
+    save(download = false) {
       let data = {
         study_id: this.study_id,
         trialdata: this.trialdata,
         eventdata: this.eventdata,
       };
-      if (this.study.config["local"]) {
+      if (this.study.config["local"] || download) {
         // download the data
         let a = document.createElement("a");
         let file = new Blob([JSON.stringify(data, null, 2)], {
           type: "text/json",
         });
         a.href = URL.createObjectURL(file);
-        a.download = "exp_data.json";
+        a.download = "studydata.json";
         a.click();
+        return Promise.resolve();
       } else {
         // send data to server
         return $.ajax({
