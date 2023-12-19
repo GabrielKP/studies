@@ -14,18 +14,7 @@ else
     fi
 fi
 
-/bin/sh scripts/server_off.sh $WHOST
-
 rsync -rv\
-    --exclude=.git\
-    --exclude="data*"\
-    --exclude=trialdata.csv\
-    --exclude=questiondata.csv\
-    --exclude=eventdata.csv\
-    --exclude=participants.db\
-    --exclude=.psiturk_history\
-    --exclude=server.log\
     --delete\
-    ../linger-volition $WHOST:~/
+    www/ $WHOST:~/psyserver/data/studies/study-fa
 
-/bin/sh scripts/server_on.sh $WHOST
