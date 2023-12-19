@@ -72,6 +72,15 @@ h1 {
   color: #474747;
 }
 
+/* skip button section */
+#container-skip-button {
+  margin: auto;
+  width: 1000px;
+  text-align: center;
+  font-size: 12pt;
+  line-height: 1.1em;
+}
+
 /* ad.html  - the ad that people view first */
 #adlogo {
   width: 140px;

@@ -15,7 +15,9 @@ require([
   GeneralInstructions,
   Welcome
 ) {
+  // configuration
   let config = {
+    debug: false,
     default_button_timeout: 500,
     time_limit_pre: 180000,
     code_completion: "XXXXXX",
@@ -32,13 +34,25 @@ require([
     studytime: 4,
     enforce_fullscreen: true,
   };
+
+  // determine debug mode
   let url_params = new URLSearchParams(window.location.search);
   if (url_params.get("mode") == "debug") {
     config = debug_config;
   }
+
+  // local mode: needed to determine how data is saved
   config["local"] = false;
   if (url_params.has("local")) {
     config["local"] = true;
+  }
+
+  // skip button for debug
+  if (config["debug"]) {
+    $("#container-skip-button").show();
+    $("#skip").on("click", () => {
+      Study.next();
+    });
   }
 
   let initialization = Study.init(
