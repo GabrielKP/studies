@@ -26,6 +26,7 @@ define(["component/Pages"], function (Pages) {
         $("#fullscreen").on("click", () => {
           document.documentElement.requestFullscreen().then(() => {
             $("#fullscreen").attr("class", "btn btn-success btn-lg");
+            $("#continue").attr("class", "btn btn-primary btn-lg");
             $("#continue").prop("disabled", false);
             $("#continue").on("click", () => {
               pages.next();
