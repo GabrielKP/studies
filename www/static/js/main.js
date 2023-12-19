@@ -32,7 +32,7 @@ require([
     code_completion: "XXXXXX",
     code_noconsent: "YYYYYY",
     studytime: 4,
-    enforce_fullscreen: true,
+    enforce_fullscreen: false,
   };
 
   // determine debug mode

@@ -123,7 +123,7 @@ define(function () {
         return $.ajax({
           url: "save",
           type: "POST",
-          data: JSON.stringify(this.trialdata),
+          data: JSON.stringify(data),
           contentType: "application/json",
           success: () => {
             console.log("Saving successful");
