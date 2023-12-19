@@ -45,10 +45,9 @@ require([
     [
       Welcome,
       Fullscreen,
+      Consent,
+      GeneralInstructions,
       FreeAssociationPre,
-      // Consent,
-      // GeneralInstructions,
-      // FreeAssociationPre,
       Complete,
     ],
     config

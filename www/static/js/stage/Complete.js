@@ -20,6 +20,9 @@ define(["component/Pages"], function (Pages) {
           study.fullscreen_enforcer
         );
       }
+      if (!study.config["debug"]) {
+        $(window).off("beforeunload");
+      }
       // show the html
       pages.next();
       $("#complete").on("click", () => {

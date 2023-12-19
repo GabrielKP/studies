@@ -30,9 +30,8 @@ define(["component/Pages", "component/FreeAssociation"], function (
       ]);
     },
     show: function () {
-      // show instructions
-      free_association.start_task();
-      // instruct_pages.next();
+      // show instructions first
+      instruct_pages.next();
     },
   };
 });

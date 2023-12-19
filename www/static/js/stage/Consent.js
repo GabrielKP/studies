@@ -7,6 +7,11 @@ define(["component/Pages"], function (Pages) {
       study = _study;
       pages = new Pages();
       return pages.init(study, ["consent.html"], function () {
+        if (!study.config["debug"]) {
+          $(window).on("beforeunload", function () {
+            return "Are you sure you want to leave? You will have to restart the experiment.";
+          });
+        }
         study.next();
       });
     },
