@@ -1,0 +1,84 @@
+<div id="container-questionnaires">
+  <div class="card">
+    <h3 class="card-header text-center">Thank you for your contribution.</h3>
+    <div class="instructions card-body">
+      <div class="card-text">
+        <div class="text-center pt-2">
+          <i>The following questions are optional.</i>
+        </div>
+
+        <form class="mt-5">
+          <!-- Question: Clarity -->
+          <div class="row mb-4">
+            <label for="clarity_rating" class="col-md-9 col-form-label">
+              The instructions were clear and easy to understand.
+            </label>
+            <div class="col-md-3">
+              <select
+                id="clarity_rating"
+                name="clarity_rating"
+                class="form-select collectible"
+              >
+                <option value="7">7 - Very much</option>
+                <option value="6">6</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1 - Not at all</option>
+                <option value="" disabled selected>Select option</option>
+              </select>
+            </div>
+          </div>
+          <!-- End of Question -->
+
+          <!-- Question: Clarity follow-up conditional -->
+          <div
+            id="clarity_follow_up"
+            class="mb-4 form-floating"
+            style="display: none"
+          >
+            <input
+              title="clarity_explanation"
+              type="text"
+              id="clarity_explanation"
+              class="form-control collectible"
+            />
+            <label for="clarity_explanation">What was unclear?</label>
+          </div>
+          <!-- end of a question -->
+
+          <!-- Question: Open comments -->
+          <div class="mb-4">
+            <label for="open_box" class="form-label"
+              >Any thoughts and comments you have are highly appreciated.</label
+            >
+            <textarea
+              class="form-control collectible"
+              id="open_box"
+              rows="3"
+            ></textarea>
+          </div>
+          <!-- End of Question -->
+        </form>
+      </div>
+
+      <div id="warning"></div>
+
+      <div class="instructionsnav">
+        <div class="row">
+          <center>
+            <button
+              type="button"
+              id="submit"
+              value="next"
+              class="btn btn-success btn-lg continue"
+            >
+              Continue
+            </button>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -45,6 +45,16 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
+#container-questionnaires {
+  background: white;
+  margin: 0 auto;
+  width: 1000px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* instructions box */
 .instructions {
   padding-top: 30px;
@@ -112,10 +122,6 @@ h1 {
   margin: 0 auto;
   max-width: 900px;
   text-align: center;
-}
-
-.question {
-  margin-bottom: 30px;
 }
 
 /* errors */

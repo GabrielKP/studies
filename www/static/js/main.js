@@ -1,19 +1,21 @@
 require([
   "module/Study",
-  "stage/Consent",
-  "stage/Complete",
-  "stage/FreeAssociationPre",
-  "stage/Fullscreen",
-  "stage/GeneralInstructions",
   "stage/Welcome",
+  "stage/Fullscreen",
+  "stage/Consent",
+  "stage/GeneralInstructions",
+  "stage/FreeAssociationPre",
+  "stage/QuestionnaireGeneral",
+  "stage/Complete",
 ], function (
   Study,
-  Consent,
-  Complete,
-  FreeAssociationPre,
+  Welcome,
   Fullscreen,
+  Consent,
   GeneralInstructions,
-  Welcome
+  FreeAssociationPre,
+  QuestionnaireGeneral,
+  Complete
 ) {
   // configuration
   let config = {
@@ -62,6 +64,7 @@ require([
       Consent,
       GeneralInstructions,
       FreeAssociationPre,
+      QuestionnaireGeneral,
       Complete,
     ],
     config
