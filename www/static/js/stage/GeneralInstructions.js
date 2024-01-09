@@ -12,7 +12,6 @@ define(["component/Pages"], function (Pages) {
           "general_instructions/instruct-1.html",
           "general_instructions/instruct-2.html",
           "general_instructions/instruct-3.html",
-          "general_instructions/instruct-4.html",
         ],
         function () {
           study.next();

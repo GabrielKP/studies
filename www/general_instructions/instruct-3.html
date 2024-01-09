@@ -1,11 +1,12 @@
-<div id="container-instructions">
+<div class="container position-absolute top-50 start-50 translate-middle">
   <div class="card text-center">
-    <h3 class="card-header">General instructions</h3>
+    <h3 class="card-header">Study Overview</h3>
     <div class="instructions card-body">
-      <p>
-        <b>Make sure you can finish the experiment without interruption.</b>
-      </p>
-      <p>If you need to take a break, please take it now.</p>
+      <div class="instruction-list">
+        <ul style="list-style-type: none">
+          <li><b>Phase 1</b> (~3 min): Create word chains.</li>
+        </ul>
+      </div>
 
       <div class="instructionsnav">
         <div class="row">
@@ -19,21 +20,19 @@
               <span class="glyphicon glyphicon-arrow-left"></span> Previous
             </button>
           </div>
-          <div class="col-8">
-            <center>
-              <button
-                type="button"
-                id="next"
-                value="next"
-                class="btn btn-success btn-lg continue"
-                disabled
-              >
-                Begin study
-                <span class="glyphicon glyphicon-arrow-right"></span>
-              </button>
-            </center>
+          <div class="col-8"></div>
+          <div class="col-2">
+            <button
+              type="button"
+              id="next"
+              value="next"
+              class="btn btn-primary btn-lg continue"
+              disabled
+            >
+              Next
+              <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
           </div>
-          <div class="col-2"></div>
         </div>
       </div>
     </div>
