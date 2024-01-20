@@ -64,7 +64,10 @@ define(function () {
         }
       });
 
-      this.record_eventdata("initialized", {});
+      // show config if in debug
+      if (this.study.config["debug"])
+        this.record_eventdata("initialized", this.study.config);
+      else this.record_eventdata("initialized", {});
       $(window).triggerHandler("resize");
 
       return Promise.resolve();
@@ -76,7 +79,6 @@ define(function () {
       datapoint["study_id"] = this.study_id;
       datapoint["session_id"] = this.session_id;
       datapoint["stage"] = this.study.current_stage_name();
-      datapoint["page"] = this.study.current_page_name();
       datapoint["timestamp"] = new Date().getTime();
       return datapoint;
     }

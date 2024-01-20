@@ -5,11 +5,11 @@ define(["module/Data"], function (Data) {
     stages;
     config;
     data;
+    stage_time_start;
 
     constructor() {
       this.next = this.next.bind(this);
       this.current_stage_name = this.current_stage_name.bind(this);
-      this.current_page_name = this.current_page_name.bind(this);
     }
 
     init(uninit_stages, config) {
@@ -21,6 +21,8 @@ define(["module/Data"], function (Data) {
       // init the data module
       this.data = Data;
       this.data.init(this);
+      this.stage_time_start = new Date().getTime();
+      this.data.record_trialdata({ status: "stage_begin" }); // log init stage begin for consistency
 
       return Promise.all(
         $.map(uninit_stages, (stage, indx) => {
@@ -34,12 +36,14 @@ define(["module/Data"], function (Data) {
     next() {
       this.data.record_trialdata({
         status: "stage_end",
+        stage_time: new Date().getTime() - this.stage_time_start,
       });
       if (this.stage_index < this.stages.length) {
         this.current_stage = this.stages[this.stage_index];
         this.current_stage.show();
         this.stage_index += 1;
 
+        this.stage_time_start = new Date().getTime();
         this.data.record_trialdata({
           status: "stage_begin",
         });
@@ -56,18 +60,6 @@ define(["module/Data"], function (Data) {
         return "initializing";
       }
       return this.current_stage.name;
-    }
-
-    current_page_name() {
-      if (this.current_stage != null) {
-        if (this.current_stage.pages == null) {
-          return "no page";
-        } else {
-          return this.current_stage.pages.current_page_name();
-        }
-      } else {
-        return "stage uninitialized";
-      }
     }
 
     fullscreen_enforcer() {
