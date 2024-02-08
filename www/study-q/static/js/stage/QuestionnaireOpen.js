@@ -12,6 +12,30 @@ define(["component/Pages"], function (Pages) {
     });
     pages.next();
   }
+
+  conditional_enable_button = function () {
+    if (
+      $("#content_attention").val() == "N" ||
+      ($("#content_attention").val() == "Y" &&
+        $("#content_attention_text").val().trim().length > 3)
+    ) {
+      $("#warning").html("");
+      $("#submit")
+        .off()
+        .on("click", function () {
+          _finish_task();
+        });
+    } else {
+      $("#submit")
+        .off()
+        .on("click", function () {
+          $("#warning").html(
+            '<div class="alert alert-danger"><i>Please answer the first question!</i></div>'
+          );
+        });
+    }
+  };
+
   return {
     name: "questionnaire_open",
     init: function (_study) {
@@ -35,9 +59,23 @@ define(["component/Pages"], function (Pages) {
           $("#clarity_follow_up").hide();
         }
       });
+      // bind conditional content_attention follow up
+      $("#content_attention").on("change", () => {
+        if ($("#content_attention").val() == "Y") {
+          $("#content_attention_follow_up").show();
+        } else {
+          $("#content_attention_follow_up").hide();
+        }
+      });
+      // bind conditional enable
+      $("#content_attention").on("change", conditional_enable_button);
+      $("#content_attention_text").on("change", conditional_enable_button);
+
       // bind submit button
       $("#submit").on("click", () => {
-        _finish_task();
+        $("#warning").html(
+          '<div class="alert alert-danger mx-5"><i>Please answer the first question!</i></div>'
+        );
       });
     },
     finish_task: function () {

@@ -3,21 +3,58 @@
     <h3 class="card-header text-center">Thank you for your contribution.</h3>
     <div class="instructions card-body">
       <div class="card-text">
-        <div class="text-center pt-2">
-          <i>The following questions are optional.</i>
-        </div>
+        <form class="m-5">
+          <!-- beginning of a question -->
+          <div class="row mb-4">
+            <label for="content_attention" class="col-md-9 col-form-label-lg">
+              Were you engaging in other tasks while performing this experiment
+              (e.g., listening to music, watching a video, browsing the
+              internet)? <b>NOTE:</b> This is for research purposes only. It
+              will <b>NOT</b> affect your payment.
+            </label>
+            <div class="col-md-3">
+              <select
+                id="content_attention"
+                name="content_attention"
+                class="form-select form-select-lg collectible"
+              >
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+                <option value="" disabled selected>Select option</option>
+              </select>
+            </div>
+          </div>
 
-        <form class="mt-5">
+          <!-- Input box -->
+          <div
+            id="content_attention_follow_up"
+            class="mb-4"
+            style="display: none"
+          >
+            <label for="content_attention_text" class="form-label"
+              >What where you doing?</label
+            >
+            <input
+              title="content_attention_text"
+              type="text"
+              id="content_attention_text"
+              class="form-control collectible"
+            />
+          </div>
+          <!-- end of a question -->
+          <hr />
+          <br />
+
           <!-- Question: Clarity -->
           <div class="row mb-4">
-            <label for="clarity_rating" class="col-md-9 col-form-label">
+            <label for="clarity_rating" class="col-md-9 col-form-label-lg">
               The instructions were clear and easy to understand.
             </label>
             <div class="col-md-3">
               <select
                 id="clarity_rating"
                 name="clarity_rating"
-                class="form-select collectible"
+                class="form-select form-select-lg collectible"
               >
                 <option value="7">7 - Very much</option>
                 <option value="6">6</option>
@@ -33,28 +70,25 @@
           <!-- End of Question -->
 
           <!-- Question: Clarity follow-up conditional -->
-          <div
-            id="clarity_follow_up"
-            class="mb-4 form-floating"
-            style="display: none"
-          >
+          <div id="clarity_follow_up" class="mb-4" style="display: none">
+            <label for="clarity_explanation">What was unclear?</label>
             <input
               title="clarity_explanation"
               type="text"
               id="clarity_explanation"
               class="form-control collectible"
             />
-            <label for="clarity_explanation">What was unclear?</label>
           </div>
           <!-- end of a question -->
 
           <!-- Question: Open comments -->
           <div class="mb-4">
             <label for="open_box" class="form-label"
-              >Any thoughts and comments you have are highly appreciated.</label
+              >Any thoughts and comments you have are highly appreciated
+              (optional).</label
             >
             <textarea
-              class="form-control collectible"
+              class="form-control form-control-lg collectible"
               id="open_box"
               rows="3"
             ></textarea>
