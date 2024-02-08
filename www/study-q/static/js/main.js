@@ -7,7 +7,7 @@ require([
   "stage/FreeAssociationPre",
   "stage/Reading",
   "stage/FreeAssociationPost",
-  "stage/QuestionnaireGeneral",
+  "stage/QuestionnaireOpen",
   "stage/Complete",
 ], function (
   Study,
@@ -18,7 +18,7 @@ require([
   FreeAssociationPre,
   Reading,
   FreeAssociationPost,
-  QuestionnaireGeneral,
+  QuestionnaireOpen,
   Complete
 ) {
   // configuration
@@ -75,7 +75,7 @@ require([
       // FreeAssociationPre,
       Reading,
       FreeAssociationPost,
-      QuestionnaireGeneral,
+      QuestionnaireOpen,
       Complete,
     ],
     config

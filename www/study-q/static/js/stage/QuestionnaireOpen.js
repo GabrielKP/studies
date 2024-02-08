@@ -13,11 +13,11 @@ define(["component/Pages"], function (Pages) {
     pages.next();
   }
   return {
-    name: "questionnaire_general",
+    name: "questionnaire_open",
     init: function (_study) {
       study = _study;
       pages = new Pages();
-      return pages.init(study, ["questionnaire_general.html"], function () {
+      return pages.init(study, ["questionnaire_open.html"], function () {
         study.next();
       });
     },
