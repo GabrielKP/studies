@@ -16,10 +16,8 @@ define(["component/Pages"], function (Pages) {
   }
 
   function all_selected() {
-    console.debug("checking");
     if ($("select.changed").length !== $("select.collectible").length)
       return false;
-    console.debug("changed class passing");
 
     // Checks native language input, if no, require text field
     if (
@@ -27,7 +25,6 @@ define(["component/Pages"], function (Pages) {
       ($("#demographics_nativelang_text").val().trim().length < 3)
     )
       return false;
-    console.debug("nativelang passing");
 
     // Same as above but fluency
     if (
@@ -35,7 +32,6 @@ define(["component/Pages"], function (Pages) {
       ($("#demographics_fluency_text").val().trim().length < 3)
     )
       return false;
-    console.debug("fluency passing");
 
     // Checks the if time is there (in case user deletes it again)
     if ($("#demographics_currenttime").val().length == 0) {
