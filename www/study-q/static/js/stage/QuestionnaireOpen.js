@@ -41,13 +41,9 @@ define(["component/Pages"], function (Pages) {
     init: function (_study) {
       study = _study;
       pages = new Pages();
-      return pages.init(
-        study,
-        ["questionnaires/questionnaire_open.html"],
-        function () {
-          study.next();
-        }
-      );
+      return pages.init(study, ["questionnaires/open.html"], function () {
+        study.next();
+      });
     },
     show: function () {
       pages.next();
