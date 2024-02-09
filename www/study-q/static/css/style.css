@@ -1,6 +1,10 @@
 /* Setting max width for all content */
-.container {
+.container:not(.wide) {
   max-width: 1002px;
+}
+
+.wide {
+  max-width: 1410px;
 }
 
 /* Font size */
@@ -16,9 +20,4 @@
   width: 210px;
   resize: none;
   text-align: center;
-}
-
-/* Personality Questionnaire */
-tr.spaceUnder>td {
-  padding-bottom: 1em;
 }

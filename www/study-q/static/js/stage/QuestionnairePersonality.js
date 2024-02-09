@@ -5,10 +5,10 @@ define(["component/Pages"], function (Pages) {
     '<div class="alert alert-danger"><i>Please answer all questions!</i></div>';
 
   function _finish_task() {
-    $(".collectible").each(function () {
+    $("input:checked").each(function () {
       study.data.record_trialdata({
         status: "ongoing",
-        question: this.id,
+        question: this.name,
         answer: this.value,
       });
     });
@@ -16,7 +16,7 @@ define(["component/Pages"], function (Pages) {
   }
 
   return {
-    name: "questionnaire_comprehension",
+    name: "questionnaire_personality",
     init: function (_study) {
       study = _study;
       pages = new Pages();
@@ -33,13 +33,8 @@ define(["component/Pages"], function (Pages) {
 
       // bind conditional enable
       $("input").on("change", function () {
-        // add changed class for tracking
-        let name = $(this).attr("name");
-        let query = "input[name='" + name + "']";
-        $(query).addClass("changed");
-
         // check for all changed
-        if ($("input.changed").length == 100) {
+        if ($("input:checked").length == 20) {
           $("#warning").html("");
           $("#submit")
             .off()
