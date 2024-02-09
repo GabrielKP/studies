@@ -17,3 +17,8 @@
   resize: none;
   text-align: center;
 }
+
+/* Personality Questionnaire */
+tr.spaceUnder>td {
+  padding-bottom: 1em;
+}
