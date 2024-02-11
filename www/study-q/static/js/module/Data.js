@@ -64,10 +64,7 @@ define(function () {
         }
       });
 
-      // show config if in debug
-      if (this.study.config["debug"])
-        this.record_eventdata("initialized", this.study.config);
-      else this.record_eventdata("initialized", {});
+      this.record_eventdata("initialized", {});
       $(window).triggerHandler("resize");
 
       return Promise.resolve();
