@@ -30,7 +30,7 @@ define(["component/Pages"], function (Pages) {
       // bind conditional enable
       $("input").on("change", function () {
         // check for all changed
-        if ($("input:checked").length == 7) {
+        if ($("input:checked").length == 10) {
           $("#warning").html("");
           $("#submit")
             .off()
