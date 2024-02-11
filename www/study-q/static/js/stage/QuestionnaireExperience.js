@@ -14,8 +14,11 @@ define(["component/Pages"], function (Pages) {
       });
     });
     if (current_page == 1) _page_2();
-    else if (current_page == 2) _page_3();
-    else if (current_page == 3) _page_4();
+    else if (current_page == 2) {
+      // conditional on linger rating
+      if ($("#linger_rating").val() == "1") study.next();
+      else _page_3();
+    } else if (current_page == 3) _page_4();
     else if (current_page == 4) pages.next();
     else {
       console.log("Error: current_page out of range");
@@ -126,7 +129,7 @@ define(["component/Pages"], function (Pages) {
         $("#submit")
           .off()
           .on("click", function () {
-            _page_2();
+            _finish_task();
           });
       } else {
         $("#submit")
