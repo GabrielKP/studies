@@ -3,7 +3,7 @@ define(function () {
     study;
     trialdata;
     eventdata;
-    prolific_pid;
+    participantID;
     study_id;
     session_id;
     off_focus_time_start;
@@ -20,7 +20,7 @@ define(function () {
       this.study = study;
 
       let urlParams = new URLSearchParams(window.location.search);
-      this.prolific_pid = urlParams.get("PROLIFIC_PID");
+      this.participantID = urlParams.get("PROLIFIC_PID");
       this.study_id = urlParams.get("STUDY_ID");
       this.session_id = urlParams.get("SESSION_ID");
 
@@ -75,7 +75,7 @@ define(function () {
 
     make_datapoint() {
       let datapoint = {};
-      datapoint["prolific_pid"] = this.prolific_pid;
+      datapoint["participantID"] = this.participantID;
       datapoint["study_id"] = this.study_id;
       datapoint["session_id"] = this.session_id;
       datapoint["stage"] = this.study.current_stage_name();

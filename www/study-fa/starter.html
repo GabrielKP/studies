@@ -38,15 +38,15 @@
         return text;
       }
 
-      var debug_prolific_pid = "debug.pid." + makeid();
+      var debug_participantID = "debug.pid." + makeid();
       var debug_study_id = "debug.study-id." + makeid();
       var debug_session_id = "debug.session-id." + makeid();
-      var test_prolific_pid = "test.pid." + makeid();
+      var test_participantID = "test.pid." + makeid();
       var test_study_id = "test.study-id." + makeid();
       var test_session_id = "test.session-id." + makeid();
       var href_debug =
         "index.html?PROLIFIC_PID=" +
-        debug_prolific_pid +
+        debug_participantID +
         "&STUDY_ID=" +
         debug_study_id +
         "&SESSION_ID=" +
@@ -54,7 +54,7 @@
         "&mode=debug";
       var href_test =
         "index.html?PROLIFIC_PID=" +
-        debug_prolific_pid +
+        debug_participantID +
         "&STUDY_ID=" +
         test_study_id +
         "&SESSION_ID=" +
