@@ -107,6 +107,10 @@ define(function () {
     save(download = false) {
       let data = {
         participantID: this.participantID,
+        study_id: this.study_id,
+        session_id: this.session_id,
+        version: this.study.config["version"],
+        config: this.study.config,
         trialdata: this.trialdata,
         eventdata: this.eventdata,
       };
