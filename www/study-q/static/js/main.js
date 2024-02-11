@@ -45,7 +45,7 @@ require([
     time_limit_pre: 180000,
     code_completion: "XXXXXX",
     code_noconsent: "YYYYYY",
-    studytime: 4,
+    studytime: 35,
     enforce_fullscreen: true,
     reading_delay_key: 100,
   };
@@ -56,7 +56,7 @@ require([
     time_limit_pre: 2000,
     code_completion: "XXXXXX",
     code_noconsent: "YYYYYY",
-    studytime: 4,
+    studytime: 35,
     enforce_fullscreen: false,
   };
 
