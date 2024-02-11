@@ -13,6 +13,8 @@ define(["component/Pages"], function (Pages) {
     show: function () {
       // show the form
       this.pages.next();
+      // version
+      $("#version").text(this.study.config["version"]);
     },
   };
 });

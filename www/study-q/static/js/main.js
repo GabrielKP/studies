@@ -39,6 +39,7 @@ require([
 ) {
   // configuration
   let config = {
+    version: "0.1.0",
     debug: false,
     default_button_timeout: 500,
     time_limit_pre: 180000,
@@ -49,6 +50,7 @@ require([
     reading_delay_key: 100,
   };
   let debug_config = {
+    version: "0.1.0",
     debug: true,
     default_button_timeout: 0,
     time_limit_pre: 2000,
