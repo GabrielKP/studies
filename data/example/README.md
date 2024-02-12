@@ -8,7 +8,7 @@ example/
 ├── config
 │   ├── story_condition_id.txt
 │   └── studyIDs.txt
-├── raw
+├── json
 │   ├── participant_1.json
 │   ├── participant_2.json
 │   ├── ...
@@ -23,6 +23,6 @@ Contains config files for experiment:
 - `story_condition_id.txt`: first line is the story id, the second line is the condition id
 - `studyIDs.txt`: prolific studyIDs for which data is extracted in trialdatafiles.txt
 
-### raw
+### json
 
 Contains `.json` participant data.
