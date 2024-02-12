@@ -40,9 +40,9 @@ define(["component/Pages"], function (Pages) {
 
     finish_task() {
       this.study.data.record_trialdata({
-        status: "end",
+        status: "task_end",
         task: "free_association",
-        total_time: new Date().getTime() - this.task_start_time,
+        task_time: new Date().getTime() - this.task_start_time,
       });
       $("body").unbind("keydown", this.response_handler);
       this.finish_func();
@@ -59,6 +59,7 @@ define(["component/Pages"], function (Pages) {
     save_word() {
       var submit_object = {};
       this.word_text = $("#qinput").val();
+      submit_object["task"] = "free_association";
       submit_object["status"] = "data";
       submit_object["word_text"] = this.word_text;
       submit_object["word_count"] = this.word_count;
@@ -66,7 +67,6 @@ define(["component/Pages"], function (Pages) {
       submit_object["word_key_chars"] = this.word_key_chars;
       submit_object["word_key_codes"] = this.word_key_codes;
       submit_object["word_key_onsets"] = this.word_key_onsets;
-      submit_object["pre_or_post"] = this.pre_or_post;
       this.study.data.record_trialdata(submit_object);
     }
 
@@ -164,7 +164,7 @@ define(["component/Pages"], function (Pages) {
 
       // beginning of free association
       this.study.data.record_trialdata({
-        status: "begin",
+        status: "task_begin",
         task: "free_association",
       });
       this.task_start_time = new Date().getTime();

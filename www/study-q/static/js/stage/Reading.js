@@ -15,9 +15,9 @@ define(["component/Pages", "component/Carver"], function (Pages, Carver) {
   function _finish_task() {
     $("body").unbind("keydown", response_handler);
     study.data.record_trialdata({
-      status: "end",
+      status: "task_end",
       task: "reading",
-      total_time: new Date().getTime() - task_start_time,
+      task_time: new Date().getTime() - task_start_time,
     });
     study.next();
   }
@@ -71,7 +71,7 @@ define(["component/Pages", "component/Carver"], function (Pages, Carver) {
 
     // record beginning
     study.data.record_trialdata({
-      status: "begin",
+      status: "task_begin",
       task: "reading",
     });
     task_start_time = new Date().getTime();
