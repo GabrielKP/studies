@@ -17,6 +17,15 @@
   font-size: 24px;
 }
 
+/* Pause timer font size */
+#timer {
+  font-size: 42px;
+}
+
+#spacebar-warning {
+  color: red;
+}
+
 /* Free Association Response Box */
 .responseBox {
   background-color: transparent;
