@@ -21,7 +21,12 @@ define(function () {
 
       let urlParams = new URLSearchParams(window.location.search);
       this.participantID = urlParams.get("PROLIFIC_PID");
-      this.study_id = urlParams.get("STUDY_ID");
+      if (this.study.config["debug"]) {
+        console.debug("DEBUG: Setting study_id to version number.");
+        this.study_id = this.study.config["version"];
+      } else {
+        this.study_id = urlParams.get("STUDY_ID");
+      }
       this.session_id = urlParams.get("SESSION_ID");
 
       this.off_focus_time_start = null;
