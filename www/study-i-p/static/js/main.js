@@ -82,12 +82,12 @@ require([
 
   let initialization = Study.init(
     [
-      // Welcome,
-      // Consent,
-      // Fullscreen,
-      // GeneralInstructions,
-      // FreeAssociationPre,
-      // Reading,
+      Welcome,
+      Consent,
+      Fullscreen,
+      GeneralInstructions,
+      FreeAssociationPre,
+      Reading,
       InterferencePause,
       FreeAssociationPost,
       QuestionnaireTransportation,
