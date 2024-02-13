@@ -12,6 +12,11 @@
   font-size: 20px;
 }
 
+/* Reading font size */
+#sentence {
+  font-size: 24px;
+}
+
 /* Free Association Response Box */
 .responseBox {
   background-color: transparent;
