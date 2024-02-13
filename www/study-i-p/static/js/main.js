@@ -48,7 +48,7 @@ require([
     version: "0.1.0-1",
     debug: true,
     default_button_timeout: 0,
-    time_limit_pre: 2000,
+    time_limit_pre: 6000,
     code_completion: "XXXXXX",
     code_noconsent: "YYYYYY",
     studytime: 35,
