@@ -34,8 +34,9 @@ require([
   Complete
 ) {
   // configuration
+  let _version = "0.1.0-2";
   let config = {
-    version: "0.1.0-1",
+    version: _version,
     debug: false,
     default_button_timeout: 500,
     time_limit_pre: 180000,
@@ -48,7 +49,7 @@ require([
     interference_pause_time_training: 5000,
   };
   let debug_config = {
-    version: "0.1.0-1",
+    version: _version,
     debug: true,
     default_button_timeout: 0,
     time_limit_pre: 6000,
@@ -90,9 +91,10 @@ require([
       Consent,
       Fullscreen,
       GeneralInstructions,
+      InterferencePauseTraining,
       FreeAssociationPre,
       Reading,
-      InterferencePause,
+      InterferencePauseTesting,
       FreeAssociationPost,
       QuestionnaireTransportation,
       QuestionnaireComprehension,
