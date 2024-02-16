@@ -4,6 +4,7 @@ require([
   "stage/Consent",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
+  "stage/InterferencePauseTraining",
   "stage/FreeAssociationPre",
   "stage/Reading",
   "stage/InterferencePause",
@@ -20,6 +21,7 @@ require([
   Consent,
   Fullscreen,
   GeneralInstructions,
+  InterferencePauseTraining,
   FreeAssociationPre,
   Reading,
   InterferencePause,
@@ -42,7 +44,8 @@ require([
     studytime: 35,
     enforce_fullscreen: true,
     reading_delay_key: 100,
-    interference_pause_time: 30,
+    interference_pause_time: 30000,
+    interference_pause_time_training: 5000,
   };
   let debug_config = {
     version: "0.1.0-1",
@@ -53,7 +56,8 @@ require([
     code_noconsent: "YYYYYY",
     studytime: 35,
     enforce_fullscreen: false,
-    interference_pause_time: 30,
+    interference_pause_time: 5000,
+    interference_pause_time_training: 2000,
   };
 
   // determine debug mode

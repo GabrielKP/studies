@@ -120,6 +120,10 @@ define(function () {
       }
       return this.pagenames[this.page_index];
     }
+
+    reset() {
+      this.page_index = -1;
+    }
   }
 
   return _Pages;

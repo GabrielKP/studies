@@ -17,9 +17,10 @@
   font-size: 24px;
 }
 
-/* Pause timer font size */
-#timer {
-  font-size: 42px;
+/* InterferencePause */
+#pb {
+  -webkit-transition: none !important;
+  transition: none !important;
 }
 
 #spacebar-warning {
