@@ -1,6 +1,7 @@
 require([
   "module/Study",
   "stage/Welcome",
+  "stage/ContentWarning",
   "stage/Consent",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
@@ -18,6 +19,7 @@ require([
 ], function (
   Study,
   Welcome,
+  ContentWarning,
   Consent,
   Fullscreen,
   GeneralInstructions,
@@ -34,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "0.1.0-2";
+  let _version = "0.1.0-3";
   let config = {
     version: _version,
     debug: false,
@@ -42,6 +44,7 @@ require([
     time_limit_pre: 180000,
     code_completion: "XXXXXX",
     code_noconsent: "YYYYYY",
+    code_content_warning_disagree: "ZZZZZZ",
     studytime: 35,
     enforce_fullscreen: true,
     reading_delay_key: 100,
@@ -55,6 +58,7 @@ require([
     time_limit_pre: 6000,
     code_completion: "XXXXXX",
     code_noconsent: "YYYYYY",
+    code_content_warning_disagree: "ZZZZZZ",
     studytime: 35,
     enforce_fullscreen: false,
     interference_pause_time: 5000,
@@ -88,6 +92,7 @@ require([
   let initialization = Study.init(
     [
       Welcome,
+      ContentWarning,
       Consent,
       Fullscreen,
       GeneralInstructions,
