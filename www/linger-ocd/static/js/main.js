@@ -1,6 +1,7 @@
 require([
   "module/Study",
   "stage/Welcome",
+  "stage/ContentWarning",
   "stage/Consent",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
@@ -20,6 +21,7 @@ require([
 ], function (
   Study,
   Welcome,
+  ContentWarning,
   Consent,
   Fullscreen,
   GeneralInstructions,
@@ -87,6 +89,7 @@ require([
   let initialization = Study.init(
     [
       Welcome,
+      ContentWarning,
       Consent,
       Fullscreen,
       GeneralInstructions,
