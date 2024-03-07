@@ -36,39 +36,31 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "0.1.0-3";
+  let _version = "0.1.0-4";
   let config = {
     version: _version,
     debug: false,
     default_button_timeout: 500,
     time_limit_pre: 180000,
-    code_completion: "XXXXXX",
+    code_completion: "CGWO2HA6",
     code_noconsent: "YYYYYY",
-    code_content_warning_disagree: "ZZZZZZ",
+    code_content_warning_disagree: "CAYTAWD0",
     studytime: 35,
     enforce_fullscreen: true,
     reading_delay_key: 100,
     interference_pause_time: 30000,
     interference_pause_time_training: 5000,
   };
-  let debug_config = {
-    version: _version,
-    debug: true,
-    default_button_timeout: 0,
-    time_limit_pre: 6000,
-    code_completion: "XXXXXX",
-    code_noconsent: "YYYYYY",
-    code_content_warning_disagree: "ZZZZZZ",
-    studytime: 35,
-    enforce_fullscreen: false,
-    interference_pause_time: 5000,
-    interference_pause_time_training: 2000,
-  };
 
   // determine debug mode
   let url_params = new URLSearchParams(window.location.search);
   if (url_params.get("mode") == "debug") {
-    config = debug_config;
+    config["debug"] = true;
+    config["default_button_timeout"] = 0;
+    config["time_limit_pre"] = 6000;
+    config["enforce_fullscreen"] = false;
+    config["interference_pause_time"] = 5000;
+    config["interference_pause_time_training"] = 2000;
   }
 
   // local mode: needed to determine how data is saved
