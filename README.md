@@ -1,10 +1,42 @@
 <div align="center">
 
-# Free Association
+# Studies
 
 </div>
 
-The javascript implementation of a the chained free association task (also: word chain game).
+Javascript implementation of multiple online studies distributed via [psyserver](https://github.com/GabrielKP/psyserver).
+
+## Structure
+
+The root directory is structured as follows:
+
+```bash
+studies/
+├── data
+│   ├── example
+│   ├── free-association
+│   └── ...
+├── readme
+├── scripts
+│   ├── get_data.sh
+│   └── sync.sh
+├── www
+│   ├── free-association
+│   └── linger-interference-pause
+├── .gitignore
+└── README.md
+```
+
+- `data` contains the data collected for each study. The directory names in data are the same as the ones in www
+- `readme` contains files for the readme.
+- `scripts` contains a synchronization script to psyserver (`sync.sh`) and a data download script (`get_data.sh`)
+- `www` contains the code for each study.
+
+## Studies
+
+### Free Association
+
+Chained free association task (also: word chain game).
 
 Participants are asked to type any word that comes to mind, and then based on that word type the next word that comes to mind.
 
@@ -14,110 +46,10 @@ Participants are asked to type any word that comes to mind, and then based on th
 
 </div>
 
-## Setup
+### linger-interference-pause
 
-You can open `www/starter.html` in the browser. Click the approriate link to start the experiment.
+A study in which participants do free association, read a story, go through a pause, and then to free association again.
 
-## Deploy
+### linger-ocd
 
-## Experiment data data-structure
-
-**Following documentation is not adapted yet. Ignore.**
-
-A data dir is denoted by starting with `data`. E.g. `data_experiment`.
-The typical organization is:
-
-```bash
-data_experiment/
-├── config
-│   ├── eventdatafiles.txt
-│   ├── excluded_participantIDs_proposal.txt
-│   ├── excluded_participantIDs.txt
-│   ├── sql_exclusion.txt
-│   ├── studyIDs.txt
-│   └── trialdatafiles.txt
-├── outputs
-│   ├── moment_count.csv
-│   ├── moment.csv
-│   ├── moment_median.csv
-│   ├── moment_raw.csv
-│   ├── moment_variance.csv
-│   ├── overview.txt
-│   ├── README.md
-│   ├── theme_count.csv
-│   ├── theme.csv
-│   ├── theme_median.csv
-│   ├── theme_raw.csv
-│   └── theme_variance.csv
-├── plots
-│   └── overview
-│       ├── hist_count.png
-│       ├── hist_rating_moment.png
-│       ├── hist_rating_theme.png
-│       ├── scatter_theme_moment.html
-│       └── scatter_theme_moment.png
-├── zipfiles
-│   ├── plots.zip
-│   └── ratings.zip
-├── eventdata.csv
-├── questiondata.csv
-├── README.md
-└── trialdata.csv
-```
-
-### Root data dir.
-
-Root data dir, contains subdirs, raw
-[`trialdata.csv`](https://psiturk.readthedocs.io/en/stable/recording.html#recording-trial-data),
-`eventdata.csv`, `questiondata.csv` and a `README.md`.
-Can contain multiple custom named csv files (e.g. `trialdata2.csv`).
-
-### config
-
-Contains config files for experiment:
-
-- `eventdatafiles.txt`: all data files in the root dir containing eventdata (e.g. `eventdata.csv`). One file, one line.
-- `trialdatafiles.txt`: all data files in the root dir containing trialdata (e.g. `trialdata.csv`, `trialdata2.csv`). One file, one line.
-- `excluded_participantIDs.txt`: contains ids excluded from experiment. One ID, one line.
-- `excluded_participantIDs_proposal.txt`: ids proposed to exclude. One ID, one line.
-- `sql_exclusion.txt`: sql statement to exclude
-- `studyIDs.txt`: prolific studyIDs for which data is extracted in trialdatafiles.txt
-- `july`: file only present to mark it is a carver trial, for questionnaire answer analysis.
-
-### outputs
-
-Rating data extracted from raw datafiles.
-
-Following files are contained (x = theme or x = moment):
-
-- `x_raw.csv`: individual ratings
-- `x.csv`: mean ratings
-- `x_median.csv`: median ratings
-- `x_count.csv`: word counts
-- `x_variance.csv`: word variances
-- `overview.txt`: file with some overview statistics
-- `README.md`
-
-Each file has a header in the first row (e.g. word,variance).
-
-Moment words (event-related words may be a better fitting name) were rated
-on this question:
-
-- How related is the word to a specific moment within the story?
-  (e.g. the word reminds you of specific details in the story)
-
-Theme words were rated independently from each other based on this question:
-
-- How related is the word to the general theme or mood of the story?
-  (e.g. you feel the word is related, even though not to a specific moment)
-
-### plots
-
-Contains various basic histograms and plots.
-To interactively plot all moment vs theme ratings open
-`scatter_themme_moment.html` in your browser
-
-### zipfiles
-
-Contains `plots.zip` and `ratings.zip`, which are a compressed version of the
-other folders in the experiment directory.
+A study in which participants get a personality/rumination/depression and ocd questionnare at the end.
