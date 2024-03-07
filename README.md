@@ -29,7 +29,7 @@ studies/
 
 - `data` contains the data collected for each study. The directory names in data are the same as the ones in www
 - `readme` contains files for the readme.
-- `scripts` contains a synchronization script to psyserver (`sync.sh`) and a data download script (`get_data.sh`)
+- `scripts` contains a synchronization script to psyserver (`sync.py`) and a data download script (`get_data.py`)
 - `www` contains the code for each study.
 
 ## Studies
