@@ -1,185 +1,55 @@
-# linger-volition
+<div align="center">
 
-How much do participants have to think about a recent experience story, even when told not to?
+# Studies
 
-In this online experiment, participants are following the paradigm from Bellana et al. 2022 closely:
+</div>
 
-1. Free association (pre) - 3mins
-2. Story reading
-3. Free association (post) - 3mins
-4. Questionnaires
+Javascript implementation of multiple online studies distributed via [psyserver](https://github.com/GabrielKP/psyserver).
 
-During free association participants are told not to think about a certain topic. In the pre-story free association this is TOPIC A (tbd) in the post-story free association it is the story.
-Additionally, participants are instructed to press a button, whenever they think about the story/topic A.
+## Structure
 
-## Setup for development
-
-```sh
-# clone project
-git clone git@github.com:GabrielKP/linger-volition.git
-
-# change dir to root
-cd linger-volition
-
-# create conda environment
-conda create -n psiturk python=3.9
-
-# activate environment
-conda activate psiturk
-
-# install psyturk
-pip install psiturk
-
-# install python-Levenshtein (just to get rid of the warning...)
-pip install python-Levenshtein
-
-# turn on
-psiturk server on
-
-# turn off
-psiturk server off
-```
-
-If there are version issues, this repo was created with:
-
-```
-python 3.9.15
-psiturk 3.3.1
-levenshtein 0.20.8
-```
-
-## Running an experiment
+The root directory is structured as follows:
 
 ```bash
-# 1. Adapt times in instruct-1-1.html and instruct-2-0.html
-# 2. Adapt amount of participants in scripts/gen_word_permutations.py
-# 3. Adapt amount of conditions in config.txt
-# 3.5 Adpat start and end indices in static/js/task.js
-# 4. Set up hosting machine
-# 5. sync to host
-scripts/sync.sh <host>
-# 6. Run your experiment in prolific
-# 7. make empty data folder
-cp data data_experiment
-# 7.5 add prolific experiment id to data_experiment/config/studyIDs.txt
-# 8. get data
-scripts/get_data.sh <host> data_experiment
-# 9. exclude participants
-python analysis/exclude_participants.py -s data_experiment
-# 10. add proposed IDs to the excluded ones
-#     excluded_participantIDs_proposal.txt -> excluded_participantIDs.txt
-# 11. update database on host
-ssh <host>
-sudo -u postgres psql
-\c psiturk
-# copy statement found in data_experiment/config/sql_exclusion.txt
-\q
-exit
-# 12. now run additional participants until all roles have been filled at least
-#     once. You can chek it by inspecting the server log
-ssh <host>
-less word_simtype/server.log
-#     look how many positions have 1 participants vs 0 participants
-# 13. run process the data to get overview, output and plots
-scripts/process.sh data_experiment
+studies/
+├── data
+│   ├── example
+│   ├── free-association
+│   └── ...
+├── readme
+├── scripts
+│   ├── get_data.sh
+│   └── sync.sh
+├── www
+│   ├── free-association
+│   └── linger-interference-pause
+├── .gitignore
+└── README.md
 ```
 
-## Experiment data data-structure
+- `data` contains the data collected for each study. The directory names in data are the same as the ones in www
+- `readme` contains files for the readme.
+- `scripts` contains a synchronization script to psyserver (`sync.py`) and a data download script (`get_data.py`)
+- `www` contains the code for each study.
 
-A data dir is denoted by starting with `data`. E.g. `data_experiment`.
-The typical organization is:
+## Studies
 
-```bash
-data_experiment/
-├── config
-│   ├── eventdatafiles.txt
-│   ├── excluded_participantIDs_proposal.txt
-│   ├── excluded_participantIDs.txt
-│   ├── sql_exclusion.txt
-│   ├── studyIDs.txt
-│   └── trialdatafiles.txt
-├── outputs
-│   ├── moment_count.csv
-│   ├── moment.csv
-│   ├── moment_median.csv
-│   ├── moment_raw.csv
-│   ├── moment_variance.csv
-│   ├── overview.txt
-│   ├── README.md
-│   ├── theme_count.csv
-│   ├── theme.csv
-│   ├── theme_median.csv
-│   ├── theme_raw.csv
-│   └── theme_variance.csv
-├── plots
-│   └── overview
-│       ├── hist_count.png
-│       ├── hist_rating_moment.png
-│       ├── hist_rating_theme.png
-│       ├── scatter_theme_moment.html
-│       └── scatter_theme_moment.png
-├── zipfiles
-│   ├── plots.zip
-│   └── ratings.zip
-├── eventdata.csv
-├── questiondata.csv
-├── README.md
-└── trialdata.csv
-```
+### Free Association
 
-### Root data dir.
+Chained free association task (also: word chain game).
 
-Root data dir, contains subdirs, raw
-[`trialdata.csv`](https://psiturk.readthedocs.io/en/stable/recording.html#recording-trial-data),
-`eventdata.csv`, `questiondata.csv` and a `README.md`.
-Can contain multiple custom named csv files (e.g. `trialdata2.csv`).
+Participants are asked to type any word that comes to mind, and then based on that word type the next word that comes to mind.
 
-### config
+<div align="center">
 
-Contains config files for experiment:
+<img src="readme/free-association.png" alt="Chained Free Association" height="200" width="360"/>
 
-- `eventdatafiles.txt`: all data files in the root dir containing eventdata (e.g. `eventdata.csv`). One file, one line.
-- `trialdatafiles.txt`: all data files in the root dir containing trialdata (e.g. `trialdata.csv`, `trialdata2.csv`). One file, one line.
-- `excluded_participantIDs.txt`: contains ids excluded from experiment. One ID, one line.
-- `excluded_participantIDs_proposal.txt`: ids proposed to exclude. One ID, one line.
-- `sql_exclusion.txt`: sql statement to exclude
-- `studyIDs.txt`: prolific studyIDs for which data is extracted in trialdatafiles.txt
-- `july`: file only present to mark it is a carver trial, for questionnaire answer analysis.
+</div>
 
-### outputs
+### linger-interference-pause
 
-Rating data extracted from raw datafiles.
+A study in which participants do free association, read a story, go through a pause, and then to free association again.
 
-Following files are contained (x = theme or x = moment):
+### linger-ocd
 
-- `x_raw.csv`: individual ratings
-- `x.csv`: mean ratings
-- `x_median.csv`: median ratings
-- `x_count.csv`: word counts
-- `x_variance.csv`: word variances
-- `overview.txt`: file with some overview statistics
-- `README.md`
-
-Each file has a header in the first row (e.g. word,variance).
-
-Moment words (event-related words may be a better fitting name) were rated
-on this question:
-
-- How related is the word to a specific moment within the story?
-  (e.g. the word reminds you of specific details in the story)
-
-Theme words were rated independently from each other based on this question:
-
-- How related is the word to the general theme or mood of the story?
-  (e.g. you feel the word is related, even though not to a specific moment)
-
-### plots
-
-Contains various basic histograms and plots.
-To interactively plot all moment vs theme ratings open
-`scatter_themme_moment.html` in your browser
-
-### zipfiles
-
-Contains `plots.zip` and `ratings.zip`, which are a compressed version of the
-other folders in the experiment directory.
+A study in which participants get a personality/rumination/depression and ocd questionnare at the end.
