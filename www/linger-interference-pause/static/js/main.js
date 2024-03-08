@@ -36,16 +36,16 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-2";
+  let _version = "1.0.0-3";
   let config = {
     version: _version,
     debug: false,
     default_button_timeout: 500,
     time_limit_pre: 180000,
     code_completion: "CGWO2HA6",
-    code_noconsent: "YYYYYY",
+    code_noconsent: "CEH4RWLC",
     code_content_warning_disagree: "CAYTAWD0",
-    studytime: 35,
+    studytime: 36,
     enforce_fullscreen: true,
     reading_delay_key: 100,
     interference_pause_time: 30000,
