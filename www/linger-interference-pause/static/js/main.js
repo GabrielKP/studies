@@ -36,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-1";
+  let _version = "1.0.0-2";
   let config = {
     version: _version,
     debug: false,
