@@ -36,8 +36,9 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-3";
+  let _version = "1.0.0-4";
   let config = {
+    study: "linger-interference-pause",
     version: _version,
     debug: false,
     default_button_timeout: 500,
