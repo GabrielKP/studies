@@ -16,6 +16,7 @@ define(["component/Pages"], function (Pages) {
     finish_func;
     study;
     task_start_time;
+    time_limit;
 
     constructor() {
       // bind all the functions
@@ -30,11 +31,12 @@ define(["component/Pages"], function (Pages) {
       this.finish_task = this.finish_task.bind(this);
     }
 
-    init(study, pagename, finish_func) {
+    init(study, pagename, finish_func, time_limit) {
       this.study = study;
       this.pages = new Pages();
       this.finish_func = finish_func;
       this.pagenames = [pagename];
+      this.time_limit = time_limit;
       return this.pages.init(this.study, this.pagenames);
     }
 
@@ -189,7 +191,7 @@ define(["component/Pages"], function (Pages) {
       // Timer for FA
       setTimeout(() => {
         this.mode = "end";
-      }, this.study.config.time_limit_pre);
+      }, this.time_limit);
 
       this.mode = "word_chain_game";
       this.ready_word_variables();
