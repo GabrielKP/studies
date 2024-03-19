@@ -29,7 +29,8 @@ define(["component/Pages", "component/FreeAssociation"], function (
           "free_association_pre/task.html",
           function () {
             study.next();
-          }
+          },
+          study.config.time_limit_pre
         ),
       ]);
     },

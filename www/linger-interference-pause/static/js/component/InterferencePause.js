@@ -45,7 +45,7 @@ define([], function () {
       let task_time = new Date().getTime() - this.task_start_time;
       this.study.data.record_trialdata({
         status: "task_end",
-        task: "interference_pause_training",
+        task: "interference_pause",
         time_unpressed: this.time_unpressed,
         time_total_pause: this.total_pause_time,
         time_unpressed_start:

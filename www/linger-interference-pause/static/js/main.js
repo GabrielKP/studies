@@ -36,16 +36,18 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "0.1.0-4";
+  let _version = "1.0.0";
   let config = {
+    study: "linger-interference-pause",
     version: _version,
     debug: false,
     default_button_timeout: 500,
     time_limit_pre: 180000,
+    time_limit_post: 180000,
     code_completion: "CGWO2HA6",
-    code_noconsent: "YYYYYY",
+    code_noconsent: "CEH4RWLC",
     code_content_warning_disagree: "CAYTAWD0",
-    studytime: 35,
+    studytime: 36,
     enforce_fullscreen: true,
     reading_delay_key: 100,
     interference_pause_time: 30000,
@@ -58,6 +60,7 @@ require([
     config["debug"] = true;
     config["default_button_timeout"] = 0;
     config["time_limit_pre"] = 6000;
+    config["time_limit_post"] = 6000;
     config["enforce_fullscreen"] = false;
     config["interference_pause_time"] = 5000;
     config["interference_pause_time_training"] = 2000;
