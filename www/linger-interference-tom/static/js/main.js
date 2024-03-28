@@ -5,10 +5,10 @@ require([
   "stage/Consent",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
-  "stage/InterferencePauseTraining",
+  "stage/InterferenceTomTraining",
   "stage/FreeAssociationPre",
   "stage/Reading",
-  "stage/InterferencePauseTesting",
+  // "stage/InterferencePauseTesting",
   "stage/FreeAssociationPost",
   "stage/QuestionnaireTransportation",
   "stage/QuestionnaireComprehension",
@@ -23,10 +23,10 @@ require([
   Consent,
   Fullscreen,
   GeneralInstructions,
-  InterferencePauseTraining,
+  InterferenceTomTraining,
   FreeAssociationPre,
   Reading,
-  InterferencePauseTesting,
+  // InterferencePauseTesting,
   FreeAssociationPost,
   QuestionnaireTransportation,
   QuestionnaireComprehension,
@@ -38,7 +38,7 @@ require([
   // configuration
   let _version = "1.0.0-1";
   let config = {
-    study: "linger-interference-pause",
+    study: "linger-interference-tom",
     version: _version,
     debug: false,
     default_button_timeout: 500,
@@ -50,8 +50,14 @@ require([
     studytime: 36,
     enforce_fullscreen: true,
     reading_delay_key: 100,
-    interference_pause_time: 30000,
-    interference_pause_time_training: 5000,
+    interference_tom_training_passage_indices: [0, 1, 2, 3],
+    interference_tom_time_passage: 10000,
+    interference_tom_time_question: 4500,
+    interference_tom_isi: 500,
+    interference_tom_testing_passage_indices: [9, 10],
+    interference_tom_testing_time_passasge: 10000,
+    interference_tom_testing_time_question: 4500,
+    interference_tom_testing_isi: 500,
   };
 
   // determine debug mode
@@ -62,8 +68,9 @@ require([
     config["time_limit_pre"] = 6000;
     config["time_limit_post"] = 6000;
     config["enforce_fullscreen"] = false;
-    config["interference_pause_time"] = 5000;
-    config["interference_pause_time_training"] = 2000;
+    config["interference_tom_time_passage"] = 3000;
+    config["interference_tom_time_question"] = 3000;
+    config["interference_tom_time_isi"] = 3000;
   }
 
   // local mode: needed to determine how data is saved
@@ -86,22 +93,22 @@ require([
 
   let initialization = Study.init(
     [
-      Welcome,
-      ContentWarning,
-      Consent,
-      Fullscreen,
-      GeneralInstructions,
-      InterferencePauseTraining,
+      // Welcome,
+      // ContentWarning,
+      // Consent,
+      // Fullscreen,
+      // GeneralInstructions,
+      InterferenceTomTraining,
       FreeAssociationPre,
       Reading,
-      InterferencePauseTesting,
-      FreeAssociationPost,
-      QuestionnaireTransportation,
-      QuestionnaireComprehension,
-      QuestionnaireExperience,
-      QuestionnaireDemographics,
-      QuestionnaireOpen,
-      Complete,
+      // InterferencePauseTesting,
+      // FreeAssociationPost,
+      // QuestionnaireTransportation,
+      // QuestionnaireComprehension,
+      // QuestionnaireExperience,
+      // QuestionnaireDemographics,
+      // QuestionnaireOpen,
+      // Complete,
     ],
     config
   );
