@@ -15,13 +15,13 @@ define(["component/Pages", "component/InterferenceTom"], function (
     task.init(
       study,
       task_pages,
-      function (failed_question, failed_passage) {
-        _conditional_next(failed_question, failed_passage);
+      (answered_question, answered_passage) => {
+        _conditional_next(answered_question, answered_passage);
       },
       study.config["interference_tom_passage_indices"],
       study.config["interference_tom_time_passage"],
       study.config["interference_tom_time_question"],
-      study.config["interference_tom_time_isi"],
+      study.config["interference_tom_time_pause"],
       iteration
     );
     task.start_task();
@@ -36,7 +36,11 @@ define(["component/Pages", "component/InterferenceTom"], function (
       // TODO: study failed.
       final_pages.reset();
       final_pages.next();
-    } else if (iteration < 2 || !answered_question || !answered_passage) {
+    } else if (
+      iteration < study.config["interference_tom_min_training_sessions"] ||
+      !answered_question ||
+      !answered_passage
+    ) {
       if (!answered_question) {
         try_again_failed_question.reset();
         try_again_failed_question.next();
@@ -69,8 +73,7 @@ define(["component/Pages", "component/InterferenceTom"], function (
       try_again_failed_question = new Pages();
       final_pages = new Pages();
       iteration = 0;
-      max_iterations =
-        study.config["interference_tom_passage_indices"].length / 2;
+      max_iterations = study.config["interference_tom_passage_indices"].length;
       return Promise.all([
         instruct_pages.init(
           study,

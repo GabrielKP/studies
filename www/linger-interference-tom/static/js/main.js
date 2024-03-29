@@ -55,9 +55,9 @@ require([
     interference_tom_time_question: 4500,
     interference_tom_isi: 500,
     interference_tom_testing_passage_indices: [9, 10],
-    interference_tom_testing_time_passasge: 10000,
-    interference_tom_testing_time_question: 4500,
-    interference_tom_testing_isi: 500,
+    interference_tom_testing_time_passasge: 18000,
+    interference_tom_testing_time_question: 8000,
+    interference_tom_testing_pause: 4000,
   };
 
   // determine debug mode
@@ -70,7 +70,8 @@ require([
     config["enforce_fullscreen"] = false;
     config["interference_tom_time_passage"] = 3000;
     config["interference_tom_time_question"] = 3000;
-    config["interference_tom_time_isi"] = 500;
+    config["interference_tom_time_pause"] = 1000;
+    config["interference_tom_min_training_sessions"] = 3;
   }
 
   // local mode: needed to determine how data is saved
