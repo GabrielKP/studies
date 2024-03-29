@@ -24,6 +24,7 @@ define(["component/TomPassages", "component/TomQuestions"], function (
     answered_passage2;
     answered_question1;
     answered_question2;
+    timeout_handler;
 
     constructor() {
       // bind all the functions
@@ -64,7 +65,7 @@ define(["component/TomPassages", "component/TomQuestions"], function (
       this.answered_question = false;
     }
 
-    finish_task() {
+    finish_task(skip = false) {
       // unbind
       $("body").off();
 
@@ -79,7 +80,11 @@ define(["component/TomPassages", "component/TomQuestions"], function (
       // $("body").unbind("keydown", this.response_handler);
       $("body").css({ border: "", height: "" });
       $("html").css({ height: "" });
-      this.finish_func(this.answered_question, this.answered_passage);
+      if (!skip)
+        this.finish_func(this.answered_question, this.answered_passage);
+      else {
+        clearTimeout(this.timeout_handler);
+      }
     }
 
     record_keydown(pressed) {
@@ -150,7 +155,7 @@ define(["component/TomPassages", "component/TomQuestions"], function (
       switch (this.mode) {
         case "init":
           this.mode = "passage";
-          setTimeout(() => {
+          this.timeout_handler = setTimeout(() => {
             this.switch_mode();
           }, this.time_passage);
 
@@ -163,7 +168,7 @@ define(["component/TomPassages", "component/TomQuestions"], function (
         case "passage":
           if (!this.answered_passage) this.record_keydown(false);
           this.mode = "question";
-          setTimeout(() => {
+          this.timeout_handler = setTimeout(() => {
             this.switch_mode();
           }, this.time_question);
 
@@ -177,7 +182,7 @@ define(["component/TomPassages", "component/TomQuestions"], function (
         case "question":
           if (!this.answered_question) this.record_button_press("no_answer");
           this.mode = "pause";
-          setTimeout(() => {
+          this.timeout_handler = setTimeout(() => {
             this.switch_mode();
           }, this.time_pause);
 

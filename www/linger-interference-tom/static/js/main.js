@@ -36,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-3";
+  let _version = "1.0.0-4";
   let config = {
     study: "linger-interference-tom",
     version: _version,
@@ -50,14 +50,11 @@ require([
     studytime: 36,
     enforce_fullscreen: true,
     reading_delay_key: 100,
-    interference_tom_passage_indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    interference_tom_time_passage: 10000,
-    interference_tom_time_question: 4500,
-    interference_tom_isi: 500,
-    interference_tom_testing_passage_indices: [9, 10],
-    interference_tom_testing_time_passasge: 18000,
-    interference_tom_testing_time_question: 8000,
-    interference_tom_testing_pause: 4000,
+    interference_tom_training_passage_indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    interference_tom_testing_passage_indices: [10],
+    interference_tom_time_passage: 18000,
+    interference_tom_time_question: 8000,
+    interference_tom_pause: 4000,
   };
 
   // determine debug mode
@@ -85,7 +82,7 @@ require([
     $("#container-skip-button").show();
     $("#skip").on("click", () => {
       if (Study.current_stage.finish_task != null) {
-        Study.current_stage.finish_task();
+        Study.current_stage.finish_task(true);
       } else {
         Study.next();
       }

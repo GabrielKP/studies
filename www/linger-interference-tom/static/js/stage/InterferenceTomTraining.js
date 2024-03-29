@@ -8,8 +8,10 @@ define(["component/Pages", "component/InterferenceTom"], function (
   let task;
   let iteration;
   let max_iterations;
+  let mode;
 
   function _init_start_task() {
+    mode = "task";
     task_pages.reset();
     task = new InterferencePause();
     task.init(
@@ -18,7 +20,7 @@ define(["component/Pages", "component/InterferenceTom"], function (
       (answered_question, answered_passage) => {
         _conditional_next(answered_question, answered_passage);
       },
-      study.config["interference_tom_passage_indices"],
+      study.config["interference_tom_training_passage_indices"],
       study.config["interference_tom_time_passage"],
       study.config["interference_tom_time_question"],
       study.config["interference_tom_time_pause"],
@@ -52,6 +54,7 @@ define(["component/Pages", "component/InterferenceTom"], function (
         try_again_neutral.next();
       }
     } else {
+      mode = "finish";
       final_pages.reset();
       final_pages.next();
       // option to practice again
@@ -73,7 +76,9 @@ define(["component/Pages", "component/InterferenceTom"], function (
       try_again_failed_question = new Pages();
       final_pages = new Pages();
       iteration = 0;
-      max_iterations = study.config["interference_tom_passage_indices"].length;
+      max_iterations =
+        study.config["interference_tom_training_passage_indices"].length;
+      mode = "init";
       return Promise.all([
         instruct_pages.init(
           study,
@@ -120,11 +125,16 @@ define(["component/Pages", "component/InterferenceTom"], function (
     },
     show: function () {
       // show instructions first
+      mode = "instructions";
       instruct_pages.next();
-      // _init_start_task();
     },
-    finish_task: function () {
-      task.finish_task();
+    finish_task: function (skip = false) {
+      if (mode == "instructions") {
+        _init_start_task();
+      } else {
+        task.finish_task(skip);
+        study.next();
+      }
     },
   };
 });
