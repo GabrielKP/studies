@@ -36,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-1";
+  let _version = "1.0.0-2";
   let config = {
     study: "linger-interference-tom",
     version: _version,
@@ -50,7 +50,7 @@ require([
     studytime: 36,
     enforce_fullscreen: true,
     reading_delay_key: 100,
-    interference_tom_training_passage_indices: [0, 1, 2, 3],
+    interference_tom_passage_indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     interference_tom_time_passage: 10000,
     interference_tom_time_question: 4500,
     interference_tom_isi: 500,
@@ -70,7 +70,7 @@ require([
     config["enforce_fullscreen"] = false;
     config["interference_tom_time_passage"] = 3000;
     config["interference_tom_time_question"] = 3000;
-    config["interference_tom_time_isi"] = 3000;
+    config["interference_tom_time_isi"] = 500;
   }
 
   // local mode: needed to determine how data is saved
