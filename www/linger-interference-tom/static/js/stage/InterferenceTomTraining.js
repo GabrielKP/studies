@@ -117,8 +117,8 @@ define(["component/Pages", "component/InterferenceTom"], function (
     },
     show: function () {
       // show instructions first
-      // instruct_pages.next();
-      _init_start_task();
+      instruct_pages.next();
+      // _init_start_task();
     },
     finish_task: function () {
       task.finish_task();
