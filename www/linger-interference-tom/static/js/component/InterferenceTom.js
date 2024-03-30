@@ -84,6 +84,7 @@ define(["component/TomPassages", "component/TomQuestions"], function (
         this.finish_func(this.answered_question, this.answered_passage);
       else {
         clearTimeout(this.timeout_handler);
+        this.study.next();
       }
     }
 
