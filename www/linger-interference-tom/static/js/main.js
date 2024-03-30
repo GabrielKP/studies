@@ -36,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-4";
+  let _version = "1.0.0-5";
   let config = {
     study: "linger-interference-tom",
     version: _version,
@@ -91,22 +91,22 @@ require([
 
   let initialization = Study.init(
     [
-      // Welcome,
-      // ContentWarning,
-      // Consent,
-      // Fullscreen,
-      // GeneralInstructions,
+      Welcome,
+      ContentWarning,
+      Consent,
+      Fullscreen,
+      GeneralInstructions,
       InterferenceTomTraining,
       FreeAssociationPre,
       Reading,
       InterferenceTomTesting,
       FreeAssociationPost,
-      // QuestionnaireTransportation,
-      // QuestionnaireComprehension,
-      // QuestionnaireExperience,
-      // QuestionnaireDemographics,
-      // QuestionnaireOpen,
-      // Complete,
+      QuestionnaireTransportation,
+      QuestionnaireComprehension,
+      QuestionnaireExperience,
+      QuestionnaireDemographics,
+      QuestionnaireOpen,
+      Complete,
     ],
     config
   );
