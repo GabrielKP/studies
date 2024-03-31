@@ -32,8 +32,7 @@ define(["component/Pages"], function (Pages) {
         return false;
       if (
         $("#wcg_strategy").val().trim().length < 3 ||
-        $("#guess_experiment").val().trim().length < 3 ||
-        $("#tom_explanation").val().trim().length < 3
+        $("#guess_experiment").val().trim().length < 3
       )
         return false;
       return true;
