@@ -1,5 +1,7 @@
 {
     "free-association": "study-fa",
     "linger-ocd": "study-lo",
-    "linger-interference-pause": "study-lip"
+    "linger-interference-pause": "study-lip",
+    "linger-interference-tom": "study-lit",
+    "linger-neutralcue2": "study-ln2"
 }
