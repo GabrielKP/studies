@@ -5,21 +5,24 @@ define(["component/Pages", "component/InterferenceTom"], function (
   let study;
   let task_pages;
   let task;
-  let iteration;
 
   function _init_start_task() {
     task = new InterferencePause();
+    let testing_passage_index =
+      study.config["interference_tom_testing_passage_indices"][
+        study.config["condition_idx"]
+      ];
     task.init(
       study,
       task_pages,
       () => {
         study.next();
       },
-      study.config["interference_tom_testing_passage_indices"],
+      [testing_passage_index],
       study.config["interference_tom_time_passage"],
       study.config["interference_tom_time_question"],
       study.config["interference_tom_time_pause"],
-      iteration
+      0
     );
     task.start_task();
   }
@@ -29,7 +32,6 @@ define(["component/Pages", "component/InterferenceTom"], function (
     init: function (_study) {
       study = _study;
       task_pages = new Pages();
-      iteration = 0;
       return Promise.all([
         task_pages.init(study, "interference_tom_testing/task.html"),
       ]);

@@ -51,11 +51,11 @@ require([
     enforce_fullscreen: true,
     reading_delay_key: 100,
     interference_tom_training_passage_indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    interference_tom_testing_passage_indices: [10],
+    interference_tom_testing_passage_indices: [10, 11, 12, 13],
     interference_tom_time_passage: 18000,
     interference_tom_time_question: 8000,
     interference_tom_pause: 4000,
-    conditions: ["p1", "p2", "p3", "p4"],
+    conditions: ["passage1", "passage2", "passage3", "passage4"],
   };
 
   // determine debug mode

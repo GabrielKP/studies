@@ -16,17 +16,31 @@ define(["module/Data"], function (Data) {
       if (this.config["conditions"].length == 0) return Promise.resolve();
       return $.ajax({ url: "get_count", type: "GET" })
         .done((data) => {
-          let condition = this.config["conditions"][data["count"] % 4];
-          console.log("Condition: " + condition);
+          let condition_idx = data["count"] % 4;
+          let condition = this.config["conditions"][condition_idx];
+
           this.config["condition"] = condition;
-          this.data.record_trialdata({ condition: condition, count: null });
+          this.config["condition_idx"] = condition_idx;
+          this.data.record_trialdata({
+            condition: condition,
+            condition_idx: condition_idx,
+            count: data["count"],
+          });
+          console.log("Condition: " + condition);
         })
         .catch(() => {
           console.log("Failed to determine condition. Setting it to 0.");
-          let condition = this.config["conditions"][0];
-          console.log("Condition: " + condition);
+          let condition_idx = 0;
+          let condition = this.config["conditions"][condition_idx];
+
           this.config["condition"] = condition;
-          this.data.record_trialdata({ condition: condition, count: null });
+          this.config["condition_idx"] = condition_idx;
+          this.data.record_trialdata({
+            condition: condition,
+            condition_idx: condition_idx,
+            count: null,
+          });
+          console.log("Condition: " + condition);
         });
     }
 
