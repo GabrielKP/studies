@@ -12,6 +12,24 @@ define(["module/Data"], function (Data) {
       this.current_stage_name = this.current_stage_name.bind(this);
     }
 
+    get_condition() {
+      if (this.config["conditions"].length == 0) return Promise.resolve();
+      return $.ajax({ url: "get_count", type: "GET" })
+        .done((data) => {
+          let condition = this.config["conditions"][data["count"] % 4];
+          console.log("Condition: " + condition);
+          this.config["condition"] = condition;
+          this.data.record_trialdata({ condition: condition, count: null });
+        })
+        .catch(() => {
+          console.log("Failed to determine condition. Setting it to 0.");
+          let condition = this.config["conditions"][0];
+          console.log("Condition: " + condition);
+          this.config["condition"] = condition;
+          this.data.record_trialdata({ condition: condition, count: null });
+        });
+    }
+
     init(uninit_stages, config) {
       this.current_stage = null;
       this.stage_index = 0;
@@ -24,12 +42,14 @@ define(["module/Data"], function (Data) {
       this.stage_time_start = new Date().getTime();
       this.data.record_trialdata({ status: "stage_begin" }); // log init stage begin for consistency
 
+      // let condition_promise = this.get_condition();
+
       return Promise.all(
         $.map(uninit_stages, (stage, indx) => {
           return stage.init(this).then(() => {
             this.stages[indx] = stage;
           });
-        })
+        }).concat(this.get_condition())
       );
     }
 

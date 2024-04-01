@@ -36,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-8";
+  let _version = "1.0.0-9";
   let config = {
     study: "linger-interference-tom",
     version: _version,
@@ -55,6 +55,7 @@ require([
     interference_tom_time_passage: 18000,
     interference_tom_time_question: 8000,
     interference_tom_pause: 4000,
+    conditions: ["p1", "p2", "p3", "p4"],
   };
 
   // determine debug mode
