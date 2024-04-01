@@ -32,9 +32,9 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-2";
+  let _version = "1.0.0";
   let config = {
-    study: "linger-intact",
+    study: "linger-neutralcue2",
     version: _version,
     debug: false,
     default_button_timeout: 500,
