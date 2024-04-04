@@ -16,7 +16,7 @@ define(["module/Data"], function (Data) {
       if (this.config["conditions"].length == 0) return Promise.resolve();
       return $.ajax({ url: "get_count", type: "GET" })
         .done((data) => {
-          let condition_idx = data["count"] % 4;
+          let condition_idx = data["count"] % this.config["conditions"].length;
           let condition = this.config["conditions"][condition_idx];
 
           this.config["condition"] = condition;
