@@ -132,7 +132,7 @@ define(["component/TomPassages", "component/TomQuestions"], function (
         iteration: this.iteration,
         mode: this.mode,
         answer_time: new Date().getTime() - this.mode_start_time,
-        passage: this.tom_passages[this.passage_indices[this.iteration]],
+        question: this.tom_questions[this.passage_indices[this.iteration]],
         question_index: question_index,
         answer: answer,
       });
@@ -207,7 +207,7 @@ define(["component/TomPassages", "component/TomQuestions"], function (
       $("html").css({ height: "100%" });
 
       // register event listener
-      $("body").focus().keydown(this.keydown_handler);
+      $("body").on("keydown", this.keydown_handler);
       $("#yes").on("click", () => {
         this.button_handler("yes");
       });

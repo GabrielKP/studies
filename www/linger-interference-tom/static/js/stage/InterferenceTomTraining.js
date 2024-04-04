@@ -31,10 +31,7 @@ define(["component/Pages", "component/InterferenceTom"], function (
 
   function _conditional_next(answered_question, answered_passage) {
     iteration += 1;
-    if (
-      iteration == max_iterations &&
-      !(answered_question && answered_passage)
-    ) {
+    if (iteration >= max_iterations) {
       // TODO: study failed.
       final_pages.reset();
       final_pages.next();
