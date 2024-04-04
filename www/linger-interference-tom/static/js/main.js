@@ -36,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-10";
+  let _version = "1.0.0";
   let config = {
     study: "linger-interference-tom",
     version: _version,
