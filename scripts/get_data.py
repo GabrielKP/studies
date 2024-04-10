@@ -3,6 +3,8 @@ from typing import Dict
 import json
 import argparse
 import subprocess
+import shutil
+from pathlib import Path
 
 
 def get_data(studyname: str, hostname: str) -> None:
@@ -18,7 +20,21 @@ def get_data(studyname: str, hostname: str) -> None:
             f" Choose one of {list(studymap.keys())}."
         )
 
-    # TODO: handle novel study dir
+    if not Path.exists(Path("data", studyname, "json")):
+        print(f"Creating new data dir for {studyname}")
+        # 1. copy example over
+        shutil.copytree(Path("data", "example"), Path("data", studyname))
+
+        # 2. Fill in study config ids
+        story = input("Story: ")
+        condition = input("Condition: ")
+        with open(
+            Path("data", studyname, "config", "story_condition_id.txt"), "w"
+        ) as f_out:
+            f_out.writelines([story, "\n", condition, "\n"])
+
+        # 3. remove gitkeep
+        Path("data", studyname, "json", ".gitkeep").unlink()
 
     subprocess.run(
         [
