@@ -36,9 +36,9 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0";
+  let _version = "2.0.0";
   let config = {
-    study: "linger-interference-tom",
+    study: "linger-interference-situation",
     version: _version,
     debug: false,
     default_button_timeout: 500,
@@ -59,6 +59,7 @@ require([
   };
 
   // determine debug mode
+  // The names refer to tom, but should be treated as situation.
   let url_params = new URLSearchParams(window.location.search);
   if (url_params.get("mode") == "debug") {
     config["debug"] = true;
