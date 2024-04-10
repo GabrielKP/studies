@@ -38,7 +38,7 @@ require([
   // configuration
   let _version = "2.0.0";
   let config = {
-    study: "linger-interference-tom",
+    study: "linger-interference-situation",
     version: _version,
     debug: false,
     default_button_timeout: 500,
@@ -50,8 +50,8 @@ require([
     studytime: 36,
     enforce_fullscreen: true,
     reading_delay_key: 100,
-    interference_tom_training_passage_indices: [4, 5, 6, 8, 12, 15],
-    interference_tom_testing_passage_indices: [0, 7],
+    interference_tom_training_passage_indices: [0, 2, 5, 6, 7, 12, 14, 15],
+    interference_tom_testing_passage_indices: [3, 13],
     interference_tom_time_passage: 18000,
     interference_tom_time_question: 8000,
     interference_tom_pause: 4000,
