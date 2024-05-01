@@ -36,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "2.0.0";
+  let _version = "2.0.1";
   let config = {
     study: "linger-interference-tom",
     version: _version,
@@ -50,6 +50,7 @@ require([
     studytime: 36,
     enforce_fullscreen: true,
     reading_delay_key: 100,
+    interference_tom_min_training_sessions: 3, // bugfix AFTER study ran.
     interference_tom_training_passage_indices: [4, 5, 6, 8, 12, 15],
     interference_tom_testing_passage_indices: [0, 7],
     interference_tom_time_passage: 18000,
