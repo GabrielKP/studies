@@ -95,6 +95,13 @@ define([
       $("body").css({ border: "40px solid #CBC3E3", height: "100%" });
       $("html").css({ height: "100%" });
 
+      // for debugging show total amount of time for sentences:
+      let total_time = 0;
+      for (let i = 0; i < this.story.row.length; i++) {
+        total_time += Number(this.story.row[i].time);
+      }
+      console.debug("Time: " + total_time);
+
       // kick off on screen action
       this.next_sentence();
 
