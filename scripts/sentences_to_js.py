@@ -43,7 +43,14 @@ def nsyl_word(word: str, d: Dict):
         # nt -> n't -> not
         # ll -> 'll -> will
         return 1
-    if word in ["hoovered", "jennies", "clattered", "white-haired", "top-hat"]:
+    if word in [
+        "hoovered",
+        "jennies",
+        "clattered",
+        "white-haired",
+        "top-hat",
+        "two-year",
+    ]:
         return 2
     if word == "dismissively":
         return 4
