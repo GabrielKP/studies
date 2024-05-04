@@ -13,7 +13,7 @@ define(["component/Pages", "component/InterferenceReading"], function (
       study,
       task_pages,
       () => {
-        next();
+        study.next();
       },
       false
     );

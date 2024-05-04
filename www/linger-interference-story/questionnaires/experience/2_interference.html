@@ -1,32 +1,32 @@
 <div class="container my-5">
   <div class="card">
-    <h3 class="card-header text-center">Phase 2: Story questions (5/8)</h3>
-    <div class="instructions card-body">
+    <h3 class="card-header text-center">Phase 2: Story questions (6/8)</h3>
+    <div class="instructions card-body" style="color: purple">
       <div class="card-text">
         <div class="mx-5">
           <p class="text-center py-3">
             <i>
               <b
-                >For the following questions, when we refer to "the story", we
-                are specifically talking about the self-paced story read in
-                black text. This excludes the automatically advanced stories in
-                purple.</b
+                >For the following questions, when we refer to "the last purple
+                story", we are specifically talking about the last story
+                presented in purple.</b
               >
             </i>
           </p>
+
           <hr />
           <form class="mx-5 my-3">
             <!-- beginning of a question -->
             <div class="row">
               <label for="read_story" class="col-md-8">
-                The story you just read was written by Raymond Carver ("So Much
-                Water So Close To Home"). Did you know this story before the
+                The last purple story you just read was written by Emilie-Noelle
+                Provost ("Magic Show"). Did you know this story before the
                 study?
               </label>
               <div class="col-md-4">
                 <select
-                  id="read_story"
-                  name="read_story"
+                  id="read_story_interference"
+                  name="read_story_interference"
                   class="form-select form-select-lg collectible"
                 >
                   <option value="Y">Yes</option>
@@ -40,13 +40,13 @@
             <!-- beginning of a question -->
             <br />
             <div class="row">
-              <label for="read_enjoy" class="col-md-8">
-                To what extent did you enjoy the story you read?
+              <label for="read_enjoy_interference" class="col-md-8">
+                To what extent did you enjoy the last purple story you read?
               </label>
               <div class="col-md-4">
                 <select
-                  id="read_enjoy"
-                  name="read_enjoy"
+                  id="read_enjoy_interference"
+                  name="read_enjoy_interference"
                   class="form-select form-select-lg collectible"
                 >
                   <option value="7">7 - Very much</option>
@@ -66,14 +66,14 @@
 
             <!-- beginning of a question -->
             <div class="row mb-4">
-              <label for="linger_rating" class="col-md-8">
-                To what extent did the story linger in your mind after reading
-                it?
+              <label for="linger_rating_interference" class="col-md-8">
+                To what extent did the last purple story linger in your mind
+                after reading it?
               </label>
               <div class="col-md-4">
                 <select
-                  id="linger_rating"
-                  name="linger_rating"
+                  id="linger_rating_interference"
+                  name="linger_rating_interference"
                   class="form-select form-select-lg collectible"
                 >
                   <option value="7">7 - Very much</option>
@@ -88,7 +88,6 @@
               </div>
             </div>
             <!-- end of a question -->
-            <hr />
           </form>
 
           <div id="warning"></div>

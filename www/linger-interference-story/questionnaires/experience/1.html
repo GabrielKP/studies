@@ -1,54 +1,39 @@
 <div class="container my-5">
   <div class="card">
-    <h3 class="card-header text-center">Phase 2: Story questions (3/6)</h3>
+    <h3 class="card-header text-center">Phase 2: Story questions (4/8)</h3>
     <div class="instructions card-body">
       <div class="card-text">
+        <div class="mx-5">
+          <p class="text-center py-3">
+            Now, we will ask you questions about your experience while playing
+            the word chain game,<br />
+            especially focusing on your experience the <i>second time</i> you
+            played, which was
+            <i
+              >after reading the self-paced story and the story presented in
+              purple</i
+            >.
+          </p>
+          <hr />
+        </div>
         <form class="mt-5 mx-5">
           <!-- beginning of a question -->
-          <div class="row">
-            <label for="read_story" class="col-md-8">
-              The story you just read was written by Raymond Carver ("So Much
-              Water So Close To Home"). Did you know this story before the
-              study?
-            </label>
-            <div class="col-md-4">
-              <select
-                id="read_story"
-                name="read_story"
-                class="form-select form-select-lg collectible"
-              >
-                <option value="Y">Yes</option>
-                <option value="N">No</option>
-                <option value="" disabled selected>Select option</option>
-              </select>
+          <div class="row mt-4">
+            <div class="form-group">
+              <label for="wcg_diff_general">
+                Please describe <i>any differences</i> you felt playing the word
+                chain game <i>before</i> versus <i>after</i> reading the story:
+              </label>
+              <textarea
+                id="wcg_diff_general"
+                name="wcg_diff_general"
+                class="form-control collectible"
+              ></textarea>
             </div>
           </div>
           <!-- end of a question -->
-
-          <!-- beginning of a question -->
+          <hr />
           <br />
-          <div class="row">
-            <label for="read_enjoy" class="col-md-8">
-              To what extent did you enjoy the story you read?
-            </label>
-            <div class="col-md-4">
-              <select
-                id="read_enjoy"
-                name="read_enjoy"
-                class="form-select form-select-lg collectible"
-              >
-                <option value="7">7 - Very much</option>
-                <option value="6">6</option>
-                <option value="5">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1 - Not at all</option>
-                <option value="" disabled selected>Select option</option>
-              </select>
-            </div>
-          </div>
-          <!-- end of a question -->
 
           <!-- beginning of a question -->
           <br />
@@ -125,54 +110,6 @@
           <!-- end of a question -->
           <hr />
           <br />
-
-          <!-- beginning of a question -->
-          <!-- <p>What topics were you instructed to suppress thoughts about?</p>
-
-          <br />
-          <div class="row">
-            <label for="guess_suppress_1" class="col-md-8"
-              ><i>Word chain game: First round</i></label
-            >
-            <div class="col-md-4">
-              <input
-                id="guess_suppress_1"
-                name="guess_suppress_1"
-                class="form-control collectible"
-              />
-            </div>
-          </div> -->
-          <!-- end of a question -->
-
-          <!-- beginning of a question -->
-          <!-- <div class="row mt-2">
-            <label for="guess_suppress_2" class="col-md-8"
-              ><i>Word chain game: Second round</i></label
-            >
-            <div class="col-md-4">
-              <input
-                id="guess_suppress_2"
-                name="guess_suppress_2"
-                class="form-control collectible"
-              />
-            </div>
-          </div> -->
-          <!-- end of a question -->
-
-          <!-- beginning of a question -->
-          <div class="row mb-2">
-            <div class="form-group">
-              <label for="tom_explanation">
-                Briefly describe your experience reading the purple passage and
-                responding to the question after reading the story.
-              </label>
-              <textarea
-                id="tom_explanation"
-                name="tom_explanation"
-                class="form-control collectible"
-              ></textarea>
-            </div>
-          </div>
 
           <!-- beginning of a question -->
           <div class="row mb-2">
