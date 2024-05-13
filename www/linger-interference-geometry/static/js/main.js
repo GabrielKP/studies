@@ -36,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev2";
+  let _version = "1.0.0-dev3";
   let config = {
     study: "linger-interference-geometry",
     version: _version,
@@ -84,7 +84,7 @@ require([
     $("#container-skip-button").show();
     $("#skip").on("click", () => {
       if (Study.current_stage.finish_task != null) {
-        Study.current_stage.finish_task();
+        Study.current_stage.finish_task(true);
       } else {
         Study.next();
       }

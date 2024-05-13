@@ -17,7 +17,7 @@ define(function () {
     answered_question;
     mode_start_time;
     timeout_handler;
-    answer_correct;
+    answered_correct;
 
     constructor() {
       // bind all the functions
@@ -53,6 +53,8 @@ define(function () {
       this.mode = "init"; // init | image | question | pause
       this.listening = false;
       this.answered_question = false;
+      this.correct_answer =
+        this.image_solutions[this.image_indices[this.iteration]];
     }
 
     finish_task(skip = false) {
@@ -70,14 +72,13 @@ define(function () {
       // $("body").unbind("keydown", this.response_handler);
       $("body").css({ border: "", height: "" });
       $("html").css({ height: "" });
-      if (!skip) this.finish_func(this.answer_correct);
+      if (!skip) this.finish_func(this.answered_correct, this.correct_answer);
       else {
         clearTimeout(this.timeout_handler);
-        this.study.next();
       }
     }
 
-    record_button_press(answer, answer_correct) {
+    record_button_press(answer, answered_correct, correct_answer) {
       let image_id = "triangles-" + this.image_indices[this.iteration];
       this.study.data.record_trialdata({
         status: "ongoing",
@@ -88,7 +89,8 @@ define(function () {
         image_index: this.image_indices[this.iteration],
         image_id: image_id,
         answer: answer,
-        answer_correct: answer_correct,
+        correct_answer: correct_answer,
+        answered_correct: answered_correct,
       });
     }
 
@@ -105,10 +107,13 @@ define(function () {
 
       // read textarea
       let answer = $("#answer-triangles").val();
-      this.answer_correct =
-        answer == this.image_solutions[this.image_indices[this.iteration]];
+      this.answered_correct = answer == this.correct_answer;
 
-      this.record_button_press(answer, this.answer_correct);
+      this.record_button_press(
+        answer,
+        this.answered_correct,
+        this.correct_answer
+      );
     }
 
     switch_mode() {
@@ -135,9 +140,10 @@ define(function () {
           $(image_div_id).hide();
           $("#container-question").show();
           break;
+
         case "question":
           if (!this.answered_question)
-            this.record_button_press("no_answer", false);
+            this.record_button_press("no_answer", false, this.correct_answer);
           this.mode = "pause";
           this.timeout_handler = setTimeout(() => {
             this.switch_mode();

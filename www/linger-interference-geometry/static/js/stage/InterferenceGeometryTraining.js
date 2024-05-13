@@ -17,8 +17,8 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
     task.init(
       study,
       task_pages,
-      (answered_question) => {
-        _conditional_next(answered_question);
+      (answered_question, correct_answer) => {
+        _conditional_next(answered_question, correct_answer);
       },
       study.config["interference_geometry_training_image_indices"],
       study.config["interference_geometry_time_image"],
@@ -29,7 +29,7 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
     task.start_task();
   }
 
-  function _conditional_next(answered) {
+  function _conditional_next(correct, correct_answer) {
     iteration += 1;
     if (iteration >= max_iterations) {
       // TODO: study failed.
@@ -37,11 +37,14 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
       final_pages.next();
     } else if (
       iteration < study.config["interference_geometry_min_training_sessions"] ||
-      !answered
+      !correct
     ) {
-      if (!answered) {
+      if (!correct) {
         try_again_failed.reset();
         try_again_failed.next();
+        $("#correct_answer").html(
+          "The correct answer is " + correct_answer + "."
+        );
       } else {
         try_again_neutral.reset();
         try_again_neutral.next();
