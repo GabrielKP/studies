@@ -42,7 +42,7 @@ define(function () {
       this.pages = page_object;
       this.finish_func = finish_func;
       this.image_indices = image_indices;
-      //   indices:          [0, 1, 2,  3,  4, 5, 6, 7, 8,  9,10, 11,12,13]
+      //   indices:          [0,   1, 2,  3,  4, 5, 6, 7, 8,  9,10, 11,12,13]
       this.image_solutions = [-1, 11, 7, 10, 12, 4, 9, 5, 6, 13, 8, 14, 6, 9];
       this.current_time = 0;
       this.iteration = iteration;
