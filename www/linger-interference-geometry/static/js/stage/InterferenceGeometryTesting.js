@@ -39,6 +39,7 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
     },
     finish_task: function (skip = false) {
       task.finish_task(skip);
+      study.next();
     },
   };
 });

@@ -30,34 +30,17 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
   }
 
   function _conditional_next(correct, correct_answer) {
-    iteration += 1;
-    if (iteration >= max_iterations) {
-      // TODO: study failed.
-      final_pages.reset();
-      final_pages.next();
-    } else if (
-      iteration < study.config["interference_geometry_min_training_sessions"] ||
-      !correct
-    ) {
-      if (!correct) {
-        try_again_failed.reset();
-        try_again_failed.next();
-        $("#correct_answer").html(
-          "The correct answer is " + correct_answer + "."
-        );
-      } else {
-        try_again_neutral.reset();
-        try_again_neutral.next();
-      }
+    mode = "finish";
+
+    if (!correct) {
+      final_failed.reset();
+      final_failed.next();
+      $("#correct_answer").html(
+        "The correct answer would have been " + correct_answer + "."
+      );
     } else {
-      mode = "finish";
-      final_pages.reset();
-      final_pages.next();
-      // option to practice again
-      $("#practice-again").on("click", () => {
-        _init_start_task();
-      });
-      $("#practice-again").show();
+      final_neutral.reset();
+      final_neutral.next();
     }
   }
 
@@ -67,9 +50,8 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
       study = _study;
       instruct_pages = new Pages();
       task_pages = new Pages();
-      try_again_neutral = new Pages();
-      try_again_failed = new Pages();
-      final_pages = new Pages();
+      final_neutral = new Pages();
+      final_failed = new Pages();
       iteration = 0;
       max_iterations =
         study.config["interference_geometry_training_image_indices"].length;
@@ -88,24 +70,17 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
           }
         ),
         task_pages.init(study, "interference_geometry_training/task.html"),
-        try_again_failed.init(
+        final_failed.init(
           study,
-          "interference_geometry_training/instruct-try_again_failed.html",
+          "interference_geometry_training/instruct-final_failed.html",
           () => {
-            _init_start_task();
+            study.next();
           }
         ),
-        try_again_neutral.init(
+        final_neutral.init(
           study,
-          "interference_geometry_training/instruct-try_again_neutral.html",
+          "interference_geometry_training/instruct-final_neutral.html",
           () => {
-            _init_start_task();
-          }
-        ),
-        final_pages.init(
-          study,
-          "interference_geometry_training/instruct-final.html",
-          function () {
             study.next();
           }
         ),
