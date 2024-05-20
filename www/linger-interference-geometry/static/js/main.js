@@ -36,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0";
+  let _version = "1.0.1";
   let config = {
     study: "linger-interference-geometry",
     version: _version,
@@ -50,8 +50,7 @@ require([
     studytime: 36,
     enforce_fullscreen: true,
     reading_delay_key: 100,
-    interference_geometry_min_training_sessions: 3,
-    interference_geometry_training_image_indices: [1, 2, 3, 4, 5, 6],
+    interference_geometry_training_image_indices: [1],
     interference_geometry_testing_image_index: 8,
     interference_geometry_time_image: 18000,
     interference_geometry_time_question: 8000,

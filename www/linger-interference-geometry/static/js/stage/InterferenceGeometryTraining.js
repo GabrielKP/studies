@@ -7,7 +7,6 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
   let task_pages;
   let task;
   let iteration;
-  let max_iterations;
   let mode;
 
   function _init_start_task() {
@@ -53,8 +52,6 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
       final_neutral = new Pages();
       final_failed = new Pages();
       iteration = 0;
-      max_iterations =
-        study.config["interference_geometry_training_image_indices"].length;
       mode = "init";
       return Promise.all([
         instruct_pages.init(
