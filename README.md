@@ -32,6 +32,23 @@ studies/
 - `scripts` contains a synchronization script to psyserver (`sync.py`) and a data download script (`get_data.py`)
 - `www` contains the code for each study.
 
+### Internal structure
+
+Within the study directory you find:
+
+- `starter.html`: can start a study with appropriate parameters
+- `index.html`: main wrapper page for study, will load the javascript and iniate the first screen.
+- All single page html files such as `consent.html` or `complete.html`
+- Folders of html files belonging to one `stage`
+- `static` folder with subfolders:
+  - `css`: css files, also bootstrap css file
+  - `fonts`: fonts for studies
+  - `js`: all js files running the study, including `main.js`, the point of entry specified in `index.html`
+    - `component`: All objects that are potentially used multiple times in the study returned as an instantiable class. For instance `Pages.js`, which loads and displays a page.
+    - `module`: Objects that are used throughout the study, but always refer to the one same object. The object itself is returned, and only instantiated once.
+    - `stage`: An object equivalent to a "stage" of the study. Everything that happens onscreen, happens in a stage. Stages need to have a name, which is automatically logged when the stage moves on.
+  - `lib`: libraries such as the bootstrap, jquery, require.js files
+
 ## Studies
 
 ### Free Association
