@@ -4,7 +4,7 @@ define(function () {
     mode;
     pages;
     pagenames;
-    image_indices;
+    image_index;
     image_solutions;
     finish_func;
     study;
@@ -32,16 +32,16 @@ define(function () {
       study,
       page_object,
       finish_func,
-      image_indices,
+      image_index,
       time_image,
       time_question,
       time_pause,
-      iteration = 0
+      iteration
     ) {
       this.study = study;
       this.pages = page_object;
       this.finish_func = finish_func;
-      this.image_indices = image_indices;
+      this.image_index = image_index;
       //   indices:          [0,   1, 2,  3,  4, 5, 6, 7, 8,  9,10, 11,12,13]
       this.image_solutions = [-1, 11, 7, 10, 12, 4, 9, 5, 6, 13, 8, 14, 6, 9];
       this.current_time = 0;
@@ -53,8 +53,7 @@ define(function () {
       this.mode = "init"; // init | image | question | pause
       this.listening = false;
       this.answered_question = false;
-      this.correct_answer =
-        this.image_solutions[this.image_indices[this.iteration]];
+      this.correct_answer = this.image_solutions[this.image_index];
     }
 
     finish_task(skip = false) {
@@ -79,14 +78,14 @@ define(function () {
     }
 
     record_button_press(answer, answered_correct, correct_answer) {
-      let image_id = "triangles-" + this.image_indices[this.iteration];
+      let image_id = "triangles-" + this.image_index;
       this.study.data.record_trialdata({
         status: "ongoing",
         task: "interference_geometry",
         iteration: this.iteration,
         mode: this.mode,
         answer_time: new Date().getTime() - this.mode_start_time,
-        image_index: this.image_indices[this.iteration],
+        image_index: this.image_index,
         image_id: image_id,
         answer: answer,
         correct_answer: correct_answer,
@@ -118,7 +117,7 @@ define(function () {
 
     switch_mode() {
       // hide/show the correct things, and set appropriate timers
-      let image_div_id = "#triangles-" + this.image_indices[this.iteration];
+      let image_div_id = "#triangles-" + this.image_index;
       switch (this.mode) {
         case "init":
           this.mode = "image";

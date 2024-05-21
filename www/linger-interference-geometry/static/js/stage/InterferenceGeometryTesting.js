@@ -8,15 +8,13 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
 
   function _init_start_task() {
     task = new InterferenceGeometry();
-    let testing_image_index =
-      study.config["interference_geometry_testing_image_index"];
     task.init(
       study,
       task_pages,
       () => {
         study.next();
       },
-      [testing_image_index],
+      study.config["interference_geometry_testing_image_index"],
       study.config["interference_geometry_time_image"],
       study.config["interference_geometry_time_question"],
       study.config["interference_geometry_time_pause"],

@@ -19,7 +19,7 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
       (answered_question, correct_answer) => {
         _conditional_next(answered_question, correct_answer);
       },
-      study.config["interference_geometry_training_image_indices"],
+      study.config["interference_geometry_training_image_index"],
       study.config["interference_geometry_time_image"],
       study.config["interference_geometry_time_question"],
       study.config["interference_geometry_time_pause"],
@@ -29,15 +29,15 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
   }
 
   function _conditional_next(correct, correct_answer) {
-    mode = "finish";
-
     if (!correct) {
+      iteration += 1;
       final_failed.reset();
       final_failed.next();
-      $("#correct_answer").html(
-        "The correct answer would have been " + correct_answer + "."
-      );
+      // $("#correct_answer").html(
+      //   "The correct answer would have been " + correct_answer + "."
+      // );
     } else {
+      mode = "finish";
       final_neutral.reset();
       final_neutral.next();
     }
@@ -71,7 +71,7 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
           study,
           "interference_geometry_training/instruct-final_failed.html",
           () => {
-            study.next();
+            _init_start_task();
           }
         ),
         final_neutral.init(
