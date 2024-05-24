@@ -40,7 +40,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.2";
+  let _version = "1.0.3";
   let config = {
     study: "linger-interference-story",
     version: _version,
