@@ -10,6 +10,7 @@ require([
   "stage/Reading",
   "stage/InterferenceReadingTesting",
   "stage/FreeAssociationPost",
+  "stage/QuestionnaireTransportationInterference",
   "stage/QuestionnaireTransportation",
   "stage/QuestionnaireComprehension",
   "stage/QuestionnaireComprehensionInterference",
@@ -29,6 +30,7 @@ require([
   Reading,
   InterferenceReadingTesting,
   FreeAssociationPost,
+  QuestionnaireTransportationInterference,
   QuestionnaireTransportation,
   QuestionnaireComprehension,
   QuestionnaireComprehensionInterference,
@@ -38,7 +40,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev3";
+  let _version = "1.0.0-dev4";
   let config = {
     study: "linger-interference-story",
     version: _version,
@@ -52,7 +54,7 @@ require([
     studytime: 36,
     enforce_fullscreen: true,
     reading_delay_key: 100,
-    conditions: ["coherent", "incoherent"],
+    conditions: ["incoherent", "coherent"],
   };
 
   // determine debug mode
@@ -96,9 +98,10 @@ require([
       Reading,
       InterferenceReadingTesting,
       FreeAssociationPost,
+      QuestionnaireTransportationInterference,
       QuestionnaireTransportation,
-      QuestionnaireComprehension,
       QuestionnaireComprehensionInterference,
+      QuestionnaireComprehension,
       QuestionnaireExperience,
       QuestionnaireDemographics,
       QuestionnaireOpen,

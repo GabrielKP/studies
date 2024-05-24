@@ -34,6 +34,7 @@ define(["component/Pages"], function (Pages) {
       if (
         $("#wcg_diff_general").val().trim().length < 3 ||
         $("#wcg_strategy").val().trim().length < 3 ||
+        $("#interference_explanation").val().trim().length < 3 ||
         $("#guess_experiment").val().trim().length < 3
       )
         return false;

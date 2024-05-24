@@ -34,9 +34,10 @@ define([
       this.finish_func = finish_func;
       this.sentence_index = 0;
       this.training = training;
+      console.log(this.study.config["condition"]);
       if (this.training) {
         this.story = InterferenceStoryTraining;
-      } else if (this.study.data["condition"] == "incoherent") {
+      } else if (this.study.config["condition"] == "incoherent") {
         this.story = InterferenceStoryControlTesting;
       } else {
         this.story = InterferenceStoryTesting;

@@ -56,7 +56,7 @@ define(function () {
       },
       {
         Story:
-          '"Yes, it will be a meeting. Will you let them know I\'ll accept?"',
+          '"Yes, it will be a meeting. Will you let them know she\'ll accept?"',
         order: "8",
         num_char: "64",
         num_syl: "16",
@@ -78,7 +78,7 @@ define(function () {
         time: "5850.0",
       },
       {
-        Story: '"Are you sure about this?" he looked at me tentatively.',
+        Story: '"Are you sure about this?" Ann looked at me tentatively.',
         order: "11",
         num_char: "55",
         num_syl: "14",
