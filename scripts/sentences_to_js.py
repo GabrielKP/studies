@@ -50,6 +50,7 @@ def nsyl_word(word: str, d: Dict):
         "white-haired",
         "top-hat",
         "two-year",
+        "red-blue",
     ]:
         return 2
     if word == "dismissively":
@@ -109,7 +110,7 @@ if __name__ == "__main__":
         "-t",
         "--time",
         default=30000,
-        type=str,
+        type=int,
         help="Total time in which story has to be read.",
     )
     parser.add_argument(
