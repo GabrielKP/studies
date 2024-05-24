@@ -1,23 +1,29 @@
 <div class="container position-absolute top-50 start-50 translate-middle">
   <div class="card text-center">
-    <h3 class="card-header">Colored stories</h3>
+    <h3 class="card-header">Green story</h3>
     <div class="instructions card-body">
       <div class="card-text">
-        <p>Fantastic!</p>
+        <p>
+          Each sentence will be displayed for a fixed amount of time, after
+          which the next sentence will be shown automatically.
+        </p>
 
-        <p>You have completed <i>Phase 0</i>.</p>
+        <p>All sentences of the same color belong to the same story.</p>
+
+        <p>Once the color of the text changes, another story has started.</p>
+
+        <p>A story is always finished before another story starts.</p>
       </div>
       <div class="instructionsnav">
         <div class="row">
           <div class="col-2">
             <button
               type="button"
-              id="practice-again"
-              value="practice-again"
-              class="btn btn-success btn-lg continue"
-              style="display: none"
+              id="prev"
+              value="prev"
+              class="btn btn-primary btn-lg previous"
             >
-              Practice
+              <span class="glyphicon glyphicon-arrow-left"></span> Previous
             </button>
           </div>
           <div class="col-8"></div>

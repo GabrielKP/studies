@@ -60,8 +60,6 @@ define(["module/Data"], function (Data) {
       this.stage_time_start = new Date().getTime();
       this.data.record_trialdata({ status: "stage_begin" }); // log init stage begin for consistency
 
-      // let condition_promise = this.get_condition();
-
       return Promise.all(
         $.map(uninit_stages, (stage, indx) => {
           return stage.init(this).then(() => {

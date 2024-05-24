@@ -38,7 +38,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev2";
+  let _version = "1.0.0-dev3";
   let config = {
     study: "linger-interference-story",
     version: _version,
@@ -52,6 +52,7 @@ require([
     studytime: 36,
     enforce_fullscreen: true,
     reading_delay_key: 100,
+    conditions: ["coherent", "incoherent"],
   };
 
   // determine debug mode

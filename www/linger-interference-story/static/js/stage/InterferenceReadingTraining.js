@@ -48,6 +48,8 @@ define(["component/Pages", "component/InterferenceReading"], function (
           [
             "interference_reading_training/instruct-1.html",
             "interference_reading_training/instruct-2.html",
+            "interference_reading_training/instruct-3.html",
+            "interference_reading_training/instruct-4.html",
           ],
           () => {
             _init_start_task();

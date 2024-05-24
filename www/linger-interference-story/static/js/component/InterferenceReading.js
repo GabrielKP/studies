@@ -1,7 +1,12 @@
 define([
   "component/InterferenceStoryTraining",
   "component/InterferenceStoryTesting",
-], function (InterferenceStoryTraining, InterferenceStoryTesting) {
+  "component/InterferenceStoryControlTesting",
+], function (
+  InterferenceStoryTraining,
+  InterferenceStoryTesting,
+  InterferenceStoryControlTesting
+) {
   class _InterferenceReading {
     study;
     pages;
@@ -13,6 +18,7 @@ define([
     reading_delay_key;
     finish_func;
     timeout_handler;
+    training;
 
     constructor() {
       // bind all the functions
@@ -27,8 +33,11 @@ define([
       this.pages = page_object;
       this.finish_func = finish_func;
       this.sentence_index = 0;
-      if (training) {
+      this.training = training;
+      if (this.training) {
         this.story = InterferenceStoryTraining;
+      } else if (this.study.data["condition"] == "incoherent") {
+        this.story = InterferenceStoryControlTesting;
       } else {
         this.story = InterferenceStoryTesting;
       }
@@ -91,8 +100,10 @@ define([
       // show task
       this.pages.next();
 
-      // show blue border
-      $("body").css({ border: "40px solid #CBC3E3", height: "100%" });
+      // show border
+      if (this.training)
+        $("body").css({ border: "40px solid #C3E3C7", height: "100%" });
+      else $("body").css({ border: "40px solid #CBC3E3", height: "100%" });
       $("html").css({ height: "100%" });
 
       // for debugging show total amount of time for sentences:
