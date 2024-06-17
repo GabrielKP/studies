@@ -39,7 +39,7 @@ define(["component/Pages"], function (Pages) {
         $("#submit")
           .off()
           .on("click", function () {
-            _finish_task();
+            _finish_task($("#linger_rating_interference").val());
           });
       } else {
         $("#submit")
@@ -59,7 +59,11 @@ define(["component/Pages"], function (Pages) {
   function _page_2() {
     // check functions
     function _all_selected_2() {
-      return $("select.changed").length === $("select.collectible").length;
+      if ($("select.changed").length != $("select.collectible").length)
+        return false;
+      if ($("#volition_interference_explanation").val().trim().length < 3)
+        return false;
+      return true;
     }
 
     // show page
@@ -75,7 +79,7 @@ define(["component/Pages"], function (Pages) {
         $("#submit")
           .off()
           .on("click", function () {
-            _finish_task($("#linger_rating").val() == "1");
+            _finish_task();
           });
       } else {
         $("#submit")
