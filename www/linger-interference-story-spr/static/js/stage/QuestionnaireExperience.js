@@ -14,12 +14,9 @@ define(["component/Pages"], function (Pages) {
       });
     });
     if (current_page == 1) _page_2();
-    else if (current_page == 2) _page_2_interference(linger_rating);
-    else if (current_page == 2.5) {
-      // conditional on linger rating
-      if (linger_rating == "1") study.next();
-      else _page_3();
-    } else if (current_page == 3) _page_4();
+    else if (current_page == 2 && linger_rating == "1") study.next();
+    else if (current_page == 2) _page_3();
+    else if (current_page == 3) _page_4();
     else if (current_page == 4) pages.next();
     else {
       console.log("Error: current_page out of range");
@@ -34,7 +31,6 @@ define(["component/Pages"], function (Pages) {
       if (
         $("#wcg_diff_general").val().trim().length < 3 ||
         $("#wcg_strategy").val().trim().length < 3 ||
-        $("#interference_explanation").val().trim().length < 3 ||
         $("#guess_experiment").val().trim().length < 3
       )
         return false;
@@ -90,44 +86,7 @@ define(["component/Pages"], function (Pages) {
         $("#submit")
           .off()
           .on("click", function () {
-            _finish_task($("#linger_rating").val() == "1");
-          });
-      } else {
-        $("#submit")
-          .off()
-          .on("click", function () {
-            $("#warning").html(warning_text);
-          });
-      }
-    });
-
-    // bind submit button
-    $("#submit").on("click", () => {
-      $("#warning").html(warning_text);
-    });
-  }
-
-  function _page_2_interference(old_linger_rating) {
-    // keep track of linger rating of previous page
-    // check functions
-    function _all_selected_2_interference() {
-      return $("select.changed").length === $("select.collectible").length;
-    }
-
-    // show page
-    pages.next();
-    current_page = 2.5;
-
-    // bind conditional enable
-    $(".collectible").on("change", function () {
-      $(this).addClass("changed");
-
-      if (_all_selected_2_interference()) {
-        $("#warning").html("");
-        $("#submit")
-          .off()
-          .on("click", function () {
-            _finish_task(old_linger_rating);
+            _finish_task($("#linger_rating").val());
           });
       } else {
         $("#submit")
