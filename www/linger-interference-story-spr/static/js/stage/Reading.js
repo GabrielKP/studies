@@ -41,9 +41,9 @@ define(["component/Pages", "component/Carver"], function (Pages, Carver) {
   }
 
   function response_handler(key) {
+    key.preventDefault();
     if (!listening) return;
     listening = false;
-    key.preventDefault();
 
     // ignore everything but enter key
     if (key.keyCode != 13) {
@@ -60,6 +60,7 @@ define(["component/Pages", "component/Carver"], function (Pages, Carver) {
     submit_object["sentence_text"] = sentence_text;
     submit_object["sentence_time"] = sentence_end_time - sentence_start_time;
     submit_object["sentence_length"] = sentence_text.length;
+    submit_object["sentence_index"] = sentence_index - 1;
     study.data.record_trialdata(submit_object);
 
     show_next();

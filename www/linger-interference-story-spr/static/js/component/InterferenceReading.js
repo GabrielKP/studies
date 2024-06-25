@@ -36,15 +36,13 @@ define([
 
     finish_task(skip = false) {
       // unbind
-      $("body").unbind("keydown", this.response_handler);
       $("body").off();
 
       // record data
-      let task_time = new Date().getTime() - this.task_start_time;
       this.study.data.record_trialdata({
         status: "task_end",
         task: "interference_reading",
-        task_time: task_time,
+        task_time: new Date().getTime() - this.task_start_time,
       });
 
       $("body").css({ border: "", height: "" });
@@ -58,21 +56,23 @@ define([
       this.sentence_index++;
       $("#sentence").html(sentence_text);
       this.sentence_start_time = new Date().getTime();
-
       setTimeout(() => {
         this.listening = true;
       }, this.reading_delay_key);
     }
 
     show_next() {
-      if (this.sentence_index == this.story.row.length) this.finish_task();
-      else this.show_story_sentence();
+      if (this.sentence_index == this.story.row.length) {
+        this.finish_task();
+      } else {
+        this.show_story_sentence();
+      }
     }
 
     response_handler(key) {
+      key.preventDefault();
       if (!this.listening) return;
       this.listening = false;
-      key.preventDefault();
 
       // ignore everything but enter key
       if (key.keyCode != 13) {
@@ -106,9 +106,6 @@ define([
       else $("body").css({ border: "40px solid #CBC3E3", height: "100%" });
       $("html").css({ height: "100%" });
 
-      // kick off on screen action
-      this.show_story_sentence();
-
       // log beginning of task
       this.study.data.record_trialdata({
         status: "task_begin",
@@ -120,6 +117,9 @@ define([
       $("body").bind("keydown", (key) => {
         this.response_handler(key);
       });
+
+      // kick off on screen action
+      this.show_story_sentence();
     }
   }
 
