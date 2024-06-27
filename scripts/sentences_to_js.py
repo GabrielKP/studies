@@ -71,8 +71,14 @@ def nsyl_sen(sentence, d: Dict):
 
 
 def sentences_to_js(sentences: List[str], total_time: int) -> List[str]:
+    try:
+        d = cmudict.dict()
+    except LookupError:
+        from nltk import download
 
-    d = cmudict.dict()
+        download("cmudict")
+        download("punkt")
+        d = cmudict.dict()
 
     sentence_syllables = [nsyl_sen(sentence, d) for sentence in sentences]
 
