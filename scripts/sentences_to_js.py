@@ -38,7 +38,7 @@ def nsyl_word(word: str, d: Dict):
     # Words which are not in dict: add manually here.
     if word == "neighbour":
         word = "neighbor"
-    if word in ["(", ")"]:
+    if word in ["(", ")", "*"]:
         return 0
     if word in ["whined", "kneeled", "nt", "ll", "hummed", "didn"]:
         # https://www.howmanysyllables.com/syllables/

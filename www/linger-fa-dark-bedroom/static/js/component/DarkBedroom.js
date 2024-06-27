@@ -77,28 +77,39 @@ define(function () {
         num_syl: "11",
       },
       {
-        Story: "I grab the remote (the fan has a remote).",
+        Story: "I grab the remote.",
         order: "13",
-        num_char: "41",
-        num_syl: "11",
+        num_char: "18",
+        num_syl: "5",
       },
       {
-        Story:
-          "And as I'm turning the light on I realize: the goddamn thing is dimmable.",
+        Story: "(the fan has a remote)",
         order: "14",
-        num_char: "73",
-        num_syl: "20",
+        num_char: "22",
+        num_syl: "6",
+      },
+      {
+        Story: "And as I'm turning the light on I realize:",
+        order: "15",
+        num_char: "42",
+        num_syl: "12",
+      },
+      {
+        Story: "the goddamn thing is dimmable.",
+        order: "16",
+        num_char: "30",
+        num_syl: "8",
       },
       {
         Story:
           "For six fucking years we lived with the inconvenience of no overhead light and the whole time it was just because the damn thing was set to “dim”.",
-        order: "15",
+        order: "17",
         num_char: "146",
         num_syl: "35",
       },
       {
         Story: "***",
-        order: "16",
+        order: "18",
         num_char: "3",
         num_syl: "1",
       },
