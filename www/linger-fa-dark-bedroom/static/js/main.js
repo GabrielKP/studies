@@ -24,15 +24,16 @@ require([
   FreeAssociationPre,
   Reading,
   FreeAssociationPost,
-  QuestionnaireComprehension,
+  QuestionnaireKeywords,
   QuestionnaireTransportation,
+  QuestionnaireComprehension,
   QuestionnaireExperience,
   QuestionnaireDemographics,
   QuestionnaireOpen,
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev3";
+  let _version = "1.0.0-dev4";
   let config = {
     study: "linger-fa-dark-bedroom",
     version: _version,
