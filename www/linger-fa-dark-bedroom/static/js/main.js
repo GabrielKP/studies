@@ -34,7 +34,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev5";
+  let _version = "1.0.0";
   let config = {
     study: "linger-fa-dark-bedroom",
     version: _version,
