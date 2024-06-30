@@ -8,8 +8,9 @@ require([
   "stage/FreeAssociationPre",
   "stage/Reading",
   "stage/FreeAssociationPost",
-  "stage/QuestionnaireComprehension",
+  "stage/QuestionnaireKeywords",
   "stage/QuestionnaireTransportation",
+  "stage/QuestionnaireComprehension",
   "stage/QuestionnaireExperience",
   "stage/QuestionnaireDemographics",
   "stage/QuestionnaireOpen",
@@ -33,7 +34,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev4";
+  let _version = "1.0.0-dev5";
   let config = {
     study: "linger-fa-dark-bedroom",
     version: _version,
@@ -88,6 +89,7 @@ require([
       FreeAssociationPre,
       Reading,
       FreeAssociationPost,
+      QuestionnaireKeywords,
       QuestionnaireTransportation,
       QuestionnaireComprehension,
       QuestionnaireExperience,
