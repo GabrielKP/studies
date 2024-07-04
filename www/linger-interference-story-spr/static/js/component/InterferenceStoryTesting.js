@@ -2,68 +2,111 @@ define(function () {
   return (story = {
     row: [
       {
-        Story:
-          "At the nursing home, the soft and brittle were flipped twice a day to keep their skin from melding to the bedsheets.",
+        Story: "***",
         order: "1",
-        num_char: "116",
-        num_syl: "26",
+        num_char: "3",
+        num_syl: "0",
       },
       {
         Story:
-          "As I passed one of the cots, a papery hand grabbed mine and pressed something sticky into it.",
+          "The overhead fan in our bedroom uses one of those compact halogen light bulbs.",
         order: "2",
-        num_char: "93",
+        num_char: "78",
+        num_syl: "22",
+      },
+      {
+        Story: "Six years ago the bulb burned out and got really dim.",
+        order: "3",
+        num_char: "53",
+        num_syl: "13",
+      },
+      {
+        Story:
+          "I bought a replacement bulb. But when I put that one in it was also barely lighting up.",
+        order: "4",
+        num_char: "87",
         num_syl: "23",
       },
       {
-        Story: "It’s candy, the old woman said.",
-        order: "3",
-        num_char: "31",
-        num_syl: "9",
-      },
-      {
-        Story: "I opened my hand to look.",
-        order: "4",
-        num_char: "25",
-        num_syl: "7",
-      },
-      {
-        Story: "Some were oozing from their wrappers, some had teeth marks.",
+        Story:
+          "So I realized the unit was bad. But I didn't really want to replace it.",
         order: "5",
-        num_char: "59",
-        num_syl: "12",
+        num_char: "71",
+        num_syl: "20",
       },
       {
-        Story: "Some were whole and new.",
+        Story: "Since then, my wife and I have had to live in darkness.",
         order: "6",
-        num_char: "24",
+        num_char: "55",
+        num_syl: "13",
+      },
+      {
+        Story: "At night we use bedside lamps and bathroom lights.",
+        order: "7",
+        num_char: "50",
+        num_syl: "11",
+      },
+      {
+        Story:
+          "I also keep some flashlights in the bedroom for when we are cleaning or looking for something etc.",
+        order: "8",
+        num_char: "98",
+        num_syl: "27",
+      },
+      {
+        Story: "This winter I decided I would replace the damn thing.",
+        order: "9",
+        num_char: "53",
+        num_syl: "14",
+      },
+      {
+        Story: "But before, I tried one last time with another bulb.",
+        order: "10",
+        num_char: "52",
+        num_syl: "13",
+      },
+      {
+        Story: "So I'm up there installing the new bulb.",
+        order: "11",
+        num_char: "40",
+        num_syl: "11",
+      },
+      {
+        Story: "I grab the remote.",
+        order: "12",
+        num_char: "18",
         num_syl: "5",
       },
       {
-        Story:
-          "They were from a brand that had gone out of business in my childhood.",
-        order: "7",
-        num_char: "69",
-        num_syl: "16",
+        Story: "(the fan has a remote)",
+        order: "13",
+        num_char: "22",
+        num_syl: "6",
       },
       {
-        Story: "“It’s dementia”, a passing nurse explained.",
-        order: "8",
-        num_char: "43",
+        Story: "And as I'm turning the light on I realize:",
+        order: "14",
+        num_char: "42",
         num_syl: "12",
       },
       {
-        Story: "“No, it’s candy”, the old woman said.",
-        order: "9",
-        num_char: "37",
-        num_syl: "10",
+        Story: "the goddamn thing is dimmable.",
+        order: "15",
+        num_char: "30",
+        num_syl: "8",
       },
       {
         Story:
-          "“No”, the nurse said, carrying a bucket of human waste out of the room, “it’s dementia”.",
-        order: "10",
-        num_char: "88",
-        num_syl: "24",
+          "For six fucking years we lived with the inconvenience of no overhead light and the whole time it was just because the damn thing was set to “dim”.",
+        order: "16",
+        num_char: "146",
+        num_syl: "35",
+      },
+      {
+        Story: "***",
+        order: "17",
+        num_char: "3",
+        num_syl: "0",
       },
     ],
   });
