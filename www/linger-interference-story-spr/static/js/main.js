@@ -46,7 +46,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev4";
+  let _version = "1.0.0-dev5";
   let config = {
     study: "linger-interference-story-spr",
     version: _version,
