@@ -2,7 +2,7 @@ define(["component/Pages"], function (Pages) {
   let study;
   let pages;
   return {
-    name: "questionnaire_explanation_stories_black",
+    name: "questionnaire_explanation_stories_purple",
     init: function (_study) {
       study = _study;
       pages = new Pages();

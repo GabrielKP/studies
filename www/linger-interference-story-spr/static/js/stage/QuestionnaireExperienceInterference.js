@@ -97,7 +97,7 @@ define(["component/Pages"], function (Pages) {
   }
 
   return {
-    name: "questionnaire_experience",
+    name: "questionnaire_experience_interference",
     init: function (_study) {
       study = _study;
       pages = new Pages();
