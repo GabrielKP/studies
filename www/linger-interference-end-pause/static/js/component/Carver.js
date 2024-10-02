@@ -2220,14 +2220,6 @@ define(function () {
         section: "11",
         rand: "0.44647524",
       },
-      {
-        Story: "***",
-        order: "273",
-        num_char: "3",
-        num_words: "1",
-        section: "11",
-        rand: "0.44647524",
-      },
     ],
   });
 });
