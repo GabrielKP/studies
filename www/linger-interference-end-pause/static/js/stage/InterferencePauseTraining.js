@@ -29,13 +29,16 @@ define(["component/Pages", "component/InterferencePause"], function (
     if (step == "5s") {
       if (time_unpressed >= 1000) {
         iteration += 1;
+        try_again_5s_pages.reset();
         try_again_5s_pages.next();
       } else {
+        step = "30s";
         instruct_30s_pages.next();
       }
     } else {
       if (time_unpressed >= 1500) {
         iteration += 1;
+        try_again_30s_pages.reset();
         try_again_30s_pages.next();
       } else {
         final_pages.next();
@@ -67,7 +70,6 @@ define(["component/Pages", "component/InterferencePause"], function (
           study,
           "interference_pause_training/instruct-30s.html",
           () => {
-            step = "30s";
             _init_start_task(study.config["interference_pause_time"]);
           }
         ),
@@ -100,7 +102,7 @@ define(["component/Pages", "component/InterferencePause"], function (
       instruct_5s_pages.next();
     },
     finish_task: function () {
-      task.finish_task();
+      _conditional_next(0);
     },
   };
 });

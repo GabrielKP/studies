@@ -38,7 +38,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-1";
+  let _version = "1.0.0-2";
   let config = {
     study: "linger-end-pause",
     version: _version,
