@@ -31,7 +31,7 @@ define(["component/Pages"], function (Pages) {
         $("#card-complete").show();
         $("#complete").on("click", () => {
           window.location.href =
-            "https://app.prolific.co/submissions/complete?cc=" +
+            "https://app.prolific.com/submissions/complete?cc=" +
             study.config["code_completion"];
         });
       };
