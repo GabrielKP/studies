@@ -48,3 +48,18 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Select all buttons with the class 'continue' and disable them
+  var continueButtons = document.querySelectorAll('.continue');
+  continueButtons.forEach(function(button) {
+    button.disabled = true;
+  });
+
+  // Enable all 'continue' buttons after 4000ms 
+  setTimeout(function() {
+    continueButtons.forEach(function(button) {
+      button.disabled = false;
+    });
+  }, 4000);
+</script>
