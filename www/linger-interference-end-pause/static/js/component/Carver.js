@@ -18,7 +18,7 @@ define(function () {
         rand: "0.898171597",
       },
       {
-        Story: "But I don't think he's really hungry.",
+        Story: "Do not think about a white bear.",
         order: "3",
         num_char: "37",
         num_words: "7",
