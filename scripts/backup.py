@@ -58,6 +58,7 @@ def recover_data(studyname: str, hostname: str, backup_folder: Optional[str]) ->
         ],
         check=True,
     )
+    print(f"Data recovered into: data/{studyname}")
     return completed_process.returncode
 
 
