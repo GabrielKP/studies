@@ -70,3 +70,11 @@ A study in which participants do free association, read a story, go through a pa
 ### linger-ocd
 
 A study in which participants get a personality/rumination/depression and ocd questionnare at the end.
+
+## Setup
+
+Set the backup folder in a .env:
+
+```{sh}
+STUDY_BACKUP_FOLDER="path/to/folder"
+```
