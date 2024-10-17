@@ -51,7 +51,6 @@ def get_data(studyname: str, hostname: str) -> None:
     print(f"Data downloaded into: 'data/{studyname}/json/'")
 
     # remove all the files that were marked as excluded beforehand
-    print(f"data/{studyname}/json/*.json")
     paths = sorted(glob.glob(f"data/{studyname}/json/*.json"))
     previous_path = None
     for path in paths:
