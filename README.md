@@ -71,10 +71,20 @@ A study in which participants do free association, read a story, go through a pa
 
 A study in which participants get a personality/rumination/depression and ocd questionnare at the end.
 
-## Setup
+## Backup
 
 Set the backup folder in a .env:
 
 ```{sh}
-STUDY_BACKUP_FOLDER="path/to/folder"
+STUDY_BACKUP_FOLDER="path/to/backup/folder/on/host"
+```
+
+Now you can use:
+
+```sh
+# To back up:
+scripts/backup.py studyname hostname
+
+# To recover backup
+scripts/backup.py studyname hostname --recover
 ```
