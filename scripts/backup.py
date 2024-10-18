@@ -20,7 +20,7 @@ def backup_data(studyname: str, hostname: str, backup_folder: Optional[str]) -> 
     # a bit risky to use delete...
     server_path = Path(backup_folder, studyname)
     backup_path = Path(backup_folder, "backup", studyname)
-    completed_process = subprocess.run(
+    subprocess.run(
         [
             "rsync",
             "-rv",
@@ -35,7 +35,7 @@ def backup_data(studyname: str, hostname: str, backup_folder: Optional[str]) -> 
 
     # hacky, but convenience...
     print(f"Data backed up into: {hostname}:{server_path}")
-    return completed_process.returncode
+    return 0
 
 
 def recover_data(studyname: str, hostname: str, backup_folder: Optional[str]) -> int:
@@ -48,7 +48,7 @@ def recover_data(studyname: str, hostname: str, backup_folder: Optional[str]) ->
         return 1
 
     server_path = Path(backup_folder, studyname)
-    completed_process = subprocess.run(
+    subprocess.run(
         [
             "rsync",
             "-rv",
@@ -59,12 +59,53 @@ def recover_data(studyname: str, hostname: str, backup_folder: Optional[str]) ->
         check=True,
     )
     print(f"Data recovered into: data/{studyname}")
-    return completed_process.returncode
+    return 0
+
+
+def sync_id_mapping(hostname: str, backup_folder: Optional[str]) -> int:
+
+    backup_folder = backup_folder or os.environ.get("STUDY_BACKUP_FOLDER")
+    if backup_folder is None:
+        print(
+            "Neither '--backup_folder' is given or STUDY_BACKUP_FOLDER is set. Aborting."
+        )
+        return 1
+
+    server_path = Path(backup_folder, "id_mapping", "id_mapping.json")
+    local_path = Path("data", "id_mapping.json")
+
+    print(f"{hostname} -> local")
+    subprocess.run(
+        [
+            "rsync",
+            "--update",
+            f"{hostname}:{server_path}",
+            local_path,
+        ],
+        check=True,
+    )
+
+    print(f"local -> {hostname}")
+    subprocess.run(
+        [
+            "rsync",
+            "--update",
+            local_path,
+            f"{hostname}:{server_path}",
+        ],
+        check=True,
+    )
+
+    return 0
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Backup study data to labserver.")
-    parser.add_argument("studyname", type=str, help="name of study to be synchronized.")
+    parser.add_argument(
+        "studyname",
+        type=str,
+        help="name of study to be backed up. If 'id_mapping' will sync id_mapping.json file.",
+    )
     parser.add_argument(
         "hostname",
         type=str,
@@ -84,7 +125,9 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    if args.recover:
+    if args.studyname == "id_mapping":
+        sync_id_mapping(args.hostname, args.backup_folder)
+    elif args.recover:
         recover_data(args.studyname, args.hostname, args.backup_folder)
     else:
         backup_data(args.studyname, args.hostname, args.backup_folder)
