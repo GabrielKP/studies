@@ -24,7 +24,7 @@ define(["component/Pages"], function (Pages) {
     // wordList = ["Apple", "Mountain", "Ocean", "Friend", "Happiness"]; // Word cues
     currentWordIndex = 0; // Current cue index
     DOUBLE_PRESS_THRESHOLD = 1000; // threshold
-    exp_condition = "button_press";
+    exp_condition = "button_press"; // TODO: remove conditions
 
     constructor() {
       // bind all the functions
@@ -33,6 +33,7 @@ define(["component/Pages"], function (Pages) {
       this.show_next_exp_suppress = this.show_next_exp_suppress.bind(this);
       this.show_cue_new_textbox = this.show_cue_new_textbox.bind(this);
       this.save_word = this.save_word.bind(this);
+      this.save_double_press = this.save_double_press.bind(this);
       this.ready_word_variables = this.ready_word_variables.bind(this);
       this.fade_cue = this.fade_cue.bind(this);
       this.start_task = this.start_task.bind(this);
@@ -80,6 +81,27 @@ define(["component/Pages"], function (Pages) {
       submit_object["word_key_codes"] = this.word_key_codes;
       submit_object["word_key_onsets"] = this.word_key_onsets;
       submit_object["word_double_press_count"] = this.word_double_press_count; //double press
+      this.study.data.record_trialdata(submit_object);
+    }
+
+    save_double_press() {
+      var submit_object = {};
+      // psiTurk.recordTrialData({
+      //   phase: "wcg",
+      //   status: "ongoing",
+      //   mode: "double_press",
+      //   double_press: "occurrence",
+      //   current_double_press_count: total_double_press_count,
+      //   time_since_last_word_start: double_press_time - word_start_time,
+      //   word_text: $("#qinput").val(),
+      //   word_count: word_count,
+      //   word_key_chars: word_key_chars.slice(),
+      //   word_key_codes: word_key_codes.slice(),
+      //   word_key_onsets: word_key_onsets.slice(),
+      //   word_double_press_count: word_double_press_count,
+      //   pre_or_post: pre_or_post,
+      // });
+
       this.study.data.record_trialdata(submit_object);
     }
 
@@ -166,6 +188,7 @@ define(["component/Pages"], function (Pages) {
           this.exp_condition == "button_press_suppress" ||
           this.exp_condition == "button_press"
         ) {
+          // TODO: remove conditions
           this.current_time = new Date().getTime();
           // Only trigger within double press threshold
           if (
@@ -179,21 +202,8 @@ define(["component/Pages"], function (Pages) {
               "Double press! Count: " + this.total_double_press_count
             );
             this.double_press_time = new Date().getTime();
-            // psiTurk.recordTrialData({
-            //   phase: "wcg",
-            //   status: "ongoing",
-            //   mode: "double_press",
-            //   double_press: "occurrence",
-            //   current_double_press_count: total_double_press_count,
-            //   time_since_last_word_start: double_press_time - word_start_time,
-            //   word_text: $("#qinput").val(),
-            //   word_count: word_count,
-            //   word_key_chars: word_key_chars.slice(),
-            //   word_key_codes: word_key_codes.slice(),
-            //   word_key_onsets: word_key_onsets.slice(),
-            //   word_double_press_count: word_double_press_count,
-            //   pre_or_post: pre_or_post,
-            // });
+            // call save_double_press()
+
             // reset to avoid double counting
             this.last_spacebar_press = null;
             // visual cue
@@ -260,7 +270,10 @@ define(["component/Pages"], function (Pages) {
       });
 
       // register event listener
-      $("body").focus().keydown(this.response_handler);
+      $("body").focus().keydown(this.response_handler); // TODO: keydown event handler saves its last action
+      // TODO: register a keyup and a keypress event handler
+      // TODO: the keyup event handler needs to check whether last action was keydown or keypress
+      //       and additionally whether the string ends with a dot. If it does, remove the dot.
 
       // Draw the circle
       let canvas = document.getElementById("canvas-circle");
