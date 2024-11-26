@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-from typing import Dict
-import json
-import argparse
-import subprocess
-import shutil
 from pathlib import Path
+from typing import Dict
+import argparse
+import json
+import glob
+import shutil
+import subprocess
 
 
 def get_data(studyname: str, hostname: str) -> None:
@@ -48,6 +49,16 @@ def get_data(studyname: str, hostname: str) -> None:
 
     # a bit hacky, but convenience wins
     print(f"Data downloaded into: 'data/{studyname}/json/'")
+
+    # remove all the files that were marked as excluded beforehand
+    paths = sorted(glob.glob(f"data/{studyname}/json/*.json"))
+    previous_path = None
+    for path in paths:
+        if path.replace(".json", ".excluded.json") == previous_path:
+            Path.unlink(Path(path))
+            print(f"Deleted {Path(path).name} (excluded)")
+        else:
+            previous_path = path
 
 
 if __name__ == "__main__":
