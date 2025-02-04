@@ -100,11 +100,9 @@ define(["component/InterferenceStoryTesting"], function (
       this.pages.next();
 
       // show border
-      if (this.study.config["condition"] == "separated") {
-        $("body").css({ border: "40px solid #CBC3E3", height: "100%" });
-        $("html").css({ height: "100%" });
-        $("#sentence").css({ color: "purple" });
-      }
+      $("body").css({ border: "40px solid #CBC3E3", height: "100%" });
+      $("html").css({ height: "100%" });
+      $("#sentence").css({ color: "purple" });
 
       // log beginning of task
       this.study.data.record_trialdata({

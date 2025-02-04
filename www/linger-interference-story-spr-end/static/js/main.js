@@ -5,8 +5,10 @@ require([
   "stage/Consent",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
+  "stage/InterferenceGeometryTraining",
   "stage/FreeAssociationPre",
   "stage/Reading",
+  "stage/InterferenceGeometryTesting",
   "stage/ManipulationSeparatedIntegrated",
   "stage/InterferenceReadingTesting",
   "stage/FreeAssociationPost",
@@ -28,8 +30,10 @@ require([
   Consent,
   Fullscreen,
   GeneralInstructions,
+  InterferenceGeometryTraining,
   FreeAssociationPre,
   Reading,
+  InterferenceGeometryTesting,
   ManipulationSeparatedIntegrated,
   InterferenceReadingTesting,
   FreeAssociationPost,
@@ -46,7 +50,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev1";
+  let _version = "1.0.0-dev2";
   let config = {
     study: "linger-interference-story-spr-end",
     version: _version,
@@ -61,7 +65,12 @@ require([
     enforce_fullscreen: true,
     reading_delay_key: 100,
     interference_reading_delay_key: 100,
-    conditions: ["separated", "integrated"],
+    conditions: ["separated", "continued", "continued-geometry"],
+    interference_geometry_training_image_index: 1,
+    interference_geometry_testing_image_indices: [8, 9, 10, 11],
+    interference_geometry_time_image: 18000,
+    interference_geometry_time_question: 8000,
+    interference_geometry_time_pause: 4000,
   };
 
   // determine debug mode
@@ -72,12 +81,20 @@ require([
     config["time_limit_pre"] = 6000;
     config["time_limit_post"] = 6000;
     config["enforce_fullscreen"] = false;
+    config["interference_geometry_time_image"] = 2000;
+    config["interference_geometry_time_question"] = 2000;
+    config["interference_geometry_time_pause"] = 1000;
   }
 
   // local mode: needed to determine how data is saved
   config["local"] = false;
   if (url_params.has("local")) {
     config["local"] = true;
+  }
+
+  // condition
+  if (url_params.has("condition")) {
+    config["condition"] = url_params.get("condition");
   }
 
   // skip button for debug
@@ -94,13 +111,15 @@ require([
 
   let initialization = Study.init(
     [
-      Welcome,
-      ContentWarning,
-      Consent,
-      Fullscreen,
-      GeneralInstructions,
-      FreeAssociationPre,
+      // Welcome,
+      // ContentWarning,
+      // Consent,
+      // Fullscreen,
+      // GeneralInstructions,
+      // InterferenceGeometryTraining,
+      // FreeAssociationPre,
       Reading,
+      InterferenceGeometryTesting,
       ManipulationSeparatedIntegrated,
       InterferenceReadingTesting,
       FreeAssociationPost,
