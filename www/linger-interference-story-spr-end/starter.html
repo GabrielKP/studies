@@ -11,7 +11,12 @@
 
     <hr />
 
-    <p>Study: <a href="#" id="debug">debug (debug-id)</a>.</p>
+    <p>
+      Study: <a href="#" id="debug">debug (debug-id)</a> ---|---
+      <a href="#" id="continued.debug">continued</a> ---|---
+      <a href="#" id="separated.debug">separated</a> ---|---
+      <a href="#" id="delayed-continued.debug">delayed-continued.</a>
+    </p>
     <br />
     <p>Study: <a href="#" id="test">test (live link with debug id)</a>.</p>
 
@@ -62,6 +67,18 @@
         "&mode=live";
 
       document.getElementById("debug").setAttribute("href", href_debug);
+      // Debug: different conditions
+      document
+        .getElementById("continued.debug")
+        .setAttribute("href", href_debug + "&condition=continued");
+      document
+        .getElementById("separated.debug")
+        .setAttribute("href", href_debug + "&condition=separated");
+      document
+        .getElementById("delayed-continued.debug")
+        .setAttribute("href", href_debug + "&condition=delayed-continued");
+
+      // Test
       document.getElementById("test").setAttribute("href", href_test);
       document
         .getElementById("local.test")
