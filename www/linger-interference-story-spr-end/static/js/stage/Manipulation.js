@@ -39,6 +39,7 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
       _init_start_task(iteration);
       iteration++;
     } else {
+      intask = false;
       delayed_continued_2.next();
     }
   }
@@ -111,8 +112,8 @@ define(["component/Pages", "component/InterferenceGeometry"], function (
       }
     },
     finish_task: function (skip = false) {
-      task.finish_task(skip);
-      study.next();
+      if (intask) task.finish_task(skip);
+      else study.next();
     },
   };
 });

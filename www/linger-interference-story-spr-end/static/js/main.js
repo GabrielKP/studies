@@ -11,6 +11,7 @@ require([
   "stage/Manipulation",
   "stage/InterferenceReadingTesting",
   "stage/FreeAssociationPost",
+  "stage/QuestionnaireManipulationCheck",
   "stage/QuestionnaireExplanationStoriesBlack",
   "stage/QuestionnaireTransportation",
   "stage/QuestionnaireComprehension",
@@ -35,6 +36,7 @@ require([
   Manipulation,
   InterferenceReadingTesting,
   FreeAssociationPost,
+  QuestionnaireManipulationCheck,
   QuestionnaireExplanationStoriesBlack,
   QuestionnaireTransportation,
   QuestionnaireComprehension,
@@ -48,7 +50,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev2";
+  let _version = "1.0.0-dev4";
   let config = {
     study: "linger-interference-story-spr-end",
     version: _version,
@@ -120,10 +122,11 @@ require([
       // Manipulation,
       // InterferenceReadingTesting,
       // FreeAssociationPost,
-      // QuestionnaireExplanationStoriesBlack,
-      // QuestionnaireTransportation,
-      // QuestionnaireComprehension,
-      // QuestionnaireExperience,
+      QuestionnaireManipulationCheck,
+      QuestionnaireExplanationStoriesBlack,
+      QuestionnaireTransportation,
+      QuestionnaireComprehension,
+      QuestionnaireExperience,
       QuestionnaireExplanationStoriesPurple,
       QuestionnaireTransportationInterference,
       QuestionnaireComprehensionInterference,
