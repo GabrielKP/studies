@@ -50,7 +50,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev4";
+  let _version = "1.0.0-dev5";
   let config = {
     study: "linger-interference-story-spr-end",
     version: _version,
@@ -61,7 +61,7 @@ require([
     code_completion: "CGWO2HA6",
     code_noconsent: "CEH4RWLC",
     code_content_warning_disagree: "CAYTAWD0",
-    studytime: 36,
+    studytime: 38,
     enforce_fullscreen: true,
     reading_delay_key: 100,
     interference_reading_delay_key: 100,
@@ -111,17 +111,17 @@ require([
 
   let initialization = Study.init(
     [
-      // Welcome,
-      // ContentWarning,
-      // Consent,
-      // Fullscreen,
-      // GeneralInstructions,
-      // InterferenceGeometryTraining,
-      // FreeAssociationPre,
-      // Reading,
-      // Manipulation,
-      // InterferenceReadingTesting,
-      // FreeAssociationPost,
+      Welcome,
+      ContentWarning,
+      Consent,
+      Fullscreen,
+      GeneralInstructions,
+      InterferenceGeometryTraining,
+      FreeAssociationPre,
+      Reading,
+      Manipulation,
+      InterferenceReadingTesting,
+      FreeAssociationPost,
       QuestionnaireManipulationCheck,
       QuestionnaireExplanationStoriesBlack,
       QuestionnaireTransportation,
