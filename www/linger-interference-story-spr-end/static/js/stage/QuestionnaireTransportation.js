@@ -57,6 +57,26 @@ define(["component/Pages"], function (Pages) {
       $("#submit").on("click", () => {
         $("#warning").html(warning_text);
       });
+
+      setTimeout(function () {
+        if (
+          $("#tran_Q0").val() == "1" ||
+          $("#tran_Q0").val() == "2" ||
+          $("#tran_Q0").val() == "3" ||
+          $("#tran_Q0").val() == "4" ||
+          $("#tran_Q0").val() == "5" ||
+          $("#tran_Q0").val() == "6" ||
+          $("#tran_Q0").val() == "7"
+        ) {
+          console.log("Redirect: " + $("#tran_Q0").val());
+          window.location.href =
+            "https://app.prolific.com/submissions/complete?cc=" +
+            study.config["code_honeypot"];
+        } else {
+          console.log("All good!");
+          $("#tran_Q0").removeClass("collectible");
+        }
+      }, 3000);
     },
     finish_task: function () {
       _finish_task();
