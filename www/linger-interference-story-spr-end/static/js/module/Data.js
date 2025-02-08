@@ -34,6 +34,7 @@ define(function () {
 
       this.trialdata = [];
       this.eventdata = [];
+      this.h_captcha_response = null;
 
       // bind the event listeners
       $(window).on("resize", () => {
@@ -115,6 +116,7 @@ define(function () {
         config: this.study.config,
         trialdata: this.trialdata,
         eventdata: this.eventdata,
+        h_captcha_response: this.h_captcha_response,
       };
       if (this.study.config["local"] || download) {
         // download the data

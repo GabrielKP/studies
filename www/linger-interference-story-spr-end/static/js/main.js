@@ -4,6 +4,7 @@ require([
   "stage/ContentWarning",
   "stage/Consent",
   "stage/Fullscreen",
+  "stage/Captcha",
   "stage/GeneralInstructions",
   "stage/InterferenceGeometryTraining",
   "stage/FreeAssociationPre",
@@ -29,6 +30,7 @@ require([
   ContentWarning,
   Consent,
   Fullscreen,
+  Captcha,
   GeneralInstructions,
   InterferenceGeometryTraining,
   FreeAssociationPre,
@@ -50,7 +52,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev6";
+  let _version = "1.0.0-dev7";
   let config = {
     study: "linger-interference-story-spr-end",
     version: _version,
@@ -116,6 +118,7 @@ require([
       ContentWarning,
       Consent,
       Fullscreen,
+      Captcha,
       GeneralInstructions,
       InterferenceGeometryTraining,
       FreeAssociationPre,
