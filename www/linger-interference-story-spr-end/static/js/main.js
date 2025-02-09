@@ -52,7 +52,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev7";
+  let _version = "1.0.0-dev8";
   let config = {
     study: "linger-interference-story-spr-end",
     version: _version,
@@ -64,7 +64,7 @@ require([
     code_noconsent: "CEH4RWLC",
     code_content_warning_disagree: "CAYTAWD0",
     code_honeypot: "C13F7P5H",
-    studytime: 38,
+    studytime: 40,
     enforce_fullscreen: true,
     reading_delay_key: 100,
     interference_reading_delay_key: 100,
