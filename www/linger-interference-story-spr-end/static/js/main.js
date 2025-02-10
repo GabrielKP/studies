@@ -52,7 +52,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-dev8";
+  let _version = "1.0.0-dev9";
   let config = {
     study: "linger-interference-story-spr-end",
     version: _version,

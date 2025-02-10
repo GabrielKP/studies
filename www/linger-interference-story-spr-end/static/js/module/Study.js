@@ -52,6 +52,12 @@ define(["module/Data"], function (Data) {
         this.config["condition_idx"] = this.config["conditions"].indexOf(
           this.config["condition"]
         );
+        if (this.config["condition_idx"] == -1) {
+          console.log(
+            "ERROR: NOT A VALID CONDITION: ",
+            this.config["condition"]
+          );
+        }
         this.data.record_trialdata({
           condition: this.config["condition"],
           condition_idx: this.config["condition_idx"],
