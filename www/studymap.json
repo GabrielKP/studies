@@ -1,6 +1,7 @@
 {
     "free-association": "study-fa",
     "linger-ocd": "study-lo",
+    "linger-cue-association": "study-lca",
     "linger-interference-end-pause": "study-liep",
     "linger-interference-geometry": "study-lig",
     "linger-interference-pause": "study-lip",
