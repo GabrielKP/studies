@@ -36,7 +36,6 @@ define(["component/Pages"], function (Pages) {
       this.show_next_exp_suppress = this.show_next_exp_suppress.bind(this);
       this.show_cue_new_textbox = this.show_cue_new_textbox.bind(this);
       this.save_word = this.save_word.bind(this);
-      // this.save_double_press = this.save_double_press.bind(this);
       this.ready_word_variables = this.ready_word_variables.bind(this);
       this.fade_cue = this.fade_cue.bind(this);
       this.start_task = this.start_task.bind(this);
@@ -191,7 +190,6 @@ define(["component/Pages"], function (Pages) {
           this.exp_condition == "button_press_suppress" ||
           this.exp_condition == "button_press"
         ) {
-          // TODO: remove conditions
           this.current_time = new Date().getTime();
           if (
             this.last_spacebar_press != null &&
@@ -259,11 +257,7 @@ define(["component/Pages"], function (Pages) {
         e.preventDefault();
       });
 
-      // register event listener
-      $("body").focus().keydown(this.response_handler); // TODO: keydown event handler saves its last action
-      // TODO: register a keyup and a keypress event handler
-      // TODO: the keyup event handler needs to check whether last action was keydown or keypress
-      //       and additionally whether the string ends with a dot. If it does, remove the dot.
+      $("body").focus().keydown(this.response_handler);
 
       // Disable macOS double-space period behavior
       $("#qinput").on("input", function (e) {
