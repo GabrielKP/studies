@@ -38,9 +38,9 @@ require([
   // configuration
   let _version = "1.0.0";
   let config = {
-    study: "linger-neutralcue2",
+    study: "linger-cue-association-button",
     version: _version,
-    debug: false,
+    debug: true,
     default_button_timeout: 500,
     time_limit_pre: 180000,
     time_limit_post: 180000,
