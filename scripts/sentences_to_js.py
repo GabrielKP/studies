@@ -53,6 +53,7 @@ def nsyl_word(word: str, d: Dict):
         "top-hat",
         "two-year",
         "red-blue",
+        "bedsheets",
     ]:
         return 2
     if word in ["dimmable"]:
