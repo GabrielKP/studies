@@ -47,6 +47,7 @@ require([
     code_completion: "CGWO2HA6",
     code_noconsent: "CEH4RWLC",
     code_content_warning_disagree: "CAYTAWD0",
+    conditions: ["h1", "h2"],
     studytime: 33,
     enforce_fullscreen: true,
     reading_delay_key: 100,
