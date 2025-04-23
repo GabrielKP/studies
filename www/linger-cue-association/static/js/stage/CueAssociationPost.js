@@ -14,48 +14,64 @@ define([
       study = _study;
       instruct_pages = new Pages();
       cue_association = new CueAssociation();
-      let condition = study.config["condition"];
-      // console.log("Condition:" + study.config["condition"]);
-      let reorderedList;
+      return study.get_condition().then(() => {
+        let condition = study.config["condition"];
 
-      if (condition == "h2") {
-        let firstPart = WordListPost.slice(-10); // last 10 words
-        let secondPart = WordListPost.slice(0, -10);
-        reorderedList = firstPart.concat(secondPart);
-        // console.log("word list" + wordList);
-      } else if (condition == "h1") {
-        reorderedList = WordListPost; // first 10 words
-      }
-      study.wordList = reorderedList;
-      console.log("Word list for condition", condition, ":", study.wordList);
+        if (condition == "h2") {
+          console.log("Word list for condition", condition);
+          let firstPart = WordListPost.slice(-10); // last 10 words
+          let secondPart = WordListPost.slice(0, -10);
+          study.wordList = firstPart.concat(secondPart);
+        } else if (condition == "h1") {
+          console.log("Word list for condition", condition);
+          study.wordList = WordListPost;
+        } else {
+          console.error("No valid condition found, using default word list");
+          study.wordList = WordListPost;
+        }
+        // let condition = study.config["condition"];
+        // // console.log("Condition:" + study.config["condition"]);
 
-      return Promise.all([
-        instruct_pages.init(
-          study,
-          [
-            "cue_association_post/instruct-1.html",
-            "cue_association_post/instruct-2.html",
-            "cue_association_post/instruct-3.html",
-          ],
-          function () {
-            console.log("Instructions finished, starting cue association");
-            cue_association.start_task();
-          }
-        ),
-        cue_association.init(
-          // feed word list here
-          // make it for both pre and post
-          // word list for both pre and post (two list)
-          study,
-          "cue_association_post/task.html",
-          function () {
-            study.next();
-          },
-          study.config.time_limit_post,
-          // WordListPost
-          study.wordList
-        ),
-      ]);
+        // if (condition == "h2") {
+        //   console.log("Word list for condition", condition);
+        //   let firstPart = WordListPost.slice(-10); // last 10 words
+        //   let secondPart = WordListPost.slice(0, -10);
+        //   study.wordList = firstPart.concat(secondPart);
+        //   // console.log("word list" + wordList);
+        // } else if (condition == "h1") {
+        //   console.log("Word list for condition", condition);
+        //   study.wordList = WordListPost; // first 10 words
+        // }
+        // console.log("Word list for condition", condition, ":", study.wordList);
+
+        return Promise.all([
+          instruct_pages.init(
+            study,
+            [
+              "cue_association_post/instruct-1.html",
+              "cue_association_post/instruct-2.html",
+              "cue_association_post/instruct-3.html",
+            ],
+            function () {
+              console.log("Instructions finished, starting cue association");
+              cue_association.start_task();
+            }
+          ),
+          cue_association.init(
+            // feed word list here
+            // make it for both pre and post
+            // word list for both pre and post (two list)
+            study,
+            "cue_association_post/task.html",
+            function () {
+              study.next();
+            },
+            study.config.time_limit_post,
+            // WordListPost
+            study.wordList
+          ),
+        ]);
+      });
     },
     show: function () {
       // show instructions first

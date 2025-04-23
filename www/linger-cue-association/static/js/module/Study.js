@@ -85,7 +85,8 @@ define(["module/Data"], function (Data) {
           return stage.init(this).then(() => {
             this.stages[indx] = stage;
           });
-        }).concat(this.get_condition())
+        })
+        // .concat(this.get_condition())
       );
     }
 

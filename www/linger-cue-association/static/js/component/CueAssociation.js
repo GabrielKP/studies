@@ -118,6 +118,10 @@ define(["component/Pages"], function (Pages) {
     }
 
     show_next_exp_suppress() {
+      if (!this.wordList || this.wordList.length === 0) {
+        console.error("No word list available");
+        return;
+      }
       if (this.currentWordIndex >= this.wordList.length) {
         this.finish_task(); // End task when all cues are done
       } else {
