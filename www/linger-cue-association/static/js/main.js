@@ -38,7 +38,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.1.0";
+  let _version = "1.1.1";
   let config = {
     study: "linger-cue-association",
     version: _version,
@@ -95,11 +95,9 @@ require([
       Consent,
       Fullscreen,
       GeneralInstructions,
-      // FreeAssociationPre,
       CueAssociationPre,
       Reading,
       CueAssociationPost,
-      // FreeAssociationPost,
       QuestionnaireTransportation,
       QuestionnaireComprehension,
       QuestionnaireExperience,

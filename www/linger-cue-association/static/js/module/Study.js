@@ -35,63 +35,7 @@ define(["module/Data"], function (Data) {
             console.log("Condition: " + condition);
           })
           .catch(() => {
-            console.log("Failed to determine condition. Setting it to 0.");
-            let condition_idx = 0;
-            let condition = this.config["conditions"][condition_idx];
-
-            this.config["condition"] = condition;
-            this.config["condition_idx"] = condition_idx;
-            this.data.record_trialdata({
-              condition: condition,
-              condition_idx: condition_idx,
-              count: null,
-            });
-            console.log("Condition: " + condition);
-          });
-      } else {
-        this.config["condition_idx"] = this.config["conditions"].indexOf(
-          this.config["condition"]
-        );
-        if (this.config["condition_idx"] == -1) {
-          console.log(
-            "ERROR: NOT A VALID CONDITION: ",
-            this.config["condition"]
-          );
-        }
-        this.data.record_trialdata({
-          condition: this.config["condition"],
-          condition_idx: this.config["condition_idx"],
-          count: undefined,
-        });
-        console.log("Condition: " + this.config["condition"]);
-        return Promise.resolve();
-      }
-    }
-
-    get_condition() {
-      if (
-        typeof this.config["conditions"] == "undefined" ||
-        this.config["conditions"].length == 0
-      ) {
-        return Promise.resolve();
-      } else if (this.config["condition"] == null) {
-        return $.ajax({ url: "get_count", type: "GET" })
-          .done((data) => {
-            let condition_idx =
-              data["count"] % this.config["conditions"].length;
-            let condition = this.config["conditions"][condition_idx];
-
-            this.config["condition"] = condition;
-            this.config["condition_idx"] = condition_idx;
-            this.data.record_trialdata({
-              condition: condition,
-              condition_idx: condition_idx,
-              count: data["count"],
-            });
-            console.log("Condition: " + condition);
-          })
-          .catch(() => {
-            console.log("Failed to determine condition. Setting it to 0.");
+            console.log("Failed to determine condition. Setting id to 0.");
             let condition_idx = 0;
             let condition = this.config["conditions"][condition_idx];
 
@@ -136,13 +80,15 @@ define(["module/Data"], function (Data) {
       this.stage_time_start = new Date().getTime();
       this.data.record_trialdata({ status: "stage_begin" }); // log init stage begin for consistency
 
-      return Promise.all(
-        $.map(uninit_stages, (stage, indx) => {
-          return stage.init(this).then(() => {
-            this.stages[indx] = stage;
-          });
-        }).concat(this.get_condition())
-      );
+      return this.get_condition().then(() => {
+        return Promise.all(
+          $.map(uninit_stages, (stage, indx) => {
+            return stage.init(this).then(() => {
+              this.stages[indx] = stage;
+            });
+          })
+        );
+      });
     }
 
     next() {
