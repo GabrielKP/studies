@@ -1,6 +1,18 @@
 define([], function () {
   return [
-    "chips",
-    "sushi",
+    "Breakfast",
+    "Road",
+    "Reaction",
+    "Sadness",
+    "Fault",
+    "Silence",
+    "Creek",
+    "Portion",
+    "Lifetime",
+    "Waitress",
+    "Snore",
+    "Comforter",
+    "Snack",
+    "Parties",
   ];
 });

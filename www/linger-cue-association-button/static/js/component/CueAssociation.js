@@ -88,7 +88,7 @@ define(["component/Pages"], function (Pages) {
       var submit_object = {}; // Declare empty object
 
       // Add properties to the object
-      submit_object["task"] = "cue_association";
+      submit_object["task"] = "cue_association_button";
       submit_object["status"] = "data";
       submit_object["word_text_cue"] = this.word_text;
       submit_object["word_text_user"] = $("#qinput").val();
@@ -244,7 +244,7 @@ define(["component/Pages"], function (Pages) {
       this.pages.next();
       this.study.data.record_trialdata({
         status: "task_begin",
-        task: "cue_association",
+        task: "cue_association_button",
       });
       this.task_start_time = new Date().getTime();
       this.currentWordIndex = 0;
@@ -260,10 +260,7 @@ define(["component/Pages"], function (Pages) {
       });
 
       // register event listener
-      $("body").focus().keydown(this.response_handler); // TODO: keydown event handler saves its last action
-      // TODO: register a keyup and a keypress event handler
-      // TODO: the keyup event handler needs to check whether last action was keydown or keypress
-      //       and additionally whether the string ends with a dot. If it does, remove the dot.
+      $("body").focus().keydown(this.response_handler);
 
       // Disable macOS double-space period behavior
       $("#qinput").on("input", function (e) {

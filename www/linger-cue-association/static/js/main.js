@@ -15,6 +15,7 @@ require([
   "stage/QuestionnaireExperience",
   "stage/QuestionnaireDemographics",
   "stage/QuestionnaireOpen",
+  "stage/Captcha",
   "stage/Complete",
 ], function (
   Study,
@@ -33,12 +34,13 @@ require([
   QuestionnaireExperience,
   QuestionnaireDemographics,
   QuestionnaireOpen,
+  Captcha,
   Complete
 ) {
   // configuration
-  let _version = "1.0.0";
+  let _version = "1.1.0";
   let config = {
-    study: "linger-neutralcue2",
+    study: "linger-cue-association",
     version: _version,
     debug: false,
     default_button_timeout: 500,
@@ -69,6 +71,11 @@ require([
     config["local"] = true;
   }
 
+  // condition
+  if (url_params.has("condition")) {
+    config["condition"] = url_params.get("condition");
+  }
+
   // skip button for debug
   if (config["debug"]) {
     $("#container-skip-button").show();
@@ -83,10 +90,10 @@ require([
 
   let initialization = Study.init(
     [
-      // Welcome,
-      // ContentWarning,
-      // Consent,
-      // Fullscreen,
+      Welcome,
+      ContentWarning,
+      Consent,
+      Fullscreen,
       GeneralInstructions,
       // FreeAssociationPre,
       CueAssociationPre,
@@ -98,6 +105,7 @@ require([
       QuestionnaireExperience,
       QuestionnaireDemographics,
       QuestionnaireOpen,
+      Captcha,
       Complete,
     ],
     config
