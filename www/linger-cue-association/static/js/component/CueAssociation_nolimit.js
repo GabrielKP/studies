@@ -5,6 +5,7 @@ define(["component/Pages"], function (Pages) {
     word_start_time;
     word_end_time;
     word_text;
+    // word_text_user;
     word_key_chars;
     word_key_codes;
     word_key_onsets;
@@ -19,10 +20,6 @@ define(["component/Pages"], function (Pages) {
     time_limit;
     currentWordIndex = 0; // Current cue index
     trialData = []; // Array to store all trial data
-
-    response_time_limit = 15000; // response threshold
-    response_timer = null;
-    slow_response_count = 0;
 
     constructor() {
       // bind all the functions
@@ -55,8 +52,6 @@ define(["component/Pages"], function (Pages) {
       });
       $("body").unbind("keydown", this.response_handler);
 
-      clearTimeout(this.response_timer); // Clear timer
-
       // Export trialData to JSON
       if (this.stage === "post") {
         const dataBlob = new Blob([JSON.stringify(this.trialData)], {
@@ -79,19 +74,19 @@ define(["component/Pages"], function (Pages) {
     }
 
     save_word() {
-      var submit_object = {}; // Declare empty object
+      var submit_object = {};
 
-      // Add properties to the object
-      submit_object["task"] = "cue_association_button";
+      // this.word_text_user = $("#qinput").val();
+      submit_object["task"] = "cue_association";
       submit_object["status"] = "data";
       submit_object["word_text_cue"] = this.word_text;
+      // submit_object["word_text_user"] = this.word_text_user;
       submit_object["word_text"] = $("#qinput").val();
       submit_object["word_count"] = this.word_count;
       submit_object["word_time"] = this.word_end_time - this.word_start_time;
       submit_object["word_key_chars"] = this.word_key_chars;
       submit_object["word_key_codes"] = this.word_key_codes;
       submit_object["word_key_onsets"] = this.word_key_onsets;
-      submit_object["slow_response_count"] = this.slow_response_count;
       this.study.data.record_trialdata(submit_object);
       // Push to trialData
       this.trialData.push(submit_object);
@@ -102,7 +97,6 @@ define(["component/Pages"], function (Pages) {
       this.word_key_chars = [];
       this.word_key_codes = [];
       this.word_key_onsets = [];
-      // this.word_double_press_count = 0;
       this.word_start_time = new Date().getTime();
       this.key_start_time = new Date().getTime();
       this.listening = true;
@@ -112,21 +106,13 @@ define(["component/Pages"], function (Pages) {
       $("#qinput").val("");
       this.fade_cue(this.word_text.toUpperCase());
       this.ready_word_variables();
-
-      //start timer
-      //clear existing timer
-      clearTimeout(this.response_timer);
-
-      //start a new timer
-      this.response_timer = setTimeout(() => {
-        //warn the participant
-        this.fade_cue("<span style='color: red;'>Please respond faster!</span>")
-        // $("#cue").html("<span style='color: red;'>Please respond faster!</span>");
-        // $(".stim-div").fadeTo(250, 1);
-        this.slow_response_count++;
-      }, this.response_time_limit);
     }
 
+    /*****
+     * This function switches to the appropriate next mode,
+     * dependent on the previous mode. It will then initiate
+     * the correct display of the next mode.
+     */
     show_next() {
       this.show_next_exp_suppress();
     }
@@ -149,15 +135,14 @@ define(["component/Pages"], function (Pages) {
       if (!this.listening) return;
       this.listening = false;
       if (key.keyCode == 13) {
-        // "ENTER" key
-        
+        // "ENTER" - key
+
         if ($("#qinput").val() == "") {
+          // do not submit if textbox is empty
           this.listening = true;
           key.preventDefault();
           return;
         }
-        // clear timer since the participant responded
-        clearTimeout(this.response_timer);
 
         // record keystroke
         this.key_end_time = new Date().getTime();
@@ -165,7 +150,9 @@ define(["component/Pages"], function (Pages) {
         this.word_key_codes.push(key.keyCode);
         this.word_key_onsets.push(this.key_end_time - this.key_start_time);
 
+        // Submit data to psiturk
         this.word_end_time = new Date().getTime();
+        // this.word_text_user = $("#qinput").val();
         this.save_word();
         this.word_count++;
 
@@ -207,10 +194,10 @@ define(["component/Pages"], function (Pages) {
       // beginning of cue association
       this.study.data.record_trialdata({
         status: "task_begin",
-        task: "cue_association_button",
+        task: "cue_association",
       });
       this.task_start_time = new Date().getTime();
-      this.currentWordIndex = 0;
+      this.currentWordIndex = 0; // Reset index
 
       // Any click onscreen autofocuses to textbox
       $(function () {
@@ -222,11 +209,16 @@ define(["component/Pages"], function (Pages) {
       // Define function to prevent copy, paste, and cut
       // ref: https://jsfiddle.net/lesson8/ZxKdp/
       $("input,textarea").bind("cut copy paste", function (e) {
-        e.preventDefault();
+        e.preventDefault(); //disable cut,copy,paste
       });
 
       // register event listener
       $("body").focus().keydown(this.response_handler);
+
+      // first_cue = this.wordList[this.currentWordIndex];
+      // $("#cue").html(first_cue);
+      // this.currentWordIndex++
+      // $("#cue").html("Cue Association");
 
       // Disable macOS double-space period behavior
       $("#qinput").on("input", function (e) {
@@ -238,8 +230,9 @@ define(["component/Pages"], function (Pages) {
         }
       });
       this.show_next_exp_suppress();
+      // Timer for FA
       setTimeout(() => {
-          this.mode = "end";
+        this.mode = "end";
       }, this.time_limit);
 
       this.mode = "cue_association_game";

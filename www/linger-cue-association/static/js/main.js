@@ -38,18 +38,19 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.1.2";
+  let _version = "1.2.0";
   let config = {
     study: "linger-cue-association",
     version: _version,
-    debug: false,
+    debug: true,
     default_button_timeout: 500,
     time_limit_pre: 180000,
     time_limit_post: 180000,
     code_completion: "CGWO2HA6",
     code_noconsent: "CEH4RWLC",
     code_content_warning_disagree: "CAYTAWD0",
-    conditions: ["h1", "h2"],
+    conditions: ["LOWO1"],
+    // conditions: ["h1","h2"],
     studytime: 33,
     enforce_fullscreen: true,
     reading_delay_key: 100,
