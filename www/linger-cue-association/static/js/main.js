@@ -38,11 +38,11 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.2.0";
+  let _version = "1.3.0";
   let config = {
     study: "linger-cue-association",
     version: _version,
-    debug: true,
+    debug: false,
     default_button_timeout: 500,
     time_limit_pre: 180000,
     time_limit_post: 180000,
