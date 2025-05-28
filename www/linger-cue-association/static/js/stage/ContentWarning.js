@@ -30,7 +30,7 @@ define(["component/Pages"], function (Pages) {
         save_status.then(() => {
           // route to prolific
           window.location.href =
-            "https://app.prolific.co/submissions/complete?cc=" +
+            "https://app.prolific.com/submissions/complete?cc=" +
             study.config["code_content_warning_disagree"];
         });
       });

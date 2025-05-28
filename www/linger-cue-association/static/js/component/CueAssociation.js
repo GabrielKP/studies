@@ -120,9 +120,9 @@ define(["component/Pages"], function (Pages) {
       //start a new timer
       this.response_timer = setTimeout(() => {
         //warn the participant
-        this.fade_cue("<span style='color: red;'>Please respond faster!</span>")
-        // $("#cue").html("<span style='color: red;'>Please respond faster!</span>");
-        // $(".stim-div").fadeTo(250, 1);
+        // this.fade_cue("<span style='color: red;font-weight: bold;'>Please respond faster!</span>")
+        $("#cue").html("<span style='color: red;font-weight: bold;'>Please respond faster!</span>");
+        $(".stim-div").fadeTo(250, 1);
         this.slow_response_count++;
       }, this.response_time_limit);
     }
@@ -150,7 +150,7 @@ define(["component/Pages"], function (Pages) {
       this.listening = false;
       if (key.keyCode == 13) {
         // "ENTER" key
-        
+
         if ($("#qinput").val() == "") {
           this.listening = true;
           key.preventDefault();
@@ -239,7 +239,7 @@ define(["component/Pages"], function (Pages) {
       });
       this.show_next_exp_suppress();
       setTimeout(() => {
-          this.mode = "end";
+        this.mode = "end";
       }, this.time_limit);
 
       this.mode = "cue_association_game";
