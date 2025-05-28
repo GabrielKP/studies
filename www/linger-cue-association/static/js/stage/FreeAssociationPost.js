@@ -13,7 +13,7 @@ define(["component/Pages", "component/FreeAssociation"], function (
       instruct_pages = new Pages();
       free_association = new FreeAssociation();
 
-      if (study.config.condition == "h1") {
+      if (study.config.condition == "l1") {
         // do condition stuff here
       }
       return Promise.all([

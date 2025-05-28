@@ -17,12 +17,12 @@ define([
 
       condition = study.config["condition"];
 
-      if (condition == "h2") {
+      if (condition == "l2") {
         console.log("Word list for condition", condition);
         let firstPart = WordListPost.slice(-10); // last 10 words
         let secondPart = WordListPost.slice(0, -10);
         study.wordList = firstPart.concat(secondPart);
-      } else if (condition == "h1") {
+      } else if (condition == "l1") {
         console.log("Word list for condition", condition);
         study.wordList = WordListPost;
       } else {
