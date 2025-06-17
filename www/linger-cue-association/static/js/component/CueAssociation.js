@@ -82,7 +82,7 @@ define(["component/Pages"], function (Pages) {
       var submit_object = {}; // Declare empty object
 
       // Add properties to the object
-      submit_object["task"] = "cue_association_button";
+      submit_object["task"] = "cue_association";
       submit_object["status"] = "data";
       submit_object["word_text_cue"] = this.word_text;
       submit_object["word_text"] = $("#qinput").val();

@@ -3,6 +3,7 @@ require([
   "stage/Welcome",
   "stage/ContentWarning",
   "stage/Consent",
+  "stage/Recording",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
   // "stage/FreeAssociationPre",
@@ -16,12 +17,14 @@ require([
   "stage/QuestionnaireDemographics",
   "stage/QuestionnaireOpen",
   "stage/Captcha",
+  "stage/EndRecording",
   "stage/Complete",
 ], function (
   Study,
   Welcome,
   ContentWarning,
   Consent,
+  Recording,
   Fullscreen,
   GeneralInstructions,
   // FreeAssociationPre,
@@ -35,10 +38,11 @@ require([
   QuestionnaireDemographics,
   QuestionnaireOpen,
   Captcha,
-  Complete
+  EndRecording,
+  Complete,
 ) {
   // configuration
-  let _version = "1.3.2";
+  let _version = "1.4.0";
   let config = {
     study: "linger-cue-association",
     version: _version,
@@ -93,6 +97,7 @@ require([
       Welcome,
       ContentWarning,
       Consent,
+      Recording,
       Fullscreen,
       GeneralInstructions,
       CueAssociationPre,
@@ -104,6 +109,7 @@ require([
       QuestionnaireDemographics,
       QuestionnaireOpen,
       Captcha,
+      EndRecording,
       Complete,
     ],
     config
