@@ -39,7 +39,7 @@ require([
   QuestionnaireOpen,
   Captcha,
   EndRecording,
-  Complete,
+  Complete
 ) {
   // configuration
   let _version = "1.4.0";

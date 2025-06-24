@@ -103,10 +103,6 @@ define(function () {
         this.page_index -= 1;
         this._display_page(0);
 
-        // bind button functions
-        this._bind_buttons(this.next, this.previous);
-        this._enable_buttons(0);
-
         return true;
       } else {
         console.log("No previous page");
