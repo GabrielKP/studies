@@ -42,7 +42,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.4.0";
+  let _version = "1.4.1";
   let config = {
     study: "linger-cue-association",
     version: _version,
