@@ -18,7 +18,22 @@ define(["component/Pages"], function (Pages) {
       );
     },
     show: function () {
+      // fullscreen handling
+      if (study.config["enforce_fullscreen"]) {
+        document.documentElement.removeEventListener(
+          "fullscreenchange",
+          study.fullscreen_enforcer
+        );
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+      }
+      if (!study.config["debug"]) {
+        $(window).off("beforeunload");
+      }
+
       pages.next();
+
       setTimeout(() => {
         // Display participant ID
         const participantId = study.data.participantID;
