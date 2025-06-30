@@ -1,8 +1,9 @@
 define([
   "component/Pages",
   "component/CueAssociation",
-  "component/WordListPost",
-], function (Pages, CueAssociation, WordListPost) {
+  "component/WordListPost1",
+  "component/WordListPost2",
+], function (Pages, CueAssociation, WordListPost1, WordListPost2) {
   let study;
   let instruct_pages;
   let cue_association;
@@ -19,15 +20,13 @@ define([
 
       if (condition == "l2") {
         console.log("Word list for condition", condition);
-        let firstPart = WordListPost.slice(-10); // last 10 words
-        let secondPart = WordListPost.slice(0, -10);
-        study.wordList = firstPart.concat(secondPart);
+        study.wordList = WordListPost2;
       } else if (condition == "l1") {
         console.log("Word list for condition", condition);
-        study.wordList = WordListPost;
+        study.wordList = WordListPost1;
       } else {
         console.error("No valid condition found, using default word list");
-        study.wordList = WordListPost;
+        study.wordList = WordListPost1;
       }
 
       return Promise.all([

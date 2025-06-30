@@ -24,25 +24,26 @@ define(["component/Pages"], function (Pages) {
           "fullscreenchange",
           study.fullscreen_enforcer
         );
-        if (document.fullscreenElement) {
-          document.exitFullscreen();
-        }
       }
-      if (!study.config["debug"]) {
-        $(window).off("beforeunload");
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
       }
 
       pages.next();
 
       setTimeout(() => {
+        // Show upload link
+        $("#upload-link").attr("href", study.config.upload_link);
+        $("#upload-link").text(study.config.upload_link);
+
         // Display participant ID
         const participantId = study.data.participantID;
         const studyId = study.data.study_id;
         if (participantId && studyId) {
-          console.log(participantId)
-          console.log(studyId)
-          document.getElementById("participant-id").textContent = participantId;
-          document.getElementById("study-id").textContent = studyId;
+          console.log(participantId);
+          console.log(studyId);
+          $("#participant-id").text(participantId);
+          $("#study-id").text(studyId);
         }
         // console.log(participantId)
       }, 100);
@@ -53,9 +54,6 @@ define(["component/Pages"], function (Pages) {
           recording_agree: true,
         });
       });
-    }
-
-
-
+    },
   };
 });

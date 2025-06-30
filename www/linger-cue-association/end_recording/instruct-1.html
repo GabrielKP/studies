@@ -1,52 +1,100 @@
 <!-- <div class="container position-absolute top-50 start-50 translate-middle"> -->
-<div class="container" style="height: 100vh; overflow-y: auto;">
+<div class="container" style="height: 100vh; overflow-y: auto">
   <div class="card text-left">
     <h3 class="card-header text-center">Screen Recording</h3>
     <!-- <div id="participant-id" class="participant-id"></div> -->
     <div class="instructions card-body">
-      <p style="text-align: center; color: red; font-weight: bold;"><b> STOP SCREEN RECORDING</b></p>
-      <p>
-        It may take a few minutes for your screen recording to save to your computer.
+      <p style="text-align: center; color: red; font-weight: bold">
+        <b> STOP SCREEN RECORDING</b>
       </p>
-
-      <p> <b>Make sure your recording is saved as an .mp4 file NOT a .zoom file. </b>
-        If it is a .zoom file, we will be unable to review it and you may not receive full compensation for this study.
-      </p>
-
       <p>
-        Note that all recent versions of Zoom will automatically convert meetings to .mp4 format for you.
+        It may take a few minutes for your screen recording to save to your
+        computer.
       </p>
 
       <p>
-        If you have issues with this, please send us a message on Prolific and we will do our best to help!
+        <b
+          >Make sure your recording is saved as an .mp4 file NOT a .zoom file.
+        </b>
+        If it is a .zoom file, we will be unable to review it and you may not
+        receive full compensation for this study.
       </p>
 
-      <p>Once your recording has saved, upload it here: <br>
-        <a href="https://livejohnshopkins-my.sharepoint.com/:f:/g/personal/gkressi1_jh_edu/EphOh_kBCGBDsgR9IxCdTdIB7glO9m2zd3bcIYub4MVETw"
-          target="_blank">https://livejohnshopkins-my.sharepoint.com/:f:/g/personal/gkressi1_jh_edu/EphOh_kBCGBDsgR9IxCdTdIB7glO9m2zd3bcIYub4MVETw</a>
-        <?xml version="1.0" encoding="UTF-8"?><svg width="20px" height="20px" viewBox="2 2 24 24" stroke-width="1.5"
-          fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
-          <path d="M21 3L15 3M21 3L12 12M21 3V9" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round"></path>
-          <path d="M21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H11"
-            stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
-        </svg>
+      <p>
+        <i>
+          Note that all recent versions of Zoom will automatically convert
+          meetings to .mp4 format for you.
+        </i>
       </p>
 
+      <p>
+        If you have issues with this, please send us a message on Prolific and
+        we will do our best to help!
+      </p>
 
-      <p>Copy and paste this link into a new browser tab for the upload, and DO NOT close the current tab. You will know
-        the upload is complete when the words "<b>Finished uploading</b>" appear. </p>
+      <p>
+        Once your recording has saved, upload it here: <br />
+        <a id="upload-link" href="" target="_blank"></a>
+        <!-- <?xml version="1.0"  encoding="UTF-8"?><svg
+          width="20px"
+          height="20px"
+          viewBox="2 2 24 24"
+          stroke-width="1.5"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          color="#000000"
+        >
+          <path
+            d="M21 3L15 3M21 3L12 12M21 3V9"
+            stroke="#000000"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H11"
+            stroke="#000000"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          ></path>
+        </svg> -->
+        <i>(link opens in new tab).</i>
+      </p>
 
-      <p>After you complete the upload, the link will prompt you with two boxes to enter your First and Last Name.
-        Please, do NOT write your actual first and last name in the boxes. Just copy your Prolific ID and study ID and
-        enter it into
-        both boxes.</p>
+      <p><b>DO NOT close the current tab.</b></p>
 
-      <p>Your prolific ID: <b><span id="participant-id"></span></b></p>
-      <p>Your study ID: <b><span id="study-id"></span></b></p>
+      <p>
+        Click the link, or copy and paste this link into a new browser tab for
+        the upload.
+      </p>
 
-      <p style="margin-top:1.5cm;">I confirm that I uploaded my screen recording and wrote my Prolific ID and Study ID
-        under both name fields.</p>
+      <p>
+        You will be prompted with two boxes to enter your First and Last Name.
+        Please, do NOT write your actual first and last name in the boxes. Just
+        copy your Prolific ID and study ID and enter it into the boxes.
+      </p>
+
+      <p>
+        First name - Prolific ID:
+        <b><span id="participant-id" style="color: blue"></span></b>
+      </p>
+      <p>
+        Last name - Study ID:
+        <b><span id="study-id" style="color: blue"></span></b>
+      </p>
+
+      <p>
+        You will know the upload is complete when the words
+        <i>"Finished uploading"</i> appear.
+      </p>
+
+      <p style="margin-top: 1.5cm">
+        <b
+          >I confirm that I uploaded my screen recording and wrote my Prolific
+          ID and Study ID under both name fields.</b
+        >
+      </p>
 
       <!-- <div class="instructionsnav">
         <div class="row">
@@ -68,7 +116,7 @@
         <div class="row">
           <div class="col-12 d-flex justify-content-center">
             <button type="button" id="next" class="btn btn-success btn-lg">
-              <span class="glyphicon glyphicon-arrow-left"></span> YES
+              I CONFIRM
             </button>
           </div>
           <div class="col-2"></div>

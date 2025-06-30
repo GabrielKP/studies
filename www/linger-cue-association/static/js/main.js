@@ -6,17 +6,14 @@ require([
   "stage/Recording",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
-  // "stage/FreeAssociationPre",
   "stage/CueAssociationPre",
   "stage/Reading",
   "stage/CueAssociationPost",
-  // "stage/FreeAssociationPost",
   "stage/QuestionnaireTransportation",
   "stage/QuestionnaireComprehension",
   "stage/QuestionnaireExperience",
   "stage/QuestionnaireDemographics",
   "stage/QuestionnaireOpen",
-  "stage/Captcha",
   "stage/EndRecording",
   "stage/Complete",
 ], function (
@@ -27,22 +24,19 @@ require([
   Recording,
   Fullscreen,
   GeneralInstructions,
-  // FreeAssociationPre,
   CueAssociationPre,
   Reading,
   CueAssociationPost,
-  // FreeAssociationPost,
   QuestionnaireTransportation,
   QuestionnaireComprehension,
   QuestionnaireExperience,
   QuestionnaireDemographics,
   QuestionnaireOpen,
-  Captcha,
   EndRecording,
   Complete
 ) {
   // configuration
-  let _version = "1.4.1";
+  let _version = "1.4.2";
   let config = {
     study: "linger-cue-association",
     version: _version,
@@ -57,6 +51,8 @@ require([
     studytime: 33,
     enforce_fullscreen: true,
     reading_delay_key: 100,
+    upload_link:
+      "https://livejohnshopkins-my.sharepoint.com/:f:/g/personal/gkressi1_jh_edu/EphOh_kBCGBDsgR9IxCdTdIB7glO9m2zd3bcIYub4MVETw",
   };
 
   // determine debug mode
@@ -108,7 +104,6 @@ require([
       QuestionnaireExperience,
       QuestionnaireDemographics,
       QuestionnaireOpen,
-      Captcha,
       EndRecording,
       Complete,
     ],
