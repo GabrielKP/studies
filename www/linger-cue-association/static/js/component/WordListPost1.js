@@ -33,6 +33,7 @@ define([], function () {
     // "Driving",
 
     // LOWO1
+    // A
     "Broke",
     "Stomach",
     "Panel",
@@ -41,6 +42,7 @@ define([], function () {
     "Demand",
     "Winter",
     "Debt",
+    // B
     "Weak",
     "Shoelace",
     "Rumble",
@@ -48,6 +50,7 @@ define([], function () {
     "Trunk",
     "Plaque",
     "Burglar",
+    // C
     "Prime",
     "Wash",
     "Urban",
@@ -55,6 +58,7 @@ define([], function () {
     "Grow",
     "Parties",
     "Brain",
+    // D
     "Survey",
     "Proud",
     "Horizontal",
