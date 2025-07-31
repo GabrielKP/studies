@@ -48,21 +48,23 @@
 
       <p>
         Please, only proceed to the next question once you have started screen
-        recording!
+        recording! <b>If you do not submit your screen recording, you may not
+          receive full compensation for this study.</b>
       </p>
-
-      <p style="margin-top: 1.5cm">
-        <b>I confirm that I have started screen recording my browser.</b>
-      </p>
-
       <div class="instructionsnav">
         <div class="row">
-          <div class="col-12 d-flex justify-content-center">
-            <button type="button" id="next" class="btn btn-success btn-lg">
-              I CONFIRM
+          <div class="col-2">
+            <button type="button" id="prev" value="prev" class="btn btn-primary btn-lg previous">
+              <span class="glyphicon glyphicon-arrow-left"></span> Previous
             </button>
           </div>
-          <div class="col-2"></div>
+          <div class="col-8"></div>
+          <div class="col-2">
+            <button type="button" id="next" value="next" class="btn btn-primary btn-lg continue" disabled>
+              Next
+              <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

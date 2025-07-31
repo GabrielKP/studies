@@ -207,7 +207,7 @@ define(["component/Pages"], function (Pages) {
       // beginning of cue association
       this.study.data.record_trialdata({
         status: "task_begin",
-        task: "cue_association_button",
+        task: "cue_association",
       });
       this.task_start_time = new Date().getTime();
       this.currentWordIndex = 0;

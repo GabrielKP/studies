@@ -12,6 +12,7 @@ define(["component/Pages"], function (Pages) {
           "recording/instruct-1.html",
           "recording/instruct-2.html",
           "recording/instruct-3.html",
+          "recording/instruct-4.html",
         ],
         function () {
           study.next();
