@@ -48,7 +48,7 @@ require([
     code_noconsent: "CEH4RWLC",
     code_content_warning_disagree: "CAYTAWD0",
     conditions: ["l1"],
-    studytime: 33,
+    studytime: 5,
     enforce_fullscreen: true,
     reading_delay_key: 100,
     upload_link:
