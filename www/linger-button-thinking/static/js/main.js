@@ -6,26 +6,16 @@ require([
   "stage/Recording",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
-  // "stage/InterferenceGeometryTraining",
   "stage/FreeAssociationPre",
   "stage/Reading",
-  // "stage/Manipulation",
-  // "stage/InterferenceReadingTesting",
   "stage/InterferenceThinking",
   "stage/FreeAssociationPost",
-  // "stage/QuestionnaireManipulationCheck",
-  // "stage/QuestionnaireExplanationStoriesBlack",
   "stage/QuestionnaireTransportation",
   "stage/QuestionnaireComprehension",
   "stage/QuestionnaireExperience",
-  // "stage/QuestionnaireExplanationStoriesPurple",
-  // "stage/QuestionnaireTransportationInterference",
-  // "stage/QuestionnaireComprehensionInterference",
-  // "stage/QuestionnaireExperienceInterference",
   "stage/QuestionnaireDemographics",
   "stage/QuestionnaireOpen",
   "stage/EndRecording",
-  // "stage/Captcha",
   "stage/Complete",
 ], function (
   Study,
@@ -35,29 +25,20 @@ require([
   Recording,
   Fullscreen,
   GeneralInstructions,
-  // InterferenceGeometryTraining,
   FreeAssociationPre,
   Reading,
-  // Manipulation,
   InterferenceThinking,
   FreeAssociationPost,
-  // QuestionnaireManipulationCheck,
-  // QuestionnaireExplanationStoriesBlack,
   QuestionnaireTransportation,
   QuestionnaireComprehension,
   QuestionnaireExperience,
-  // QuestionnaireExplanationStoriesPurple,
-  // QuestionnaireTransportationInterference,
-  // QuestionnaireComprehensionInterference,
-  // QuestionnaireExperienceInterference,
   QuestionnaireDemographics,
   QuestionnaireOpen,
   EndRecording,
-  // Captcha,
   Complete
 ) {
   // configuration
-  let _version = "1.0.0";
+  let _version = "1.0.1-alpha1";
   let config = {
     study: "linger-interference-thinking",
     version: _version,
@@ -75,11 +56,6 @@ require([
     reading_delay_key: 100,
     interference_reading_delay_key: 100,
     conditions: ["thinking"],
-    // interference_geometry_training_image_index: 1,
-    // interference_geometry_testing_image_indices: [8, 9, 10, 11],
-    // interference_geometry_time_image: 18000,
-    // interference_geometry_time_question: 8000,
-    // interference_geometry_time_pause: 4000,
   };
 
   // determine debug mode
@@ -91,9 +67,6 @@ require([
     config["time_limit_pre"] = 6000;
     config["time_limit_post"] = 6000;
     config["enforce_fullscreen"] = false;
-    // config["interference_geometry_time_image"] = 2000;
-    // config["interference_geometry_time_question"] = 2000;
-    // config["interference_geometry_time_pause"] = 1000;
   }
 
   // local mode: needed to determine how data is saved
@@ -127,25 +100,15 @@ require([
       Recording,
       Fullscreen,
       GeneralInstructions,
-      // InterferenceGeometryTraining,
       FreeAssociationPre,
       Reading,
-      // Manipulation,
       InterferenceThinking,
-      FreeAssociationPost,
-      // QuestionnaireManipulationCheck,
-      // QuestionnaireExplanationStoriesBlack,
       QuestionnaireTransportation,
       QuestionnaireComprehension,
       QuestionnaireExperience,
-      // QuestionnaireExplanationStoriesPurple,
-      // QuestionnaireTransportationInterference,
-      // QuestionnaireComprehensionInterference,
-      // QuestionnaireExperienceInterference,
       QuestionnaireDemographics,
       QuestionnaireOpen,
       EndRecording,
-      // Captcha,
       Complete,
     ],
     config
