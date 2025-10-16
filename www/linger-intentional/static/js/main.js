@@ -38,7 +38,7 @@ require([
   // configuration
   let _version = "1.0.1-alpha1";
   let config = {
-    study: "linger-neutralcue2-intentional",
+    study: "linger-intentional",
     version: _version,
     debug: false,
     default_button_timeout: 500,
