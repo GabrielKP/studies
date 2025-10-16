@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-from pathlib import Path
-from typing import Dict
 import argparse
-import json
 import glob
+import json
 import shutil
 import subprocess
+from pathlib import Path
+from typing import Dict
 
 
 def get_data(studyname: str, hostname: str) -> None:
@@ -20,7 +20,7 @@ def get_data(studyname: str, hostname: str) -> None:
             f"studyname '{studyname}' not in studymap."
             f" Choose one of {list(studymap.keys())}."
         )
-
+    print("Using study_id:", studyname_on_server)
     if not Path.exists(Path("data", studyname, "json")):
         print(f"Creating new data dir for {studyname}")
         # 1. copy example over

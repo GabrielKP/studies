@@ -87,7 +87,7 @@ require([
       Welcome,
       ContentWarning,
       Consent,
-      Reading,
+      Recording,
       Fullscreen,
       GeneralInstructions,
       FreeAssociationPre,
