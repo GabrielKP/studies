@@ -1,0 +1,103 @@
+<div class="container position-absolute top-50 start-50 translate-middle text-center">
+    <!-- Progress Section -->
+    <div style="margin-bottom: 30px;">
+        <!-- All warning text variations -->
+        <div id="warning-initial" class="warning-text"
+            style="display: block; font-size: 20px; margin-bottom: 20px; min-height: 50px; font-weight: 600; color: #000000;">
+            Press and hold the space bar to begin.<br>While holding, press the ENTER key each time you think about the
+            story.
+        </div>
+
+        <div id="warning-holding" class="warning-text"
+            style="display: none; font-size: 20px; margin-bottom: 20px; min-height: 50px; font-weight: 600; color: #000000;">
+            Hold the space bar and press the ENTER key when you think about the story
+        </div>
+
+        <div id="warning-released" class="warning-text"
+            style="display: none; font-size: 20px; margin-bottom: 20px; min-height: 50px; font-weight: 600; color: #C92100;">
+            Please hold the space bar <b>continuously</b> and press the ENTER key when you think about the story
+        </div>
+
+        <div id="warning-complete" class="warning-text"
+            style="display: none; font-size: 22px; margin-bottom: 20px; min-height: 50px; font-weight: bold; color: #00C853;">
+            Done! You may continue.
+        </div>
+
+        <!-- Pulsing Circle Progress -->
+        <div id="progress-container"
+            style="width: 300px; height: 300px; margin: 0 auto; position: relative; display: flex; align-items: center; justify-content: center;">
+            <div id="progress-circle" class="circle-base">
+            </div>
+        </div>
+    </div>
+
+    <!-- Double Enter key feedback element - REMOVED/HIDDEN -->
+    <div id="double-enter-feedback" style="display: none;">
+    </div>
+</div>
+
+<style>
+    /* Blue pulse animation */
+    @keyframes circle-pulse-blue {
+        0% {
+            box-shadow: 0 0 0 0 rgba(135, 186, 211, 0.7),
+                0 0 0 0 rgba(135, 186, 211, 0.7);
+        }
+
+        40% {
+            box-shadow: 0 0 0 50px rgba(135, 186, 211, 0),
+                0 0 0 0 rgba(135, 186, 211, 0.7);
+        }
+
+        80% {
+            box-shadow: 0 0 0 50px rgba(135, 186, 211, 0),
+                0 0 0 30px rgba(135, 186, 211, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(135, 186, 211, 0),
+                0 0 0 30px rgba(135, 186, 211, 0);
+        }
+    }
+
+    /* Button pulse animation */
+    @keyframes circle-pulse-button {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7),
+                0 0 0 0 rgba(255, 215, 0, 0.7);
+        }
+
+        40% {
+            box-shadow: 0 0 0 50px rgba(255, 215, 0, 0),
+                0 0 0 0 rgba(255, 215, 0, 0.7);
+        }
+
+        80% {
+            box-shadow: 0 0 0 50px rgba(255, 215, 0, 0),
+                0 0 0 30px rgba(255, 215, 0, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(255, 215, 0, 0),
+                0 0 0 30px rgba(255, 215, 0, 0);
+        }
+    }
+
+    .circle-base {
+        background-color: #87bad3;
+        border-radius: 50%;
+        position: absolute;
+        transition: width 0.05s, height 0.05s, background-color 0.3s;
+        width: 0px;
+        height: 0px;
+    }
+
+    .circle-pulse-blue {
+        animation: circle-pulse-blue 2s infinite;
+    }
+
+    .circle-pulse-button {
+        background-color: #FFD700;
+        animation: circle-pulse-button 2s infinite;
+    }
+</style>

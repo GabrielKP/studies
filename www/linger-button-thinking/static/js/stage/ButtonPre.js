@@ -1,26 +1,26 @@
-define(["component/Pages", "component/StoryThinking"], function (Pages, StoryThinking) {
+define(["component/Pages", "component/ButtonPress"], function (Pages, ButtonPress) {
     let study;
     let instruct_pages;
-    let story_thinking;
+    let button_press;
 
     return {
-        name: "interference_story_thinking",
+        name: "pre_button_thinking",
 
         init: function (_study) {
             study = _study;
             instruct_pages = new Pages();
-            story_thinking = new StoryThinking();
+            button_press = new ButtonPress();
 
             // load the two HTML files in order
             return Promise.all([
                 instruct_pages.init(study,
-                    "interference_story_thinking/instruct-1.html",
+                    "food_button/instruct-1.html",
                     function () {
-                        story_thinking.start_task();
+                        button_press.start_task();
                     }
                 ),
-                story_thinking.init(study,
-                    "interference_story_thinking/task.html",
+                button_press.init(study,
+                    "food_button/task.html",
                     function () {
                         study.next();
                     },

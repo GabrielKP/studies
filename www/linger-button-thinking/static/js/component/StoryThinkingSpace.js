@@ -1,3 +1,4 @@
+// holding space only
 define(["component/Pages"], function (Pages) {
     class _StoryThinking {
         constructor() {
