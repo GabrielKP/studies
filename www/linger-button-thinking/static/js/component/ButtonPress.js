@@ -14,7 +14,7 @@ define(["component/Pages"], function (Pages) {
             this.colorFlashTimeout = null;
         }
 
-        init(study, pagename, finish_func, duration = 30000) {
+        init(study, pagename, finish_func, duration) {
             this.study = study;
             this.pages = new Pages();
             this.finish_func = finish_func;

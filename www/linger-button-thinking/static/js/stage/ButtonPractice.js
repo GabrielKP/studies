@@ -4,7 +4,7 @@ define(["component/Pages", "component/ButtonPress"], function (Pages, ButtonPres
     let button_press;
 
     return {
-        name: "post_button_thinking",
+        name: "button_practice",
 
         init: function (_study) {
             study = _study;
@@ -14,17 +14,17 @@ define(["component/Pages", "component/ButtonPress"], function (Pages, ButtonPres
             // load the two HTML files in order
             return Promise.all([
                 instruct_pages.init(study,
-                    "thinking_button/instruct-1.html",
+                    "practice/instruct-1.html",
                     function () {
                         button_press.start_task();
                     }
                 ),
                 button_press.init(study,
-                    "thinking_button/task.html",
+                    "practice/task.html",
                     function () {
                         study.next();
                     },
-                    study.config.time_limit_post
+                    10000,
                 ),
             ]);
 

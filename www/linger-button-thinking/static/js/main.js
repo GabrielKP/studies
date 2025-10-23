@@ -6,10 +6,10 @@ require([
   "stage/Recording",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
+  "stage/ButtonPractice",
   "stage/ButtonPre",
   "stage/Reading",
   "stage/ButtonPost",
-  "stage/FreeAssociationPost",
   "stage/QuestionnaireTransportation",
   "stage/QuestionnaireComprehension",
   "stage/QuestionnaireExperience",
@@ -25,6 +25,7 @@ require([
   Recording,
   Fullscreen,
   GeneralInstructions,
+  ButtonPractice,
   ButtonPre,
   Reading,
   ButtonPost,
@@ -39,7 +40,7 @@ require([
   // configuration
   let _version = "1.0.1-alpha1";
   let config = {
-    study: "linger-interference-thinking",
+    study: "linger-button-thinking",
     version: _version,
     debug: false,
     default_button_timeout: 500,
@@ -99,6 +100,7 @@ require([
       Recording,
       Fullscreen,
       GeneralInstructions,
+      ButtonPractice,
       ButtonPre,
       Reading,
       ButtonPost,

@@ -24,6 +24,7 @@ define(["component/Pages", "component/ButtonPress"], function (Pages, ButtonPres
                     function () {
                         study.next();
                     },
+                    study.config.time_limit_pre
                 ),
             ]);
 
