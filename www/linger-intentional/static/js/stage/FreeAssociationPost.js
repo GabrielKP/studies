@@ -19,6 +19,7 @@ define(["component/Pages", "component/FreeAssociation"], function (
             "free_association_post/instruct-1.html",
             "free_association_post/instruct-2.html",
             "free_association_post/instruct-3.html",
+            "free_association_post/instruct-4.html",
           ],
           function () {
             free_association.start_task();
