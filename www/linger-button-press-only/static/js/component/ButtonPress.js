@@ -69,8 +69,8 @@ define(["component/Pages"], function (Pages) {
       if (elapsed >= this.duration) {
         clearInterval(this.progressInterval);
 
-        document.removeEventListener("keydown", this.response_handler);
-        document.removeEventListener("keyup", this.response_handler);
+        $("body").unbind("keydown", this.response_handler);
+        $("body").unbind("keyup", this.response_handler);
 
         $("#text").text("Done!");
         $("#text").css("color", "green");
@@ -237,8 +237,8 @@ define(["component/Pages"], function (Pages) {
         task: "button_press",
       });
 
-      document.addEventListener("keydown", this.response_handler);
-      document.addEventListener("keyup", this.response_handler);
+      $("body").focus().keydown(this.response_handler);
+      $("body").focus().keyup(this.response_handler);
     }
 
     finish_task() {
@@ -246,8 +246,8 @@ define(["component/Pages"], function (Pages) {
       if (this.colorFlashTimeout) {
         clearTimeout(this.colorFlashTimeout);
       }
-      document.removeEventListener("keydown", this.response_handler);
-      document.removeEventListener("keyup", this.response_handler);
+      $("body").unbind("keydown", this.response_handler);
+      $("body").unbind("keyup", this.response_handler);
       this.study.data.record_trialdata({
         status: "task_end",
         task: "button_press",

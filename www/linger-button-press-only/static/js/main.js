@@ -94,12 +94,12 @@ require([
 
   let initialization = Study.init(
     [
-      Welcome,
-      ContentWarning,
-      Consent,
-      Recording,
-      Fullscreen,
-      GeneralInstructions,
+      // Welcome,
+      // ContentWarning,
+      // Consent,
+      // Recording,
+      // Fullscreen,
+      // GeneralInstructions,
       ButtonPractice,
       ButtonPre,
       Reading,
