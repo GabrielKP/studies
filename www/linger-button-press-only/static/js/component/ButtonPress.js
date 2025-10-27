@@ -6,6 +6,7 @@ define(["component/Pages"], function (Pages) {
       this.response_handler = this.response_handler.bind(this);
       this.update_progress = this.update_progress.bind(this);
       this.flash_circle_color = this.flash_circle_color.bind(this);
+      this.show_practice_text = this.show_practice_text.bind(this);
       this.double_enter_press_count = 0;
       this.double_enter_press_times = [];
       this.last_enter_press = null;
@@ -13,7 +14,7 @@ define(["component/Pages"], function (Pages) {
       this.colorFlashTimeout = null;
     }
 
-    init(study, pagename, finish_func, duration) {
+    init(study, pagename, finish_func, duration, is_practice = false) {
       this.study = study;
       this.pages = new Pages();
       this.finish_func = finish_func;
@@ -26,6 +27,8 @@ define(["component/Pages"], function (Pages) {
       this.double_enter_press_times = [];
       this.last_enter_press = null;
       this.colorFlashTimeout = null;
+      this.is_practice = is_practice;
+      this.practice_presses_required = 5;
       return this.pages.init(this.study, this.pagenames);
     }
 
@@ -45,7 +48,7 @@ define(["component/Pages"], function (Pages) {
       this.colorFlashTimeout = setTimeout(() => {
         progressCircle.classList.remove("circle-pulse-button");
         progressCircle.classList.add("circle-pulse-blue");
-      }, 400);
+      }, 600);
     }
 
     update_progress() {
@@ -87,6 +90,26 @@ define(["component/Pages"], function (Pages) {
       }
     }
 
+    show_practice_text() {
+      if (this.double_enter_press_count < this.practice_presses_required) {
+        if (
+          this.practice_presses_required - this.double_enter_press_count ==
+          1
+        ) {
+          $("#text").text("Double press the ENTER key 1 more time.");
+        } else {
+          $("#text").text(
+            "Double press the ENTER key " +
+              (this.practice_presses_required - this.double_enter_press_count) +
+              " times."
+          );
+        }
+        $("#text").css("color", "black");
+      } else {
+        $("#text").text("Wait until time is up.");
+      }
+    }
+
     response_handler(e) {
       if (e.type === "keydown" && e.code === "Enter") {
         // ENTER KEY
@@ -101,6 +124,10 @@ define(["component/Pages"], function (Pages) {
         ) {
           this.double_enter_press_count++;
           this.double_enter_press_times.push(time_since_start);
+
+          if (this.is_practice) {
+            this.show_practice_text();
+          }
 
           this.study.data.record_trialdata({
             task: "button_press",
@@ -130,9 +157,12 @@ define(["component/Pages"], function (Pages) {
         this.holding = true;
         this.first_hold_start_time = Date.now();
         this.hold_start_time = this.first_hold_start_time;
-        this.progressInterval = setInterval(this.update_progress, 50);
-        $("#text").text("Now, double press the ENTER key 5 times.");
-        $("#text").css("color", "black");
+        this.progressInterval = setInterval(this.update_progress, 10);
+        if (this.is_practice) {
+          this.show_practice_text();
+        } else {
+          $("#text").css("opacity", 0);
+        }
 
         // Start the pulse animation
         const progressCircle = document.getElementById("progress-circle");
@@ -155,8 +185,11 @@ define(["component/Pages"], function (Pages) {
         // RESUME HOLD
         this.holding = true;
         this.hold_start_time = Date.now();
-        $("#text").text("Now, double press the ENTER key 5 times.");
-        $("#text").css("color", "black");
+        if (this.is_practice) {
+          this.show_practice_text();
+        } else {
+          $("#text").css("opacity", 0);
+        }
 
         // Resume the pulse animation
         const progressCircle = document.getElementById("progress-circle");
@@ -191,6 +224,7 @@ define(["component/Pages"], function (Pages) {
         });
         $("#text").text("Keep holding the space bar continuously!");
         $("#text").css("color", "red");
+        $("#text").css("opacity", 1);
         e.preventDefault();
       }
     }
