@@ -38,9 +38,9 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.1";
+  let _version = "1.0.2-alpha1";
   let config = {
-    study: "linger-button-thinking",
+    study: "linger-button-press-only",
     version: _version,
     debug: false,
     default_button_timeout: 500,
