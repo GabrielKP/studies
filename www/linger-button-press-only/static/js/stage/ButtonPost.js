@@ -22,6 +22,7 @@ define(["component/Pages", "component/ButtonPress"], function (
           [
             "thinking_button/instruct-1.html",
             "thinking_button/instruct-2.html",
+            "thinking_button/instruct-3.html",
           ],
           function () {
             mode = "task";

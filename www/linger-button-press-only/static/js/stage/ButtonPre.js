@@ -19,7 +19,11 @@ define(["component/Pages", "component/ButtonPress"], function (
       return Promise.all([
         instruct_pages.init(
           study,
-          ["food_button/instruct-1.html", "food_button/instruct-2.html"],
+          [
+            "food_button/instruct-1.html",
+            "food_button/instruct-2.html",
+            "food_button/instruct-3.html",
+          ],
           function () {
             mode = "task";
             button_press.start_task();
