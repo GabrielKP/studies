@@ -135,7 +135,7 @@ define(["component/Pages"], function (Pages) {
                 this.first_hold_start_time = Date.now();
                 this.hold_start_time = this.first_hold_start_time;
                 this.progressInterval = setInterval(this.update_progress, 50);
-                this.show_warning('warning-holding');
+                this.show_warning('');
 
                 // Start the pulse animation
                 const progressCircle = document.getElementById('progress-circle');
@@ -153,7 +153,7 @@ define(["component/Pages"], function (Pages) {
             else if (e.type === "keydown" && e.code === "Space" && !this.holding && this.unhold_count > 0) {
                 this.holding = true;
                 this.hold_start_time = Date.now();
-                this.show_warning('warning-holding');
+                this.show_warning('');
 
                 // Resume the pulse animation
                 const progressCircle = document.getElementById('progress-circle');
