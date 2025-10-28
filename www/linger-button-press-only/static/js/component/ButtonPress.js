@@ -10,7 +10,9 @@ define(["component/Pages"], function (Pages) {
       this.double_enter_press_count = 0;
       this.double_enter_press_times = [];
       this.last_enter_press = null;
+      this.total_hold_time = 0;
       this.DOUBLE_PRESS_THRESHOLD = 1000;
+      this.enter_is_down = false; // Track if Enter key is currently held down
       this.colorFlashTimeout = null;
     }
 
@@ -26,6 +28,8 @@ define(["component/Pages"], function (Pages) {
       this.double_enter_press_count = 0;
       this.double_enter_press_times = [];
       this.last_enter_press = null;
+      this.total_hold_time = 0;
+      this.enter_is_down = false;
       this.colorFlashTimeout = null;
       this.is_practice = is_practice;
       this.practice_presses_required = 5;
@@ -54,7 +58,7 @@ define(["component/Pages"], function (Pages) {
     update_progress() {
       if (!this.holding) return;
 
-      const elapsed = Date.now() - this.first_hold_start_time;
+      const elapsed = Date.now() - this.hold_start_time + this.total_hold_time;
       const percentage = Math.min((elapsed / this.duration) * 100, 100);
 
       const maxSize = 300;
@@ -69,11 +73,12 @@ define(["component/Pages"], function (Pages) {
       if (elapsed >= this.duration) {
         clearInterval(this.progressInterval);
 
-        $("body").unbind("keydown", this.response_handler);
-        $("body").unbind("keyup", this.response_handler);
-
         $("#text").text("Done!");
         $("#text").css("color", "green");
+        $("#text").css("opacity", 1);
+
+        $("body").unbind("keydown", this.response_handler);
+        $("body").unbind("keyup", this.response_handler);
 
         this.study.data.record_trialdata({
           task: "button_press",
@@ -100,8 +105,8 @@ define(["component/Pages"], function (Pages) {
         } else {
           $("#text").text(
             "Double press the ENTER key " +
-              (this.practice_presses_required - this.double_enter_press_count) +
-              " times."
+            (this.practice_presses_required - this.double_enter_press_count) +
+            " times."
           );
         }
         $("#text").css("color", "black");
@@ -111,42 +116,53 @@ define(["component/Pages"], function (Pages) {
     }
 
     response_handler(e) {
-      if (e.type === "keydown" && e.code === "Enter") {
-        // ENTER KEY
-        const current_time = Date.now();
-        const time_since_start = this.first_hold_start_time
-          ? current_time - this.first_hold_start_time
-          : 0;
+      if (e.code === "Enter") {
+        // Handle Enter key DOWN - only process if not already held down
+        if (e.type === "keydown" && !this.enter_is_down) {
+          this.enter_is_down = true; // Mark as pressed
 
-        if (
-          this.last_enter_press != null &&
-          current_time - this.last_enter_press <= this.DOUBLE_PRESS_THRESHOLD
-        ) {
-          this.double_enter_press_count++;
-          this.double_enter_press_times.push(time_since_start);
+          const current_time = Date.now();
+          const time_since_start = this.first_hold_start_time
+            ? current_time - this.first_hold_start_time
+            : 0;
 
-          if (this.is_practice) {
-            this.show_practice_text();
+          // Check for double press
+          if (
+            this.last_enter_press != null &&
+            current_time - this.last_enter_press <= this.DOUBLE_PRESS_THRESHOLD
+          ) {
+            // double-press!
+            this.double_enter_press_count++;
+            this.double_enter_press_times.push(time_since_start);
+
+            if (this.is_practice) {
+              this.show_practice_text();
+            }
+
+            this.study.data.record_trialdata({
+              task: "button_press",
+              status: "enter_double_press",
+              double_enter_press_number: this.double_enter_press_count,
+              time_since_task_start: time_since_start,
+              timestamp: current_time,
+              time_since_last_enter: current_time - this.last_enter_press,
+            });
+
+            this.flash_circle_color();
+            this.last_enter_press = null; // Reset
+          } else {
+            // Single press
+            this.last_enter_press = current_time;
+            // No recording
           }
 
-          this.study.data.record_trialdata({
-            task: "button_press",
-            status: "enter_double_press",
-            double_enter_press_number: this.double_enter_press_count,
-            time_since_task_start: time_since_start,
-            timestamp: current_time,
-            holding_space: this.holding,
-            time_since_last_enter: current_time - this.last_enter_press,
-          });
-
-          this.flash_circle_color();
-
-          this.last_enter_press = null;
-        } else {
-          this.last_enter_press = current_time;
+          e.preventDefault();
         }
-
-        e.preventDefault();
+        // Handle Enter key UP - reset the flag
+        else if (e.type === "keyup") {
+          this.enter_is_down = false;
+          e.preventDefault();
+        }
       } else if (
         e.type === "keydown" &&
         e.code === "Space" &&
@@ -208,6 +224,7 @@ define(["component/Pages"], function (Pages) {
         this.holding = false;
         this.unhold_count += 1;
         const hold_end = Date.now();
+        this.total_hold_time += hold_end - this.hold_start_time;
 
         // Pause the pulse animation
         const progressCircle = document.getElementById("progress-circle");
