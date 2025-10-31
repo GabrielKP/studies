@@ -44,14 +44,12 @@ define(["component/Pages"], function (Pages) {
         clearTimeout(this.colorFlashTimeout);
       }
 
-      // Switch to button pulse animation
-      progressCircle.classList.remove("circle-pulse-blue");
+      // Switch to button color (no animation)
       progressCircle.classList.add("circle-pulse-button");
 
-      // Revert back to blue after 400ms
+      // Revert back to blue after 600ms
       this.colorFlashTimeout = setTimeout(() => {
         progressCircle.classList.remove("circle-pulse-button");
-        progressCircle.classList.add("circle-pulse-blue");
       }, 600);
     }
 
@@ -182,9 +180,9 @@ define(["component/Pages"], function (Pages) {
 
         // Start the pulse animation
         const progressCircle = document.getElementById("progress-circle");
-        if (progressCircle) {
-          progressCircle.classList.add("circle-pulse-blue");
-        }
+        // if (progressCircle) {
+        //   progressCircle.classList.add("circle-pulse-blue");
+        // }
 
         this.study.data.record_trialdata({
           task: "button_press",
@@ -209,9 +207,9 @@ define(["component/Pages"], function (Pages) {
 
         // Resume the pulse animation
         const progressCircle = document.getElementById("progress-circle");
-        if (progressCircle) {
-          progressCircle.classList.add("circle-pulse-blue");
-        }
+        // if (progressCircle) {
+        //   progressCircle.classList.add("circle-pulse-blue");
+        // }
 
         this.study.data.record_trialdata({
           task: "button_press",
@@ -229,7 +227,7 @@ define(["component/Pages"], function (Pages) {
         // Pause the pulse animation
         const progressCircle = document.getElementById("progress-circle");
         if (progressCircle) {
-          progressCircle.classList.remove("circle-pulse-blue");
+          // progressCircle.classList.remove("circle-pulse-blue");
           progressCircle.classList.remove("circle-pulse-button");
         }
 

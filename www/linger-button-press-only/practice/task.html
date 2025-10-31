@@ -1,16 +1,13 @@
-<div
-  class="container position-absolute top-50 start-50 translate-middle text-center"
->
+<div class="container position-absolute top-50 start-50 translate-middle text-center">
   <!-- Progress Section -->
   <div style="margin-bottom: 30px">
+    <!-- All warning text variations -->
     <div class="mt-4">
       <h2 id="text" style="color: red">Now, press and hold the spacebar.</h2>
     </div>
 
     <!-- Pulsing Circle Progress -->
-    <div
-      id="progress-container"
-      style="
+    <div id="progress-container" style="
         width: 300px;
         height: 300px;
         margin: 0 auto;
@@ -18,8 +15,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-      "
-    >
+      ">
       <div id="progress-circle" class="circle-base"></div>
     </div>
   </div>
@@ -29,50 +25,6 @@
 </div>
 
 <style>
-  /* Blue pulse animation */
-  @keyframes circle-pulse-blue {
-    0% {
-      box-shadow: 0 0 0 0 rgba(135, 186, 211, 0.7),
-        0 0 0 0 rgba(135, 186, 211, 0.7);
-    }
-
-    40% {
-      box-shadow: 0 0 0 50px rgba(135, 186, 211, 0),
-        0 0 0 0 rgba(135, 186, 211, 0.7);
-    }
-
-    80% {
-      box-shadow: 0 0 0 50px rgba(135, 186, 211, 0),
-        0 0 0 30px rgba(135, 186, 211, 0);
-    }
-
-    100% {
-      box-shadow: 0 0 0 0 rgba(135, 186, 211, 0),
-        0 0 0 30px rgba(135, 186, 211, 0);
-    }
-  }
-
-  /* Button pulse animation */
-  @keyframes circle-pulse-button {
-    0% {
-      box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7), 0 0 0 0 rgba(255, 215, 0, 0.7);
-    }
-
-    40% {
-      box-shadow: 0 0 0 50px rgba(255, 215, 0, 0),
-        0 0 0 0 rgba(255, 215, 0, 0.7);
-    }
-
-    80% {
-      box-shadow: 0 0 0 50px rgba(255, 215, 0, 0),
-        0 0 0 30px rgba(255, 215, 0, 0);
-    }
-
-    100% {
-      box-shadow: 0 0 0 0 rgba(255, 215, 0, 0), 0 0 0 30px rgba(255, 215, 0, 0);
-    }
-  }
-
   .circle-base {
     background-color: #87bad3;
     border-radius: 50%;
@@ -82,12 +34,8 @@
     height: 0px;
   }
 
-  .circle-pulse-blue {
-    animation: circle-pulse-blue 3.5s infinite;
-  }
-
+  /* Keep this for the button flash color change */
   .circle-pulse-button {
     background-color: #ffd700;
-    animation: circle-pulse-button 3.5s infinite;
   }
 </style>
