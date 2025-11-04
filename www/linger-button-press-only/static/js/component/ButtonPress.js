@@ -71,25 +71,51 @@ define(["component/Pages"], function (Pages) {
       if (elapsed >= this.duration) {
         clearInterval(this.progressInterval);
 
-        $("#text").text("Done!");
-        $("#text").css("color", "green");
-        $("#text").css("opacity", 1);
+        // Check if practice requirements are met
+        if (this.is_practice && this.double_enter_press_count < this.practice_presses_required) {
+          // show failure message
+          $("#text").text("You didn't complete " + this.practice_presses_required + " double presses. Let's try again!");
+          $("#text").css("color", "red");
+          $("#text").css("opacity", 1);
 
-        $("body").unbind("keydown", this.response_handler);
-        $("body").unbind("keyup", this.response_handler);
+          $("body").unbind("keydown", this.response_handler);
+          $("body").unbind("keyup", this.response_handler);
 
-        this.study.data.record_trialdata({
-          task: "button_press",
-          status: "complete",
-          total_hold_time: elapsed,
-          unhold_count: this.unhold_count,
-          hold_start_time: this.first_hold_start_time,
-          hold_end_time: Date.now(),
-          double_enter_press_count: this.double_enter_press_count,
-          double_enter_press_times: this.double_enter_press_times,
-        });
+          this.study.data.record_trialdata({
+            task: "button_press",
+            status: "practice_failed",
+            total_hold_time: elapsed,
+            unhold_count: this.unhold_count,
+            hold_start_time: this.first_hold_start_time,
+            hold_end_time: Date.now(),
+            double_enter_press_count: this.double_enter_press_count,
+            double_enter_press_times: this.double_enter_press_times,
+          });
 
-        setTimeout(() => this.finish_task(), 1500);
+          // Reset and restart practice after delay
+          setTimeout(() => this.restart_practice(), 2000);
+        } else {
+          // Task complete (not practice or practice requirements met)
+          $("#text").text("Done!");
+          $("#text").css("color", "green");
+          $("#text").css("opacity", 1);
+
+          $("body").unbind("keydown", this.response_handler);
+          $("body").unbind("keyup", this.response_handler);
+
+          this.study.data.record_trialdata({
+            task: "button_press",
+            status: "complete",
+            total_hold_time: elapsed,
+            unhold_count: this.unhold_count,
+            hold_start_time: this.first_hold_start_time,
+            hold_end_time: Date.now(),
+            double_enter_press_count: this.double_enter_press_count,
+            double_enter_press_times: this.double_enter_press_times,
+          });
+
+          setTimeout(() => this.finish_task(), 1500);
+        }
       }
     }
 
@@ -111,6 +137,48 @@ define(["component/Pages"], function (Pages) {
       } else {
         $("#text").text("Wait until time is up.");
       }
+    }
+
+    restart_practice() {
+      // Reset all counters and state
+      this.holding = false;
+      this.unhold_count = 0;
+      this.double_enter_press_count = 0;
+      this.double_enter_press_times = [];
+      this.last_enter_press = null;
+      this.total_hold_time = 0;
+      this.enter_is_down = false;
+      this.first_hold_start_time = null;
+      this.hold_start_time = null;
+
+      // Reset progress circle
+      const progressCircle = document.getElementById("progress-circle");
+      if (progressCircle) {
+        progressCircle.style.width = "0px";
+        progressCircle.style.height = "0px";
+        progressCircle.classList.remove("circle-pulse-blue");
+        progressCircle.classList.remove("circle-pulse-button");
+      }
+
+      // Clear any pending timeouts
+      if (this.colorFlashTimeout) {
+        clearTimeout(this.colorFlashTimeout);
+        this.colorFlashTimeout = null;
+      }
+
+      // Show initial instruction text
+      $("#text").text("Hold the space bar to start.");
+      $("#text").css("color", "black");
+      $("#text").css("opacity", 1);
+
+      this.study.data.record_trialdata({
+        task: "button_press",
+        status: "practice_restart",
+      });
+
+      // Re-bind event handlers
+      $("body").focus().keydown(this.response_handler);
+      $("body").focus().keyup(this.response_handler);
     }
 
     response_handler(e) {
