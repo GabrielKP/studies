@@ -1,105 +1,56 @@
 <div class="container my-5">
   <div class="card">
-    <h3 class="card-header text-center">Phase 2: Story questions (4/6)</h3>
+    <h3 class="card-header text-center">Phase 5: Story questions (4/6)</h3>
     <div class="instructions card-body">
       <div class="card-text">
         <form class="mx-5 my-3">
           <p class="text-center">
-            Now, we will ask you questions about your experience while playing
-            the word chain game,<br />
-            especially focusing on your experience the <i>second time</i> you
-            played, which was <i>after reading the story</i>.
+            Now, we will ask you questions about your experience during <i>Phase 4: Mind-wandering</i>, which was
+            <i>after reading the story</i>.
           </p>
           <hr />
 
           <!-- beginning of a question -->
           <div class="row mt-4">
-            <div class="form-group">
-              <label for="wcg_diff_general">
-                Please describe <i>any differences</i> you felt playing the word
-                chain game <i>before</i> versus <i>after</i> reading the story:
-              </label>
-              <textarea
-                id="wcg_diff_general"
-                name="wcg_diff_general"
-                class="form-control collectible"
-              ></textarea>
+            <label for="forget_double_press" class="col-md-8">
+              Did you forget to double press the ENTER key at any point during
+              the game? If so, how many times did you forget?
+            </label>
+            <div class="col-md-4">
+              <select id="forget_double_press" name="forget_double_press"
+                class="form-select form-select-lg collectible">
+                <option value="5">5 or more times</option>
+                <option value="2">2 - 4 times</option>
+                <option value="1">Once</option>
+                <option value="0">Never</option>
+                <option value="" disabled selected>Select option</option>
+              </select>
             </div>
           </div>
           <!-- end of a question -->
           <hr />
-          <br />
 
           <!-- beginning of a question -->
           <div class="row mb-4">
-            <label for="linger_rating" class="col-md-8">
-              To what extent did the story linger in your mind after reading it?
+            <label for="task_induced_thoughts" class="col-md-8">
+              When you double-pressed, how did the story typically come to mind? </br>
+              <i>Spontaneous</i>: The story popped into your head naturally </br>(e.g., suddenly thinking about the
+              camping
+              scene).</br>
+              <i>Monitoring-induced</i>: Checking whether you were thinking about the story made you think about it
+              </br>
+              (e.g., thinking about "I have to double-press about story-thoughts" made you think about the story).
             </label>
             <div class="col-md-4">
-              <select
-                id="linger_rating"
-                name="linger_rating"
-                class="form-select form-select-lg collectible"
-              >
-                <option value="7">7 - Very much</option>
-                <option value="6">6</option>
-                <option value="5">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1 - Not at all</option>
-                <option value="" disabled selected>Select option</option>
-              </select>
+              <div class="d-flex justify-content-between">
+                <span class="me-2">Spontaneous</span>
+                <span class="ms-2 text-end">Monitoring-induced</span>
+              </div>
+              <input type="range" class="form-range collectible" min="0" max="5" step="0.01" id="task_induced_thoughts"
+                name="task_induced_thoughts">
+              <!-- <div class="text-center" id="task_induced_thoughts_val"></div> -->
             </div>
           </div>
-          <!-- end of a question -->
-          <!-- beginning of a question -->
-          <!-- <div class="row">
-            <label for="success_suppress_1" class="col-md-8">
-              <i>Word chain game: First round:</i> How successfully did you
-              suppress food-related thoughts?
-            </label>
-            <div class="col-md-4">
-              <select
-                id="success_suppress_1"
-                name="success_suppress_1"
-                class="form-select form-select-lg collectible"
-              >
-                <option value="7">7 - Very successful</option>
-                <option value="6">6</option>
-                <option value="5">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1 - Not successful at all</option>
-                <option value="" disabled selected>Select option</option>
-              </select>
-            </div>
-          </div> -->
-
-          <!-- beginning of a question -->
-          <!-- <div class="row">
-            <label for="success_suppress_2" class="col-md-8">
-              <i>Word chain game: Second round:</i> How successfully did you
-              suppress story-related thoughts?
-            </label>
-            <div class="col-md-4">
-              <select
-                id="success_suppress_2"
-                name="success_suppress_2"
-                class="form-select form-select-lg collectible"
-              >
-                <option value="7">7 - Very successful</option>
-                <option value="6">6</option>
-                <option value="5">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1 - Not successful at all</option>
-                <option value="" disabled selected>Select option</option>
-              </select>
-            </div>
-          </div> -->
           <!-- end of a question -->
           <hr />
         </form>
@@ -109,12 +60,7 @@
         <div class="instructionsnav">
           <div class="row">
             <center>
-              <button
-                type="button"
-                id="submit"
-                value="next"
-                class="btn btn-success btn-lg continue"
-              >
+              <button type="button" id="submit" value="next" class="btn btn-success btn-lg continue">
                 Continue
               </button>
             </center>

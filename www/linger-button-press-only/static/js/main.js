@@ -38,7 +38,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.2-alpha1";
+  let _version = "1.0.3";
   let config = {
     study: "linger-button-press-only",
     version: _version,
@@ -56,6 +56,8 @@ require([
     reading_delay_key: 100,
     interference_reading_delay_key: 100,
     conditions: ["thinking"],
+    upload_link:
+      "https://livejohnshopkins-my.sharepoint.com/:f:/g/personal/gkressi1_jh_edu/EphOh_kBCGBDsgR9IxCdTdIB7glO9m2zd3bcIYub4MVETw",
   };
 
   // determine debug mode
@@ -94,12 +96,12 @@ require([
 
   let initialization = Study.init(
     [
-      // Welcome,
-      // ContentWarning,
-      // Consent,
-      // Recording,
-      // Fullscreen,
-      // GeneralInstructions,
+      Welcome,
+      ContentWarning,
+      Consent,
+      Recording,
+      Fullscreen,
+      GeneralInstructions,
       ButtonPractice,
       ButtonPre,
       Reading,

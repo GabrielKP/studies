@@ -17,7 +17,7 @@ define(["component/Pages", "component/ButtonPress"], function (
 
       // load the two HTML files in order
       return Promise.all([
-        instruct_pages.init(study, "practice/instruct-1.html", function () {
+        instruct_pages.init(study, ["practice/instruct-1.html", "practice/instruct-2.html"], function () {
           mode = "task";
           button_press.start_task();
         }),

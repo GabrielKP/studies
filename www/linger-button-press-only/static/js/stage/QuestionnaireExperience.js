@@ -5,7 +5,7 @@ define(["component/Pages"], function (Pages) {
     '<div class="alert alert-danger"><i>Please answer all questions!</i></div>';
   let current_page = 0;
 
-  function _finish_task(linger_rating) {
+  function _finish_task() {
     $(".collectible").each(function () {
       study.data.record_trialdata({
         status: "ongoing",
@@ -14,7 +14,7 @@ define(["component/Pages"], function (Pages) {
       });
     });
     if (current_page == 1) _page_2();
-    else if (current_page == 2 && linger_rating == "1") study.next();
+    // else if (current_page == 2) study.next();
     else if (current_page == 2) _page_3();
     else if (current_page == 3) _page_4();
     else if (current_page == 4) pages.next();
@@ -28,12 +28,12 @@ define(["component/Pages"], function (Pages) {
     function _all_selected_1() {
       if ($("select.changed").length !== $("select.collectible").length)
         return false;
-      if (
-        $("#wcg_diff_general").val().trim().length < 3 ||
-        $("#wcg_strategy").val().trim().length < 3 ||
-        $("#guess_experiment").val().trim().length < 3
-      )
-        return false;
+      // if (
+      //   $("#wcg_diff_general").val().trim().length < 3 ||
+      //   $("#wcg_strategy").val().trim().length < 3 ||
+      //   $("#guess_experiment").val().trim().length < 3
+      // )
+      //   return false;
       return true;
     }
 
@@ -70,15 +70,42 @@ define(["component/Pages"], function (Pages) {
   function _page_2() {
     // check functions
     function _all_selected_2() {
-      return $("select.changed").length === $("select.collectible").length;
+      // Check if dropdown is selected
+      const dropdownSelected = $("#forget_double_press").val() !== null &&
+        $("#forget_double_press").val() !== "";
+      // Check if range slider has been interacted with
+      const rangeSelected = $("#task_induced_thoughts").hasClass("changed");
+
+      return dropdownSelected && rangeSelected;
     }
 
     // show page
     pages.next();
     current_page = 2;
 
-    // bind conditional enable
-    $(".collectible").on("change", function () {
+    // Display range slider value
+    $("#task_induced_thoughts").on("input", function () {
+      $(this).addClass("changed");
+      $("#task_induced_thoughts_val").text(this.value + (this.value === "5" ? "+" : ""));
+
+      if (_all_selected_2()) {
+        $("#warning").html("");
+        $("#submit")
+          .off()
+          .on("click", function () {
+            _finish_task($("#forget_double_press").val());
+          });
+      } else {
+        $("#submit")
+          .off()
+          .on("click", function () {
+            $("#warning").html(warning_text);
+          });
+      }
+    });
+
+    // bind conditional enable for dropdown
+    $("#forget_double_press").on("change", function () {
       $(this).addClass("changed");
 
       if (_all_selected_2()) {
@@ -86,7 +113,7 @@ define(["component/Pages"], function (Pages) {
         $("#submit")
           .off()
           .on("click", function () {
-            _finish_task($("#linger_rating").val());
+            _finish_task($(this).val());
           });
       } else {
         $("#submit")
@@ -106,9 +133,10 @@ define(["component/Pages"], function (Pages) {
   function _page_3() {
     // check functions
     function _all_selected_3() {
+      console.log($("select.changed").length, $("select.collectible").length);
       if ($("select.changed").length !== $("select.collectible").length)
         return false;
-      if ($("#volition_explanation").val().trim().length < 3) return false;
+      // if ($("#volition_explanation").val().trim().length < 3) return false;
       return true;
     }
 
