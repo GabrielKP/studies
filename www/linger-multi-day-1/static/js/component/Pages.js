@@ -42,10 +42,11 @@ define(function () {
     }
 
     _bind_buttons(func_next, func_previous) {
-      $("#next").on("click", function () {
+      // Remove existing handlers to prevent accumulation
+      $("#next").off("click").on("click", function () {
         func_next();
       });
-      $("#prev").on("click", function () {
+      $("#prev").off("click").on("click", function () {
         func_previous();
       });
     }

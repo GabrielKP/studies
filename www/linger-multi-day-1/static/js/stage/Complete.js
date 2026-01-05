@@ -27,7 +27,7 @@ define(["component/Pages"], function (Pages) {
       // show the html
       pages.next();
       // handle data saving
-      show_success_complete_screen = () => {
+      const show_success_complete_screen = () => {
         $("#card-complete").show();
         $("#complete").on("click", () => {
           window.location.href =
@@ -35,17 +35,17 @@ define(["component/Pages"], function (Pages) {
             study.config["code_completion"];
         });
       };
-      save_status = study.data.save();
+      const save_status = study.data.save();
       // let participants retry submission once.
       save_status.then(show_success_complete_screen, () => {
         $("#card-resubmit").show();
         $("#resubmit").on("click", () => {
-          resubmit_status = study.data.save();
+          const resubmit_status = study.data.save();
           resubmit_status.then(show_success_complete_screen, () => {
             $("#card-resubmit").hide();
             $("#card-download").show();
             $("#download").on("click", () => {
-              study.data.save((download = true));
+              study.data.save(true);
               show_success_complete_screen();
             });
           });

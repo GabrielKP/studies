@@ -81,7 +81,6 @@ define(["component/Pages", "component/Carver"], function (Pages, Carver) {
 
     //enable
     show_story_sentence();
-    listening = true;
   }
 
   return {

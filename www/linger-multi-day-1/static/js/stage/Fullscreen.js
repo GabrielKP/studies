@@ -19,32 +19,45 @@ define(["component/Pages"], function (Pages) {
       if (document.fullscreenElement) {
         // already in fullscreen
         $("#continue").prop("disabled", false);
-        $("#continue").on("click", () => {
-          pages.next();
-        });
+        $("#continue")
+          .off("click")
+          .on("click", () => {
+            pages.next();
+          });
       } else {
-        $("#fullscreen").on("click", () => {
-          document.documentElement.requestFullscreen().then(() => {
-            $("#fullscreen").attr("class", "btn btn-success btn-lg");
-            $("#continue").attr("class", "btn btn-primary btn-lg");
-            $("#continue").prop("disabled", false);
-            $("#continue").on("click", () => {
-              pages.next();
+        $("#fullscreen")
+          .off("click")
+          .on("click", () => {
+            document.documentElement.requestFullscreen().then(() => {
+              $("#fullscreen").attr("class", "btn btn-success btn-lg");
+              $("#continue").attr("class", "btn btn-primary btn-lg");
+              $("#continue").prop("disabled", false);
+              $("#continue")
+                .off("click")
+                .on("click", () => {
+                  pages.next();
+                });
             });
           });
-        });
       }
       // enforce fullscreen
       if (study.config["enforce_fullscreen"]) {
+        // Remove existing listener to prevent accumulation
+        document.documentElement.removeEventListener(
+          "fullscreenchange",
+          study.fullscreen_enforcer
+        );
         document.documentElement.addEventListener(
           "fullscreenchange",
           study.fullscreen_enforcer
         );
       }
       // fullscreen button in enforce sceen
-      $("#fullscreen-warning").on("click", () => {
-        document.documentElement.requestFullscreen();
-      });
+      $("#fullscreen-warning")
+        .off("click")
+        .on("click", () => {
+          document.documentElement.requestFullscreen();
+        });
     },
   };
 });

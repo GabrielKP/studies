@@ -26,7 +26,7 @@ define(["component/Pages"], function (Pages) {
           content_warning_agree: false,
         });
         // save data
-        save_status = study.data.save();
+        const save_status = study.data.save();
         save_status.then(() => {
           // route to prolific
           window.location.href =
