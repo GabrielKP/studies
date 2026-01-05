@@ -7,7 +7,7 @@ define(["component/Pages", "component/FreeAssociation"], function (
   let free_association;
 
   return {
-    name: "free_association_pre",
+    name: "free_association_1",
     init: function (_study) {
       study = _study;
       instruct_pages = new Pages();
@@ -30,7 +30,7 @@ define(["component/Pages", "component/FreeAssociation"], function (
           function () {
             study.next();
           },
-          study.config.time_limit_pre
+          study.config.time_limit_fa
         ),
       ]);
     },

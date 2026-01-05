@@ -8,9 +8,9 @@ require([
   "stage/Recording",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
-  "stage/FreeAssociationPre",
+  "stage/FreeAssociation1",
   "stage/Reading",
-  "stage/FreeAssociationPost",
+  "stage/FreeAssociation2",
   "stage/QuestionnaireTransportation",
   "stage/QuestionnaireComprehension",
   "stage/QuestionnaireExperience",
@@ -28,9 +28,9 @@ require([
   Recording,
   Fullscreen,
   GeneralInstructions,
-  FreeAssociationPre,
+  FreeAssociation1,
   Reading,
-  FreeAssociationPost,
+  FreeAssociation2,
   QuestionnaireTransportation,
   QuestionnaireComprehension,
   QuestionnaireExperience,
@@ -40,14 +40,13 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-alpha1";
+  let _version = "1.0.0-alpha3";
   let config = {
     study: "multi-day-1",
     version: _version,
     debug: false,
     default_button_timeout: 500,
-    time_limit_pre: 180000,
-    time_limit_post: 180000,
+    time_limit_fa: 180000,
     code_completion: "CGWO2HA6",
     code_noconsent: "CEH4RWLC",
     code_content_warning_disagree: "CAYTAWD0",
@@ -65,8 +64,7 @@ require([
   if (url_params.get("mode") == "debug") {
     config["debug"] = true;
     config["default_button_timeout"] = 0;
-    config["time_limit_pre"] = 6000;
-    config["time_limit_post"] = 6000;
+    config["time_limit_fa"] = 6000;
     config["enforce_fullscreen"] = false;
   }
 
@@ -88,6 +86,9 @@ require([
     });
   }
 
+  // General experiment flow
+  // Day 1: FA1 -> Reading -> FA2 -> Questionnaire -> End
+  // Day 2: FA3 -> Recall -> FA4 -> Reading -> FA5 ->Questionnaire -> End
   let initialization = Study.init(
     [
       Welcome,
@@ -98,9 +99,9 @@ require([
       Recording,
       Fullscreen,
       GeneralInstructions,
-      FreeAssociationPre,
+      FreeAssociation1,
       Reading,
-      FreeAssociationPost,
+      FreeAssociation2,
       QuestionnaireTransportation,
       QuestionnaireComprehension,
       QuestionnaireExperience,
