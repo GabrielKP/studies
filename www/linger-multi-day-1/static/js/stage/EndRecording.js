@@ -33,8 +33,8 @@ define(["component/Pages"], function (Pages) {
 
       setTimeout(() => {
         // Show upload link
-        $("#upload-link").attr("href", study.config.upload_link);
-        $("#upload-link").text(study.config.upload_link);
+        $("#upload-link").attr("href", study.config.upload_link_day1);
+        $("#upload-link").text(study.config.upload_link_day1);
 
         // Display participant ID
         const participantId = study.data.participantID;
