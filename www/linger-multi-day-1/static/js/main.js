@@ -8,9 +8,9 @@ require([
   "stage/Recording",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
-  "stage/FreeAssociation1",
+  "stage/FreeAssociationPre",
   "stage/Reading",
-  "stage/FreeAssociation2",
+  "stage/FreeAssociationPost",
   "stage/QuestionnaireTransportation",
   "stage/QuestionnaireComprehension",
   "stage/QuestionnaireExperience",
@@ -28,9 +28,9 @@ require([
   Recording,
   Fullscreen,
   GeneralInstructions,
-  FreeAssociation1,
+  FreeAssociationPre,
   Reading,
-  FreeAssociation2,
+  FreeAssociationPost,
   QuestionnaireTransportation,
   QuestionnaireComprehension,
   QuestionnaireExperience,
@@ -40,7 +40,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-alpha4";
+  let _version = "1.0.0-alpha5";
   let config = {
     study: "multi-day-1",
     version: _version,
@@ -99,9 +99,9 @@ require([
       Recording,
       Fullscreen,
       GeneralInstructions,
-      FreeAssociation1,
+      FreeAssociationPre,
       Reading,
-      FreeAssociation2,
+      FreeAssociationPost,
       QuestionnaireTransportation,
       QuestionnaireComprehension,
       QuestionnaireExperience,

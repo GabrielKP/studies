@@ -7,7 +7,7 @@ define(["component/Pages", "component/FreeAssociation"], function (
   let free_association;
 
   return {
-    name: "free_association_2",
+    name: "free_association_post",
     init: function (_study) {
       study = _study;
       instruct_pages = new Pages();
@@ -16,9 +16,9 @@ define(["component/Pages", "component/FreeAssociation"], function (
         instruct_pages.init(
           study,
           [
-            "free_association_2/instruct-1.html",
-            "free_association_2/instruct-2.html",
-            "free_association_2/instruct-3.html",
+            "free_association_post/instruct-1.html",
+            "free_association_post/instruct-2.html",
+            "free_association_post/instruct-3.html",
           ],
           function () {
             free_association.start_task();
@@ -26,7 +26,7 @@ define(["component/Pages", "component/FreeAssociation"], function (
         ),
         free_association.init(
           study,
-          "free_association_2/task.html",
+          "free_association_post/task.html",
           function () {
             study.next();
           },
