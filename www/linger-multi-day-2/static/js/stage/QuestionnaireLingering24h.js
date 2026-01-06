@@ -72,15 +72,15 @@ define(["component/Pages"], function (Pages) {
   }
 
   return {
-    name: "questionnaire_prolonged_lingering",
+    name: "questionnaire_lingering_24h",
     init: function (_study) {
       study = _study;
       pages = new Pages();
       return pages.init(
         study,
         [
-          "questionnaires/prolonged_lingering/1.html",
-          "questionnaires/prolonged_lingering/2.html",
+          "questionnaires/lingering_24h/1.html",
+          "questionnaires/lingering_24h/2.html",
         ],
         function () {
           study.next();

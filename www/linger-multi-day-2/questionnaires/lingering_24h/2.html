@@ -1,23 +1,30 @@
 <div class="container my-5">
   <div class="card">
-    <h3 class="card-header text-center">Phase 6: Story questions (8/8)</h3>
+    <h3 class="card-header text-center">Phase 4: Questionnaires (8/9)</h3>
     <div class="instructions card-body">
       <div class="card-text">
-        <form class="mx-5 my-5">
-          <p class="text-center">
-            <b><i>To what extent did the story you read yesterday...</i></b>
+        <form class="mx-5 my-3">
+          <p class="text-center mb-3">
+            The following questions refer to
+            <b>the story you read yesterday</b>.
+          </p>
+          <p class="text-center mt-5">
+            <i
+              >To what extent do you agree or disagree with the following
+              statements?</i
+            >
           </p>
           <br />
 
           <!-- beginning of a question -->
           <section class="row mb-4">
-            <label for="linger_rating_prolonged" class="col-md-8">
-              ...linger in your mind after the experiment?
+            <label for="linger_24h_rating" class="col-md-8">
+              The story lingered in my mind after the experiment.
             </label>
             <div class="col-md-4">
               <select
-                id="linger_rating_prolonged"
-                name="linger_rating_prolonged"
+                id="linger_24h_rating"
+                name="linger_24h_rating"
                 class="form-select form-select-lg collectible"
               >
                 <option value="7">7 - Very much</option>
@@ -35,13 +42,13 @@
           <br />
           <!-- beginning of a question -->
           <section class="row mb-4">
-            <label for="linger_emotion_prolonged" class="col-md-8">
-              ...affect you emotionally after the experiment?
+            <label for="linger_24h_emotion" class="col-md-8">
+              The story affected me emotionally.
             </label>
             <div class="col-md-4">
               <select
-                id="linger_emotion_prolonged"
-                name="linger_emotion_prolonged"
+                id="linger_24h_emotion"
+                name="linger_24h_emotion"
                 class="form-select form-select-lg collectible"
               >
                 <option value="7">7 - Very much</option>
@@ -60,13 +67,13 @@
 
           <!-- beginning of a question -->
           <section class="row mb-4">
-            <label for="linger_unintentional_prolonged" class="col-md-8">
-              ...spontaneously pop into your thoughts after the experiment?
+            <label for="linger_24h_intentional" class="col-md-8">
+              I wanted to think about the story after the experiment was over.
             </label>
             <div class="col-md-4">
               <select
-                id="linger_unintentional_prolonged"
-                name="linger_unintentional_prolonged"
+                id="linger_24h_intentional"
+                name="linger_24h_intentional"
                 class="form-select form-select-lg collectible"
               >
                 <option value="7">7 - Very much</option>
@@ -81,17 +88,17 @@
             </div>
           </section>
           <!-- end of a question -->
-          <hr />
           <br />
           <!-- beginning of a question -->
           <section class="row mb-4">
-            <label for="linger_intentional_prolonged" class="col-md-8">
-              To what extent did you want to think about the story?
+            <label for="linger_24h_unintentional" class="col-md-8">
+              After the experiment, I noticed myself having thoughts about the
+              story even without trying.
             </label>
             <div class="col-md-4">
               <select
-                id="linger_intentional_prolonged"
-                name="linger_intentional_prolonged"
+                id="linger_24h_unintentional"
+                name="linger_24h_unintentional"
                 class="form-select form-select-lg collectible"
               >
                 <option value="7">7 - Very much</option>
@@ -106,7 +113,6 @@
             </div>
           </section>
           <!-- end of a question -->
-          <hr />
         </form>
 
         <div id="warning"></div>
