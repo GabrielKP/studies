@@ -4,7 +4,6 @@ require([
   "stage/ContentWarning",
   "stage/Consent",
   "stage/StudyInstructions",
-  "stage/MicCheck",
   "stage/Recording",
   "stage/Fullscreen",
   "stage/GeneralInstructions",
@@ -24,7 +23,6 @@ require([
   ContentWarning,
   Consent,
   StudyInstructions,
-  MicCheck,
   Recording,
   Fullscreen,
   GeneralInstructions,
@@ -40,7 +38,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-alpha5";
+  let _version = "1.0.0-alpha6";
   let config = {
     study: "multi-day-1",
     version: _version,
@@ -95,7 +93,6 @@ require([
       ContentWarning,
       Consent,
       StudyInstructions,
-      MicCheck,
       Recording,
       Fullscreen,
       GeneralInstructions,
