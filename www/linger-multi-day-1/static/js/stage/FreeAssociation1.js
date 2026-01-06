@@ -16,9 +16,9 @@ define(["component/Pages", "component/FreeAssociation"], function (
         instruct_pages.init(
           study,
           [
-            "free_association_pre/instruct-1.html",
-            "free_association_pre/instruct-2.html",
-            "free_association_pre/instruct-3.html",
+            "free_association_1/instruct-1.html",
+            "free_association_1/instruct-2.html",
+            "free_association_1/instruct-3.html",
           ],
           function () {
             free_association.start_task();
@@ -26,7 +26,7 @@ define(["component/Pages", "component/FreeAssociation"], function (
         ),
         free_association.init(
           study,
-          "free_association_pre/task.html",
+          "free_association_1/task.html",
           function () {
             study.next();
           },

@@ -43,12 +43,16 @@ define(function () {
 
     _bind_buttons(func_next, func_previous) {
       // Remove existing handlers to prevent accumulation
-      $("#next").off("click").on("click", function () {
-        func_next();
-      });
-      $("#prev").off("click").on("click", function () {
-        func_previous();
-      });
+      $("#next")
+        .off("click")
+        .on("click", function () {
+          func_next();
+        });
+      $("#prev")
+        .off("click")
+        .on("click", function () {
+          func_previous();
+        });
     }
 
     _enable_buttons(button_timeout) {
