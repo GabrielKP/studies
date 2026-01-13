@@ -14,7 +14,7 @@ define(["component/Pages"], function (Pages) {
       // show the page
       pages.next();
       // studytime
-      $("#studytime").text(study.config["studytime"]);
+      $("#studytime_day1").text(study.config["studytime_day1"]);
       // fullscreen button
       if (document.fullscreenElement) {
         // already in fullscreen

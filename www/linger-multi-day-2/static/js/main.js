@@ -40,7 +40,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-alpha2";
+  let _version = "1.0.0-alpha3";
   let config = {
     study: "multi-day-2",
     version: _version,
@@ -91,20 +91,20 @@ require([
   // Day 2: FA3 -> Recall -> FA4 -> Reading -> FA5 ->Questionnaire -> End
   let initialization = Study.init(
     [
-      // Welcome,
-      // ContentWarning,
-      // Consent,
-      // Recording,
-      // Fullscreen,
-      // GeneralInstructions,
-      // FreeAssociationPre,
-      // Reading,
-      // FreeAssociationPost,
-      // QuestionnaireTransportation,
-      // QuestionnaireComprehension,
-      // QuestionnaireExperience,
-      QuestionnaireLingering24h,
-      QuestionnaireRII,
+      Welcome,
+      ContentWarning,
+      Consent,
+      Recording,
+      Fullscreen,
+      GeneralInstructions,
+      FreeAssociationPre,
+      Reading,
+      FreeAssociationPost,
+      QuestionnaireTransportation,
+      QuestionnaireComprehension,
+      QuestionnaireExperience,
+      // QuestionnaireLingering24h,
+      // QuestionnaireRII,
       QuestionnaireDemographics,
       QuestionnaireOpen,
       EndRecording,
