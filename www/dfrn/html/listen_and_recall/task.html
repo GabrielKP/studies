@@ -1,0 +1,145 @@
+<!-- INTRO SECTION -->
+<section
+  id="intro"
+  class="container position-absolute top-50 start-50 translate-middle"
+>
+  <div class="card text-center">
+    <div class="instructions card-body p-5">
+      <h2 id="story_number" class="mb-4">Story 1</h2>
+      <section class="instructionsnav">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <center>
+              <button
+                type="button"
+                id="begin_story"
+                value="next"
+                class="btn btn-success btn-lg continue"
+              >
+                Ready
+              </button>
+            </center>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- LISTENING SECTION -->
+<section id="listen" style="display: none">
+  <div class="fixation-cross">+</div>
+</section>
+
+<!-- RECALL SECTION -->
+<section
+  id="recall"
+  style="display: none"
+  class="container position-absolute top-50 start-50 translate-middle"
+>
+  <section class="card text-center">
+    <div class="instructions card-body">
+      <div class="card-text">
+        <p>Recall the story you just listened to.</p>
+        <p>Mention <b>everything</b> you can remember.</p>
+      </div>
+
+      <section id="countdown" style="font-size: 60px" class="my-4"></section>
+      <section id="mic_icon" class="my-4">
+        <?xml version="1.0" encoding="UTF-8"?><svg
+          width="63px"
+          height="63px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          color="red"
+          stroke-width="1.8"
+        >
+          <rect
+            x="9"
+            y="2"
+            width="6"
+            height="12"
+            rx="3"
+            fill="red"
+            stroke="red"
+            stroke-width="1.8"
+            stroke-width="1.5"
+          ></rect>
+          <path
+            d="M5 3V5M1 2V6M19 3V5M23 2V6"
+            stroke="red"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M5 10V11C5 14.866 8.13401 18 12 18V18V18C15.866 18 19 14.866 19 11V10"
+            stroke="red"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M12 18V22M12 22H9M12 22H15"
+            stroke="red"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </section>
+
+      <div class="instructionsnav">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <center>
+              <button
+                type="button"
+                id="button_recall_done"
+                value="button_recall_done"
+                class="btn btn-danger btn-lg continue"
+                style="display: none"
+              >
+                Done
+              </button>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- RECALL DONE SECTION -->
+<section
+  id="recall_done_screen"
+  class="container position-absolute top-50 start-50 translate-middle"
+>
+  <div class="card text-center">
+    <div class="instructions card-body p-5">
+      <h2 id="recall_done_story_number" class="mb-4">
+        You are done with story 1
+      </h2>
+      <section class="instructionsnav">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <center>
+              <button
+                type="button"
+                id="next_story"
+                value="next"
+                class="btn btn-success btn-lg continue"
+              >
+                Next Story
+              </button>
+            </center>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,54 @@
+/* Setting max width for all content */
+.container:not(.wide) {
+  max-width: 1002px;
+}
+
+.wide {
+  max-width: 1410px;
+}
+
+/* Font size */
+#content {
+  font-size: 20px;
+}
+
+/* Reading font size */
+#sentence {
+  font-size: 24px;
+}
+
+/* InterferencePause */
+#pb {
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+
+
+/* Free Association Response Box */
+.responseBox {
+  background-color: transparent;
+  border: 1px solid;
+  height: 45px;
+  width: 210px;
+  resize: none;
+  text-align: center;
+}
+
+/* Fixation Cross for Listen Section */
+#listen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.fixation-cross {
+  font-size: 40px;
+  color: #000;
+  line-height: 1;
+}
