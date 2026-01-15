@@ -11,64 +11,78 @@
 
     <hr />
 
-    <p>Study: <a href="#" id="debug">debug (debug-id)</a>.</p>
-    <br />
-    <p>Study: <a href="#" id="test">test (live link with debug id)</a>.</p>
+    <div style="margin-bottom: 20px">
+      <label for="pid-input">Participant ID (PID):</label>
+      <input
+        type="text"
+        id="pid-input"
+        placeholder="Enter participant ID"
+        style="margin-left: 10px; padding: 5px; width: 200px"
+      />
+      <br /><br />
+      <label for="sid-input">Session ID (SID):</label>
+      <input
+        type="text"
+        id="sid-input"
+        placeholder="Enter session ID"
+        style="margin-left: 10px; padding: 5px; width: 200px"
+      />
+    </div>
 
     <hr />
 
-    <p>Study: <a href="#" id="local.debug">local debug (debug-id)</a>.</p>
-    <br />
-    <p>
-      Study:
-      <a href="#" id="local.test">local test (live link with debug id)</a>.
-    </p>
+    <p>Online: <a href="#" id="debug">debug</a>.</p>
+    <p>Online: <a href="#" id="test">live</a>.</p>
+
+    <hr />
+
+    <p>Local: <a href="#" id="local.debug"> debug</a>.</p>
+    <p>Local: <a href="#" id="local.test"> live</a>.</p>
 
     <hr />
 
     <script type="text/javascript">
-      function makeid() {
-        var text = "";
-        var possible =
-          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      function updateLinks() {
+        var pidInput = document.getElementById("pid-input");
+        var sidInput = document.getElementById("sid-input");
 
-        for (var i = 0; i < 5; i++)
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
+        // Get values from input fields, or use defaults if empty
+        var participantID = pidInput.value.trim() || "debug.pid." + makeid();
+        var sessionID = sidInput.value.trim() || "debug.session-id." + makeid();
 
-        return text;
+        var href_debug =
+          "index.html?PID=" +
+          encodeURIComponent(participantID) +
+          "&SID=" +
+          encodeURIComponent(sessionID) +
+          "&mode=debug";
+        var href_test =
+          "index.html?PID=" +
+          encodeURIComponent(participantID) +
+          "&SID=" +
+          encodeURIComponent(sessionID) +
+          "&mode=live";
+
+        document.getElementById("debug").setAttribute("href", href_debug);
+        document.getElementById("test").setAttribute("href", href_test);
+        document
+          .getElementById("local.test")
+          .setAttribute("href", href_test + "&local");
+        document
+          .getElementById("local.debug")
+          .setAttribute("href", href_debug + "&local");
       }
 
-      var debug_participantID = "debug.pid." + makeid();
-      var debug_study_id = "debug.study-id." + makeid();
-      var debug_session_id = "debug.session-id." + makeid();
-      var test_participantID = "test.pid." + makeid();
-      var test_study_id = "test.study-id." + makeid();
-      var test_session_id = "test.session-id." + makeid();
-      var href_debug =
-        "index.html?PROLIFIC_PID=" +
-        debug_participantID +
-        "&STUDY_ID=" +
-        debug_study_id +
-        "&SESSION_ID=" +
-        debug_session_id +
-        "&mode=debug";
-      var href_test =
-        "index.html?PROLIFIC_PID=" +
-        debug_participantID +
-        "&STUDY_ID=" +
-        test_study_id +
-        "&SESSION_ID=" +
-        test_session_id +
-        "&mode=live";
+      // Update links when input fields change
+      document
+        .getElementById("pid-input")
+        .addEventListener("input", updateLinks);
+      document
+        .getElementById("sid-input")
+        .addEventListener("input", updateLinks);
 
-      document.getElementById("debug").setAttribute("href", href_debug);
-      document.getElementById("test").setAttribute("href", href_test);
-      document
-        .getElementById("local.test")
-        .setAttribute("href", href_test + "&local");
-      document
-        .getElementById("local.debug")
-        .setAttribute("href", href_debug + "&local");
+      // Initialize links on page load
+      updateLinks();
     </script>
   </body>
 </html>
