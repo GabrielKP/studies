@@ -190,10 +190,18 @@ define(["component/Pages"], function (Pages) {
     init: function (_study) {
       study = _study;
       pages = new Pages();
+
+      let condition = study.data.condition;
+      let experience_file_1;
+      if (condition === "carver_july") {
+        experience_file_1 = "questionnaires/experience/1_carver.html";
+      } else {
+        experience_file_1 = "questionnaires/experience/1_july.html";
+      }
       return pages.init(
         study,
         [
-          "questionnaires/experience/1.html",
+          experience_file_1,
           "questionnaires/experience/2.html",
           "questionnaires/experience/3.html",
           "questionnaires/experience/4.html",

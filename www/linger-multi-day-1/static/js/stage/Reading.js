@@ -1,4 +1,4 @@
-define(["component/Pages", "component/Carver"], function (Pages, Carver) {
+define(["component/Pages", "component/Carver", "component/July"], function (Pages, Carver, July) {
   let study;
   let instruct_pages;
   let reading_pages;
@@ -89,7 +89,12 @@ define(["component/Pages", "component/Carver"], function (Pages, Carver) {
       study = _study;
       instruct_pages = new Pages();
       reading_pages = new Pages();
-      story = Carver;
+      let condition = study.data.condition;
+      if (condition === "carver_july") {
+        story = Carver;
+      } else {
+        story = July;
+      }
       reading_delay_key = study.config.reading_delay_key;
       return Promise.all([
         instruct_pages.init(

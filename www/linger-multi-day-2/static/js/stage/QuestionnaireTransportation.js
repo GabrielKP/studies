@@ -20,9 +20,17 @@ define(["component/Pages"], function (Pages) {
     init: function (_study) {
       study = _study;
       pages = new Pages();
+
+      let condition = study.data.condition;
+      let transportation_file;
+      if (condition === "carver_july") {
+        transportation_file = "questionnaires/transportation_july.html";
+      } else {
+        transportation_file = "questionnaires/transportation_carver.html";
+      }
       return pages.init(
         study,
-        ["questionnaires/transportation.html"],
+        [transportation_file],
         function () {
           study.next();
         }

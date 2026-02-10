@@ -1,4 +1,4 @@
-define(["component/Pages", "component/July"], function (Pages, July) {
+define(["component/Pages", "component/July", "component/Carver"], function (Pages, July, Carver) {
   let study;
   let instruct_pages;
   let reading_pages;
@@ -89,7 +89,17 @@ define(["component/Pages", "component/July"], function (Pages, July) {
       study = _study;
       instruct_pages = new Pages();
       reading_pages = new Pages();
-      story = July;
+      // story = July;
+      let condition = study.data.condition;
+      if (condition === "carver_july") {
+        story = July;
+      } else if (condition === "july_carver") {
+        story = Carver;
+      } else {
+        // Fallback in case something goes wrong
+        console.error("Unknown condition: " + condition);
+        story = Carver; // default
+      }
       reading_delay_key = study.config.reading_delay_key;
       return Promise.all([
         instruct_pages.init(

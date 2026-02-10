@@ -20,9 +20,18 @@ define(["component/Pages"], function (Pages) {
     init: function (_study) {
       study = _study;
       pages = new Pages();
+
+      let condition = study.data.condition;
+      let comprehension_file;
+      if (condition === "carver_july") {
+        comprehension_file = "questionnaires/comprehension_carver.html";
+      } else {
+        comprehension_file = "questionnaires/comprehension_july.html";
+      }
+
       return pages.init(
         study,
-        ["questionnaires/comprehension.html"],
+        [comprehension_file],
         function () {
           study.next();
         }

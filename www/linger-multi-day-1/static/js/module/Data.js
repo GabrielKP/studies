@@ -29,6 +29,10 @@ define(function () {
       }
       this.session_id = urlParams.get("SESSION_ID");
 
+      // assign condition according to participant ID
+      this.condition = this.assign_condition(this.participantID);
+      console.log("Participant:", this.participantID, "Condition:", this.condition);
+
       this.off_focus_time_start = null;
       this.off_fullscreen_time_start = null;
 
@@ -75,12 +79,31 @@ define(function () {
       return Promise.resolve();
     }
 
+    assign_condition(prolific_id) {
+      if (!prolific_id) {
+        return "carver_july"; // default for debug/missing ID
+      }
+
+      // Simple hash function
+      let hash = 0;
+      for (let i = 0; i < prolific_id.length; i++) {
+        hash = ((hash << 5) - hash) + prolific_id.charCodeAt(i);
+        hash = hash & hash; // Convert to 32-bit integer
+      }
+
+      // Use absolute value to handle negative hashes
+      hash = Math.abs(hash);
+
+      return (hash % 2 === 0) ? "carver_july" : "july_carver";
+    }
+
     make_datapoint() {
       let datapoint = {};
       datapoint["participantID"] = this.participantID;
       datapoint["study_id"] = this.study_id;
       datapoint["session_id"] = this.session_id;
       datapoint["stage"] = this.study.current_stage_name();
+      datapoint["condition"] = this.condition;
       datapoint["timestamp"] = new Date().getTime();
       return datapoint;
     }
@@ -113,6 +136,7 @@ define(function () {
         session_id: this.session_id,
         version: this.study.config["version"],
         config: this.study.config,
+        condition: this.condition,
         trialdata: this.trialdata,
         eventdata: this.eventdata,
       };
