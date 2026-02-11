@@ -38,7 +38,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-alpha10";
+  let _version = "1.0.0-alpha11";
   let config = {
     study: "multi-day-1",
     version: _version,
@@ -50,7 +50,7 @@ require([
     code_content_warning_disagree: "CAYTAWD0",
     code_multiple_days_disagree: "CAYTAWD0",
     studytime_day1: 45,
-    studytime_day2: 60,
+    studytime_day2: 55,
     enforce_fullscreen: true,
     reading_delay_key: 100,
     upload_link_day1:
@@ -92,7 +92,7 @@ require([
       Welcome,
       ContentWarning,
       Consent,
-      // StudyInstructions,
+      StudyInstructions,
       Recording,
       Fullscreen,
       GeneralInstructions,
