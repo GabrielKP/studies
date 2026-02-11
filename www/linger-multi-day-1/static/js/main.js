@@ -38,7 +38,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-alpha8";
+  let _version = "1.0.0-alpha9";
   let config = {
     study: "multi-day-1",
     version: _version,
