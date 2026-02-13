@@ -31,8 +31,9 @@ define(["component/Pages"], function (Pages) {
       if ($("select.changed").length !== $("select.collectible").length)
         return false;
       if (
-        $("#wcg_strategy").val().trim().length < 3 ||
-        $("#guess_experiment").val().trim().length < 3
+        ($("#wcg_strategy").val().trim().length < 3) ||
+        ($("#check_suppress_topic").val().trim().length < 3) ||
+        ($("#guess_experiment").val().trim().length < 3)
       )
         return false;
       return true;

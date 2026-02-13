@@ -40,7 +40,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0-alpha6";
+  let _version = "1.0.0-alpha7";
   let config = {
     study: "multi-day-2",
     version: _version,
