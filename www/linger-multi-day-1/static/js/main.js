@@ -48,7 +48,7 @@ require([
     code_completion: "CGWO2HA6",
     code_noconsent: "CEH4RWLC",
     code_content_warning_disagree: "CAYTAWD0",
-    code_multiple_days_disagree: "CAYTAWD0",
+    code_multiple_days_disagree: "C1GM2ANK",
     studytime_day1: 45,
     studytime_day2: 55,
     enforce_fullscreen: true,
