@@ -31,6 +31,12 @@ define(function () {
 
       // assign condition according to participant ID
       this.condition = this.assign_condition(this.participantID);
+
+      // // assign condition according to URL parameter (for carver_july)
+      // let urlCondition = urlParams.get("CONDITION");
+      // if (urlCondition) {
+      //   this.condition = urlCondition;
+      // }
       console.log("Participant:", this.participantID, "Condition:", this.condition);
 
       this.off_focus_time_start = null;
