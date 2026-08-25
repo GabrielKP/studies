@@ -1,0 +1,71 @@
+define([], function () {
+  return [
+    // H1H2
+    // "Alcohol",
+    // "Plate",
+    // "Fish",
+    // "Emotion",
+    // "Tent",
+    // "Dress",
+    // "Breast",
+    // "Gaze",
+    // "Salon",
+    // "Backyard",
+    // "Adult",
+    // "Suspense",
+    // "Floating",
+    // "Driving",
+
+    // L1H2
+    // "Portion",
+    // "Waitress",
+    // "Lifetime",
+    // "Snore",
+    // "Comforter",
+    // "Snack",
+    // "Parties",
+    // "Gaze",
+    // "Salon",
+    // "Backyard",
+    // "Adult",
+    // "Suspense",
+    // "Floating",
+    // "Driving",
+
+    // LOWO1
+    // A
+    "Broke",
+    "Stomach",
+    "Panel",
+    "Illness",
+    "Dream",
+    "Demand",
+    "Winter",
+    "Debt",
+    // B
+    "Weak",
+    "Shoelace",
+    "Rumble",
+    "Ant",
+    "Trunk",
+    "Plaque",
+    "Burglar",
+    // C
+    "Prime",
+    "Wash",
+    "Urban",
+    "Comfort",
+    "Grow",
+    "Parties",
+    "Brain",
+    // D
+    "Survey",
+    "Proud",
+    "Horizontal",
+    "Weighty",
+    "Buns",
+    "Skillet",
+    "Wipe",
+    "Escort",
+  ];
+});
