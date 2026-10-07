@@ -60,6 +60,31 @@ def get_data(studyname: str, hostname: str) -> None:
         else:
             previous_path = path
 
+    # now download videos
+    remote_video_dir = f"~/psyserver/data/studydata/{studyname_on_server}/video/*"
+
+    has_videos = subprocess.run(
+        ["ssh", hostname, f'test -n "$(ls -A {remote_video_dir} 2>/dev/null)"']
+    )
+    if has_videos.returncode == 255:
+        raise ValueError(f"Cannot connect to {hostname}")
+
+    if has_videos.returncode == 0:
+        video_dir = Path("data") / studyname / "video"
+        video_dir.mkdir(parents=True, exist_ok=True)
+
+        subprocess.run(
+            [
+                "rsync",
+                "-a",
+                "--partial",
+                f"{hostname}:{remote_video_dir}",
+                f"data/{studyname}/video/",
+            ],
+            check=True,
+        )
+        print(f"Video data downloaded into: 'data/{studyname}/video/'")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
