@@ -26,10 +26,11 @@ define(function () {
 
         _getSupportedMimeType() {
             const mimeTypes = [
+                "video/mp4;codecs=avc1",
+                "video/mp4",
                 "video/webm;codecs=vp9",
                 "video/webm;codecs=vp8",
                 "video/webm",
-                "video/mp4", // Safari
             ];
 
             return mimeTypes.find((type) => MediaRecorder.isTypeSupported(type));
@@ -190,7 +191,7 @@ define(function () {
             }
 
             const mimeType =
-                this.recorder.mimeType || "video/webm";
+                this.recorder.mimeType || "video/webn";
 
             const extension = mimeType.startsWith("video/mp4")
                 ? "mp4"
@@ -200,21 +201,39 @@ define(function () {
                 type: mimeType,
             });
 
-            const participantID = this._safeFilenamePart(
-                this.study.data.participantID
+            const params = new URLSearchParams(
+                window.location.search
             );
 
-            const sessionID = this._safeFilenamePart(
-                this.study.data.session_id
+            const prolificPID = this._safeFilenamePart(
+                params.get("PROLIFIC_PID")
             );
 
-            // psyserver requires exactly one "." in the filename.
+            const studyID = this._safeFilenamePart(
+                params.get("STUDY_ID")
+            );
+
             const filename =
-                `${participantID}_${sessionID}.${extension}`;
+                `${prolificPID}_${studyID}.${extension}`;
+
+            console.log("Uploading recording:", filename);
+
+            const formData = new FormData();
+
+            formData.append(
+                "video_data",
+                blob,
+                filename
+            );
+
+            const response = await fetch("video", {
+                method: "POST",
+                body: formData,
+            });
 
             let result;
 
-            // Useful when testing with ?local
+            // testing with ?local
             if (this.study.config.local) {
                 const a = document.createElement("a");
                 a.href = URL.createObjectURL(blob);
@@ -239,7 +258,7 @@ define(function () {
                  * relative "video", not
                  * "/linger-cue-association-slow/video".
                  *
-                 * The deployed study is mapped to study-name,
+                 * The uploaded study is mapped to study-name,
                  * so when the page is at /study-name/index.html,
                  * this becomes POST /study-name/video.
                  */
