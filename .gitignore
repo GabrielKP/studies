@@ -1,6 +1,7 @@
 .DS_Store
 # local debugging
 .vscode
+.cursor
 
 # npm modules (linter)
 node_modules

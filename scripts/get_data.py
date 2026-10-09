@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-from pathlib import Path
-from typing import Dict
 import argparse
-import json
 import glob
+import json
 import shutil
 import subprocess
+from pathlib import Path
+from typing import Dict
 
 
 def get_data(studyname: str, hostname: str) -> None:
@@ -20,7 +20,7 @@ def get_data(studyname: str, hostname: str) -> None:
             f"studyname '{studyname}' not in studymap."
             f" Choose one of {list(studymap.keys())}."
         )
-
+    print("Using study_id:", studyname_on_server)
     if not Path.exists(Path("data", studyname, "json")):
         print(f"Creating new data dir for {studyname}")
         # 1. copy example over
@@ -59,6 +59,31 @@ def get_data(studyname: str, hostname: str) -> None:
             print(f"Deleted {Path(path).name} (excluded)")
         else:
             previous_path = path
+
+    # now download videos
+    remote_video_dir = f"~/psyserver/data/studydata/{studyname_on_server}/video/*"
+
+    has_videos = subprocess.run(
+        ["ssh", hostname, f'test -n "$(ls -A {remote_video_dir} 2>/dev/null)"']
+    )
+    if has_videos.returncode == 255:
+        raise ValueError(f"Cannot connect to {hostname}")
+
+    if has_videos.returncode == 0:
+        video_dir = Path("data") / studyname / "video"
+        video_dir.mkdir(parents=True, exist_ok=True)
+
+        subprocess.run(
+            [
+                "rsync",
+                "-a",
+                "--partial",
+                f"{hostname}:{remote_video_dir}",
+                f"data/{studyname}/video/",
+            ],
+            check=True,
+        )
+        print(f"Video data downloaded into: 'data/{studyname}/video/'")
 
 
 if __name__ == "__main__":
