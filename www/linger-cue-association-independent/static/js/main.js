@@ -36,7 +36,7 @@ require([
   Complete
 ) {
   // configuration
-  let _version = "1.0.0";
+  let _version = "1.0.1";
   let config = {
     study: "linger-cue-association-independent",
     version: _version,
@@ -47,7 +47,7 @@ require([
     code_completion: "CGWO2HA6",
     code_noconsent: "CEH4RWLC",
     code_content_warning_disagree: "CAYTAWD0",
-    conditions: ["l1"],
+    conditions: ["l2"],
     studytime: 5,
     enforce_fullscreen: true,
     reading_delay_key: 100,
