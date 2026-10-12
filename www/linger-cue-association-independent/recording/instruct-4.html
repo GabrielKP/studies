@@ -1,6 +1,8 @@
+
 <div class="container position-absolute top-50 start-50 translate-middle">
   <div class="card text-left">
     <h3 class="card-header text-center">Screen Recording</h3>
+
     <div class="instructions card-body">
       <p style="text-align: center">
         <b>I confirm that I have started screen recording my browser.</b>
@@ -8,14 +10,34 @@
 
       <div class="instructionsnav">
         <div class="row">
-          <div class="col-12 d-flex justify-content-center">
-            <button type="button" id="next" class="btn btn-success btn-lg">
+          <div class="col-12 d-flex justify-content-center gap-5">
+            <button
+              type="button"
+              id="prev"
+              value="prev"
+              class="btn btn-primary btn-lg previous"
+            >
+              TRY AGAIN
+            </button>
+
+            <button
+              type="button"
+              id="next"
+              value="next"
+              class="btn btn-primary btn-lg continue"
+              disabled
+            >
               I CONFIRM
             </button>
           </div>
-          <div class="col-2"></div>
         </div>
       </div>
+
+      <p
+        id="retry-status"
+        class="text-center mt-3"
+        role="status"
+      ></p>
     </div>
   </div>
 </div>

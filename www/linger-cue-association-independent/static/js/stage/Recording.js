@@ -20,6 +20,7 @@ define(
             "recording/instruct-1.html",
             "recording/instruct-2.html",
             "recording/instruct-3.html",
+            "recording/instruct-4.html",
           ],
           function () {
             study.next();
@@ -50,7 +51,7 @@ define(
               status
                 .removeClass("text-danger text-success")
                 .text(
-                  "Waiting for you to select the experiment tab..."
+                  "Waiting for you to select the browser window..."
                 );
 
               try {
@@ -68,10 +69,10 @@ define(
                   .addClass("text-success")
                   .text("Screen recording started.");
 
-                $(document).off(
-                  "click.screenRecordingStart",
-                  "#start-recording"
-                );
+                // $(document).off(
+                //   "click.screenRecordingStart",
+                //   "#start-recording"
+                // );
 
                 // This is the last page, so this ends the
                 // Recording stage and advances the study.
