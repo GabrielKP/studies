@@ -15,7 +15,6 @@ define(function () {
 
             this.startedAt = null;
         }
-
         init(study) {
             this.study = study;
         }
@@ -58,6 +57,28 @@ define(function () {
                 );
             }
 
+            // Stop and discard the previous recording, if any.
+            if (this.recorder) {
+                this.intentionalStop = true;
+
+                // Prevent old recording chunks from entering the new recording.
+                this.recorder.ondataavailable = null;
+
+                if (this.recorder.state !== "inactive") {
+                    this.recorder.stop();
+                }
+            }
+
+            // Stop sharing the previous screen.
+            if (this.stream) {
+                this.stream.getTracks().forEach((track) => track.stop());
+            }
+
+            // Clear references to the old recording.
+            this.recorder = null;
+            this.stream = null;
+
+            // Initialize a fresh recording.
             this.intentionalStop = false;
             this.endedEarly = false;
             this.uploaded = false;
@@ -191,7 +212,7 @@ define(function () {
             }
 
             const mimeType =
-                this.recorder.mimeType || "video/webn";
+                this.recorder.mimeType || "video/webm";
 
             const extension = mimeType.startsWith("video/mp4")
                 ? "mp4"
@@ -218,18 +239,18 @@ define(function () {
 
             console.log("Uploading recording:", filename);
 
-            const formData = new FormData();
+            // const formData = new FormData();
 
-            formData.append(
-                "video_data",
-                blob,
-                filename
-            );
+            // formData.append(
+            //     "video_data",
+            //     blob,
+            //     filename
+            // );
 
-            const response = await fetch("video", {
-                method: "POST",
-                body: formData,
-            });
+            // const response = await fetch("video", {
+            //     method: "POST",
+            //     body: formData,
+            // });
 
             let result;
 
